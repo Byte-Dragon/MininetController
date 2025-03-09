@@ -1,0 +1,483 @@
+from mininet.net import Mininet
+from mininet.node import Controller, RemoteController, OVSKernelSwitch, Host
+from mininet.link import TCLink
+from mininet.util import quietRun
+import json
+
+
+class MininetController:
+    def __init__(self, net=None):
+        self.net = net
+        if self.net is None:
+            self._init_network()
+
+    def _init_network(self, topo=None, controller=Controller, switch=OVSKernelSwitch):
+        """Initialize network topology"""
+        self.net = Mininet(topo=topo,
+                           controller=controller,
+                           switch=switch,
+                           link=TCLink,
+                           build=False)
+        # 添加初始拓扑
+        c0 = net.addController(name='c0',
+                               controller=Controller,
+                               protocol='tcp',
+                               port=6633)
+
+        # Add switches
+        self.switches = {}
+        for i in range(1, 5):
+            sw = self.net.addSwitch(f's{i}')
+            self.switches[f's{i}'] = sw
+
+        h1 = net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
+        h1 = net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
+        h2 = net.addHost('h2', cls=Host, ip='10.0.0.2', defaultRoute=None)
+        h3 = net.addHost('h3', cls=Host, ip='10.0.0.3', defaultRoute=None)
+        h4 = net.addHost('h4', cls=Host, ip='10.0.0.4', defaultRoute=None)
+        h5 = net.addHost('h5', cls=Host, ip='10.0.0.5', defaultRoute=None)
+        h6 = net.addHost('h6', cls=Host, ip='10.0.0.6', defaultRoute=None)
+        h7 = net.addHost('h7', cls=Host, ip='10.0.0.7', defaultRoute=None)
+        h8 = net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
+        net.addLink(s1, s2)
+        net.addLink(s2, s3)
+        net.addLink(s3, s4)
+        net.addLink(s1, h1)
+        net.addLink(h2, s1)
+        net.addLink(h3, s2)
+        net.addLink(h4, s2)
+        net.addLink(h5, s3)
+        net.addLink(h6, s3)
+        net.addLink(h7, s4)
+        net.addLink(h8, s4)
+
+    def start_network(self):
+        """Start entire network"""
+        self.net.build()
+        self.net.start()
+
+    def stop_network(self):
+        """Stop entire network"""
+        self.net.stop()
+
+    def get_topology(self):
+        """获取网络拓扑信息"""
+        topology = {
+            'switches': [],
+            'hosts': [],
+            'links': []
+        }
+
+        # 收集switch信息
+        for node in self.net.switches:
+            params = []
+            for intf in node.intfList():
+                if intf.name == 'lo': continue
+                ip = intf.IP() or ""
+                params.append({
+                    'IP': ip,
+                    'MAC': intf.MAC() or "",
+                    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+                    'intfName': intf.name
+                })
+
+            topology['switches'].append({
+                'name': node.name,
+                'params': params,
+                'status': 'up' if node.isSetup else 'down'
+            })
+
+        # 收集host信息
+        for node in self.net.hosts:
+            interfaces = []
+            for intf in node.intfList():
+                if intf.name == 'lo': continue
+                ip = intf.IP() or ""
+                params.append({
+                    'IP': ip,
+                    'MAC': intf.MAC() or "",
+                    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+                    'intfName': intf.name
+                })
+
+            topology['hosts'].append({
+                'name': node.name,
+                'params': params,
+                'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+            })
+
+        # 收集link信息
+        for link in self.net.links:
+            topology['links'].append({
+                'node1': link.intf1.node.name,
+                'node2': link.intf2.node.name,
+                'params': {
+                    'bandwidth': link.intf1.params.get('bw', None),
+                    'delay': link.intf1.params.get('delay', None),
+                    'status': link.intf1.status()
+                    #'bandwidth': link.intf1.node,
+                    #'delay': link.intf1.mac,
+                    #'cd': link.intf1.params.bw,
+                    #'cdee': link.intf1.isUp()
+                }
+            })
+
+        return topology
+
+    def ping(self, fromNode, toNode, timeout=None):
+        """Test connectivity between two hosts:fromNode and toNodeand,"""
+        hosts = [self.net.get(fromNode),self.net.get(toNode)]
+        return self.net.ping(hosts, timeout=timeout)
+
+    def ping_full(self, fromNode, toNode, timeout=None):
+        """Ping between hosts fromNode and toNodeand,then return all data.
+            hosts: list of hosts
+            timeout: time to wait for a response, as string
+            returns: all ping data;"""
+        hosts = [self.net.get(fromNode),self.net.get(toNode)]
+        return self.net.pingFull(hosts,timeout=timeout)
+
+    def ping(self, name, ip):
+        """test connectivity from host h1 to ip"""
+        node = self.net.get(name)
+        return node.cmd('ping -c 5 ' + ip)
+
+    def ping_all(self, timeout=None):
+        """Ping between all hosts.
+           returns: ploss packet loss percentage"""
+        return self.net.pingAll(timeout=timeout)
+
+    def ping_full(self):
+        """Ping between all hosts and return all data.
+            returns: all ping data;"""
+        hosts = [self.net.get(fromNode),self.net.get(toNode)]
+        return self.net.pingAllFull(timeout=timeout)
+
+    def start_node(self, name, controller=None):
+        """
+        启动指定节点
+        :param name: 节点名称 (host/switch)
+        :param controller: 可选参数，指定交换机控制器（仅对switch有效）
+        """
+        node = self.get_node_by_name(name)
+        if node is None:
+            return False,f"[Error]Fail to get node by name:{name}"
+
+        if isinstance(node, OVSKernelSwitch):
+            # 处理交换机启动
+            	
+            ctrl = controller if controller is not None else self.net.get('c0')  # 默认使用第一个控制器
+            node.start([ctrl])
+            return True, f"Switch {name} started with controller {ctrl.name}"
+        elif isinstance(node, Host):
+            # 启动主机网络接口
+            node.configDefault()
+            for intf in node.intfList():
+                intf.ifconfig('up')
+            return True, f"Host {name} interfaces up"
+        else:
+            return False, f"[Error]Unsupported node type: {type(node)}"
+
+    def stop_node(self, name, keep_config=True):
+        """
+        停止指定节点
+        :param name: 节点名称
+        :param keep_config: 是否保留配置（仅对host有效）（True=仅关闭接口，False=完全移除）
+        """
+        node = self.get_node_by_name(name)
+        if node is None:
+            return False,f"[Error]Fail to get node by name:{name}"
+
+        if isinstance(node, OVSKernelSwitch):
+            node.stop(deleteIntfs=not keep_config)
+            return True,f"Switch {name} stopped"
+        elif isinstance(node, Host):
+            # 关闭所有接口
+            for intf in node.intfList():
+                intf.ifconfig('down')
+            if not keep_config:
+                node.terminate()
+            return True,f"Host {name} {'stopped' if keep_config else 'removed'}"
+        else:
+            return False,f"[Error]Unsupported node type: {type(node)}"
+
+    def get_node_by_name(self, name):
+        """get node by name,return Node"""
+        try:
+            node = self.net.get(name)
+            return node
+        except KeyError as e:
+            print(f"[Error]Node {name} not found, CallStack:[controller.py/get_node_by_name()]")
+            return None
+            
+
+    def add_host(self, name, ip, **params):
+        """Add new host to network"""
+        new_host = self.net.addHost(name, ip=ip)
+        # Add to first switch by default
+        self.net.addLink(new_host, self.net.get('s1'))
+        return new_host
+
+    def add_switch(self, name, cls=None, **params):
+        """params: listenPort,inNamespace"""
+        new_switch = self.net.addSwitch(name=name, params=params)
+        return new_switch
+
+    def del_node(self, name):
+        """del node(host/switch/controller) by name"""
+        
+        node = self.get_node_by_name(name)
+        if node is not None:
+            self.net.delNode(node)
+            return True, f"successfully delete node{name}"
+        else:
+            return False, f"[Error]Fail to delete node{name},callbacks: {info}"
+        
+
+    def add_link(self, fromNode, toNode, fromPort=None, toPort=None, **params):
+        """add link between fromNoed and toNode"""
+        new_link = self.net.addLink(fromNode, toNode, fromPort=fromPort, toPort=toPort, params=params)
+        return new_link
+
+    def del_link(self,fromNode, toNode, index=0, allLinks=False ):
+        link, node1, node2 = self.get_link(fromNode,toNode)
+        if link is None:
+            return False,f'[Error]Link {fromNode}->{toNode} not found'
+        else:
+            self.net.delLinkBetween(node1,node2,index,allLinks)
+            return True, f"successfully remove Link {fromNode}->{toNode}"
+
+    def get_link(self, fromNode, toNode):
+        """
+        get link fromNode(str)->toNode(str)
+        return：link, node1(Node),node2(Node)
+        """
+        node1 = self.get_node_by_name(fromNode)
+        node2 = self.get_node_by_name(toNode)
+        if node1 is not None and node2 is not None:
+            return self.net.linksBetween(node1, node2)[0], node1, node2
+        else:
+            return None, None, None
+
+    def apply_params(self, config):
+        """Apply parameters to network elements
+        Example config format:
+        config = {
+            "links": [
+            {
+                "from": "s1",
+                "to": "s2",
+                "params": {
+                    "bandwidth": 10,  # 10Mbps
+                    "delay": "5ms",
+                }
+            }
+            ],
+            "hosts": [
+            {
+                "name": "h1",
+                "params": {
+                    "IP": "192.168.1.2",
+                    "Mask": "255.255.255.0",
+                    "MAC": "00:00:00:AA:BB:CC",
+                    "intfName": "h1-eth0",
+                    "status": "up"
+                }
+            }
+            ],
+            "switchs": [
+            {
+                "name": "h1",
+                "params": {
+                "IP": "192.168.1.2",
+                "Mask": "255.255.255.0",
+                "MAC": "00:00:00:AA:BB:CC",
+                "intfName": "h1-eth0",
+                "status": "up"
+                }
+            }
+            ]
+	    }"""
+        result = []
+       
+        if 'hosts' in config:
+            for host_conf in config['hosts']:
+                result.append(self.update_node_params(host_conf))
+        if 'switchs' in config:
+            for switch_conf in config['switchs']:
+                result.append(self.update_node_params(switch_conf))
+        if 'links' in config:
+            for link_conf in config['links']:
+                result.append(self.update_link_params(link_conf))
+
+        return result
+
+    def update_link_params(self, link_conf):
+        """更新链路参数"""
+        from_node = link_conf['from']
+        to_node = link_conf['to']
+        params = link_conf.get('params', {})
+
+        # 遍历所有链路查找匹配项
+        link, _, _ = self.get_link(from_node,to_node)
+        if link is None:
+            return False, f"[Error]Link {from_node}->{to_node} not found"
+        # 更新带宽参数
+        if 'bandwidth' in params:
+            bw = params['bandwidth']
+            # 设置带宽限制 (单位：Mbps)
+            link.intf1.config(bw=bw)
+            link.intf2.config(bw=bw)
+            # 更新链路参数记录
+            link.intf1.params['bw'] = bw
+            link.intf2.params['bw'] = bw
+
+        # 更新延迟参数
+        if 'delay' in params:
+            delay = params['delay']
+            # 设置延迟 (格式：'5ms')
+            link.intf1.config(delay=delay)
+            link.intf2.config(delay=delay)
+            link.intf1.params['delay'] = delay
+            link.intf2.params['delay'] = delay
+
+        return True, "successfully updata params of Link"
+
+    def update_node_params(self, node_conf):
+        """更新host/switch节点的接口参数"""
+        node_name = node_conf['name']
+        params = node_conf.get('params', {})
+
+        # 获取主机对象
+        try:
+            node = self.net.get(node_name)
+        except:
+            return False,f"[Error]node {node_name} not found"
+
+
+        # 获取指定接口
+        intf_name = params.get('intfName', '')
+        if not intf_name:
+            # 默认使用第一个非lo接口
+            intf = [intf for intf in node.intfList() if intf.name != 'lo'][0]
+        else:
+            try:
+                intf = node.intf(intf_name)
+            except:
+                return False,f"[Error]Interface {intf_name} not found on {node_name}"
+
+        # IP地址配置
+        if 'IP' in params:
+            ip = params['IP']
+            mask = params.get('Mask', '255.255.255.0')
+            prefix_len = self._netmask_to_prefix(mask)
+            intf.setIP(ip, prefixLen=prefix_len)
+
+        # MAC地址配置
+        if 'MAC' in params:
+            mac = params['MAC']
+            intf.setMAC(mac)
+
+        # 接口状态管理
+        if 'status' in params:
+            if params['status'].lower() == 'up':
+                intf.ifconfig('up')
+            else:
+                intf.ifconfig('down')
+        return True, "successfully updata params of Nodes"
+
+    def set_controller(self, switch_name, controller, restart=True, keep_links=True):
+        """
+        修改交换机的控制器
+        :param switch_name: 交换机名称 (str)
+        :param controller: 控制器对象 (Controller/RemoteController)
+        :param restart: 是否立即重启交换机 (默认True)
+        :param keep_links: 重启时是否保留链路 (默认True)
+        """
+        # 获取网关对象
+        try:
+            sw = self.net.get(switch_name)
+            if not isinstance(sw, OVSKernelSwitch):
+                raise TypeError("Target node is not a switch")
+        except Exception as e:
+            return False, f"[Error] Switch lookup failed: {str(e)}"
+
+        # 验证控制器有效性
+        if not isinstance(controller, (Controller, RemoteController)):
+            return False, f"[Error] Invalid controller type: {type(controller)}"
+
+        # 停止当前交换机
+        try:
+            sw.stop(deleteIntfs=not keep_links)
+        except Exception as e:
+            return False, f"[Error] Failed to stop switch: {str(e)}"
+
+        # 更新控制器配置
+        try:
+            sw.controller = controller
+            if restart:
+                sw.start([controller])
+            return True, f"Switch {switch_name} restarted with controller {controller.name}"
+        except Exception as e:
+            # 尝试恢复原控制器
+            if sw.controller:
+                try:
+                    sw.start([sw.controller])
+                except:
+                    print("[Warning] Recovery attempt failed")
+            return False, f"[Error] Controller update failed: {str(e)}"
+
+    @staticmethod
+    def _netmask_to_prefix(netmask):
+        """将子网掩码转换为前缀长度"""
+        # 处理CIDR格式 (如 '24')
+        if netmask.isdigit():
+            return int(netmask)
+
+        # 处理点分十进制格式
+        bytes = [int(b) for b in netmask.split('.')]
+        binary_str = ''.join([format(b, '08b') for b in bytes])
+        return len(binary_str.rstrip('0'))
+
+    @staticmethod
+    def _prefix_to_netmask(prefix):
+        """将前缀长度转换为子网掩码"""
+        if prefix < 0 or prefix > 32: return ""
+        mask = (0xffffffff << (32 - int(prefix))) & 0xffffffff
+        return "%d.%d.%d.%d" % (
+            (mask >> 24) & 0xff,
+            (mask >> 16) & 0xff,
+            (mask >> 8) & 0xff,
+            mask & 0xff
+        )
+if __name__ == '__main__':
+    from main_topology import myNetwork
+    net = myNetwork(cli=True)
+    controller = MininetController(net)
+    controller.start_network()
+    #print(controller.add_host('h9', '10.0.0.9'))
+    #print(controller.add_switch('s5'))
+    #print(controller.add_link('s5', 'h9'))
+    #print(controller.get_link('s5', 'h9'))
+    print(controller.get_node_by_name('nonexist'))
+    # 无效的链路配置
+    invalid_config = {
+        "links": [{
+        "from": "s1",
+         "to": "invalid_node",
+         "params": {"bandwidth": 10}
+         }]
+    }
+    results = controller.apply_params(invalid_config)
+    print(results)
+    from mininet.cli import CLI
+    CLI(net)
+    #print(controller.del_link('s5', 'h9'))
+    #print(controller.get_link('s5', 'h9'))
+    #CLI(net)
+    #print(controller.del_node('h9'))
+    #print(controller.del_node('s5'))
+    #CLI(net)
+    #print(controller.get_topology())
+    #print(controller.ping_all())
+    controller.stop_network()

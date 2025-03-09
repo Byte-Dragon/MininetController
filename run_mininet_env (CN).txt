@@ -1,0 +1,65 @@
+运行说明：先启动ryu控制器，再运行app.py; 若显示file exists，先清除已有网络：sudo mn -c
+
+1、source mininet-env/bin/activate  进入python3.10.6为mininet创建的虚拟环境；
+
+2、mininet命令：
+	启动Ryu控制器：sudo ryu-manager --verbose ryu.app.simple_switch
+	停止 Ryu 控制器: sudo pkill -9 ryu-manager
+	查找并停止运行的 Ryu 进程:ps -ef | grep ryu-manager
+	查看6653端口的占用情况：sudo netstat -tulnp | grep 6653
+	终止进程：sudo pkill -9 <id>
+	清除已有网络：sudo mn -c
+
+	
+	指定拓扑类型：
+		sudo mn --topo=linear,3  # 线性拓扑，3 台交换机
+		sudo mn --topo=tree,2,2  # 树形拓扑，深度 2，分支因子 2
+	指定控制器：
+		sudo mn --controller=remote,ip=127.0.0.1,port=6633
+	指定交换机类型：
+		sudo mn --switch=ovsk,protocols=OpenFlow13  # 使用 Open vSwitch，支持 OpenFlow 1.3
+	指定 MAC 和 IP 地址：
+		sudo mn --mac  # 自动分配简单的 MAC 地址
+		sudo mn --arp  # 自动配置 ARP 表
+		
+3、启动mininet后进入cli:
+ 	打开节点的交互式终端：xterm h1
+ 	启动和停止节点：start h1/stop h1 实测无用
+	pingall:测试所有host的连通性
+	h1 ping h2:测试指定两个host的连通性
+	2.1 网络测试
+		测试主机之间的连通性（ping）：pingall
+		测试特定主机之间的连通性：h1 ping h2
+		测试带宽（iperf）：iperf
+		测试特定主机之间的带宽：
+			h1 iperf -s &
+			h2 iperf -c h1
+	2.2 主机操作
+		在主机上执行命令：h1 <command>
+		例如，在 h1 上运行 ifconfig：h1 ifconfig
+		打开主机的终端：xterm h1
+	2.3 交换机操作
+		查看交换机的信息：dpctl show
+		查看交换机的流表：dpctl dump-flows
+	2.4 网络拓扑操作
+		查看网络拓扑：net
+		查看节点信息：nodes
+		查看链路信息：links
+	2.5 添加/删除节点
+		添加一个主机：py net.addHost('h3')
+		添加一个交换机：py net.addSwitch('s3')
+		添加一条链路：py net.addLink(h3, s3)
+		删除一个节点：py net.delHost(h3)
+	2.6 退出 Mininet
+		退出 Mininet CLI：exit
+
+4、进程管理：		
+	结束进程： sudo kill 3148
+	查询占用端口的进程：sudo lsof -i :6653	
+	查看端口占用情况：sudo netstat -tuln | grep :6653
+
+5、虚拟机没有网络：
+	查看网络设备状态：nmcli device status
+	手动连接网卡：nmcli device connect <网卡名称>
+	重启网络：sudo nmcli networking off
+	sudo nmcli networking on

@@ -1,0 +1,36 @@
+{
+    "links": [
+        {
+            "from": "s1",
+            "to": "s2",
+            "params": {
+                "bandwidth": 10,
+                "delay": "5ms"
+            }
+        }
+    ],
+    "hosts": [
+        {
+            "name": "h1",
+            "params": {
+                "IP": "192.168.1.2",
+                "Mask": "255.255.255.0",
+                "MAC": "00:00:00:AA:BB:CC",
+                "intfName": "h1-eth0",
+                "status": "up"
+            }
+        }
+    ],
+    "switchs": [
+        {
+            "name": "h1",
+            "params": {
+                "IP": "192.168.1.2",
+                "Mask": "255.255.255.0",
+                "MAC": "00:00:00:AA:BB:CC",
+                "intfName": "h1-eth0",
+                "status": "up"
+            }
+        }
+    ]
+}
