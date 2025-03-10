@@ -29,6 +29,8 @@ This project primarily develops a controller for the network simulation tool Min
 MininetController uses Mininet for network simulation and Ryu-controller for switch emulation.
 
 ### Dependencies
+* RUN `sudo pip install --no-cache-dir -r requirements.txt`
+* or install dependencies manually
 * Python 3.8.10
 * Flask 3.0.3
   * `sudo pip install flask`
@@ -36,7 +38,7 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 * Mininet 2.3.0.dev6
   * `sudo apt-get install mininet`
   * `sudo pip install mininet`                            # Python API
-or RUN `sudo pip install --no-cache-dir -r requirements.txt`
+
 
 ### Quick Start
 * Clone repo
