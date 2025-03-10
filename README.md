@@ -30,7 +30,7 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 
 ### Dependencies
 * RUN `sudo pip install --no-cache-dir -r requirements.txt`
-* or install dependencies manually
+* OR install dependencies manually
 * Python 3.8.10
 * Flask 3.0.3
   * `sudo pip install flask`
@@ -42,14 +42,14 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 
 ### Quick Start
 * Clone repo
-  * git clone https://github.com/Sirozha1337/NetworkSimulator.git
+  * git clone https://github.com/MemorialAndUnique/MininetController.git
 * cd to cloned repo
   * `cd MininetController/src`
 * Run `sudo ryu-manager --verbose ryu.app.simple_switch`   # lanuch a remote ryu-controller
 * Run `sudo python3 app.py`                                # run flask app, running on (127.0.0.1:8080)
-  * or Run `sudo python3 app.py --cli True`                # open a mininet cli while running flask app
+  * or Run `sudo python3 app.py --cli True`                # open a mininet cli while running flask app(maybe lead to a bug)
 * Use Ctrl+C to stop the server
-* Run `sudo mn -c`                                         # clean up created mininet topology
+* After simulating, Run `sudo mn -c`                       # clean up created mininet topology
 
 ---
 
