@@ -26,6 +26,7 @@ MininetController使用 mininet 进行网络模拟，使用 Ryu-controller 进�
 * Python 3.8.10
 * Flask 3.0.3
   * `sudo pip install flask`
+  * `sudo pip install flask-cors`
 * Mininet 2.3.0.dev6
   * `sudo apt-get install mininet`
   * `sudo pip install mininet`                            # Python API

@@ -5,24 +5,10 @@ import traceback
 import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
+import argparse
 from datetime import datetime
 import time
 
-app = Flask(__name__)
-parser = argparse.ArgumentParser(description='Run Flask app with custom arguments')
-parser.add_argument('--cli', type=bool, help='run with param --CLI will open a mininet CLI window')
-args = parser.parse_args()
-
-cli = args.cls if args.cls else False
-net = myNetwork(cli=cli)
-controller = MininetController()
-
-# 配置跨域请求
-from flask_cors import CORS
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-
-configure_logging(app)
 
 # 配置日志相关设置
 # 创建日志目录
@@ -75,7 +61,14 @@ def configure_logging(app):
     app.logger.addHandler(console_handler)
     app.logger.setLevel(logging.INFO)
 
-# 请求日志记录
+app = Flask(__name__)
+configure_logging(app)
+
+# 配置跨域请求
+from flask_cors import CORS
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+# 配置日志输出
 @app.before_request
 def log_request_start():
     request.start_time = time.time()
@@ -96,10 +89,40 @@ def log_request_end(response):
     )
     return response
 
+# 定义一个统一的响应格式
+def format_response(success, message=None, data=None, status_code=200):
+    response = {
+        "success": success,
+        "code": status_code if success else status_code,
+        "message": message,
+        "data": data
+    }
+    return jsonify(response), status_code
+
+# 异常处理装饰器
+def handle_exceptions(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            tb = traceback.format_exc()
+            app.logger.error(
+                f"API Exception: {str(e)}\n"
+                f"Request: {request.method} {request.path}\n"
+                f"Traceback:\n{tb}"
+            )
+            return format_response(False, f"Internal Server Error: {str(e)}", None, 500)
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+
+# app running 
+controller = None
 
 @app.route('/api/network/start', methods=['POST'])
 @handle_exceptions
 def start_network():
+    global controller
     controller.start_network()
     success = "Network started successfully"
     return format_response(True, success)
@@ -118,13 +141,13 @@ def get_topology():
     success = "Topology retrieved"
     return format_response(True, success, topology)
 
-@app.route('/api/network/ping/hosts', methods=['POST'])
+@app.route('/api/nodes/ping', methods=['POST'])
 @handle_exceptions
 def ping_between_hosts():
     data = request.json
     if 'host1' not in data or 'host2' not in data:
         failed = "Missing required parameters: host1 and host2"
-    	app.logger.debug(failed)
+        app.logger.debug(failed)
         return format_response(False, failed, None, 400)
     timeout = data['timeout'] if 'timeout' in data else None
     get_full = data['get_full'] if 'get_full' in data else False
@@ -140,7 +163,7 @@ def ping_between_hosts():
             'result': result
         })
 
-@app.route('/api/network/ping/ip', methods=['POST'])
+@app.route('/api/nodes/ping/ip', methods=['POST'])
 @handle_exceptions
 def ping_to_ip():
     """测试主机到外部IP的连通性"""
@@ -151,7 +174,7 @@ def ping_to_ip():
         msg = f"Missing required parameters: {required}"
         app.logger.debug(msg)
         return format_response(False, msg, None, 400)
-    result = controller.ping(data['host'], data['ip'])
+    result = controller.ping_ip(data['host'], data['ip'])
     return format_response(
         True, 
         "Host-to-IP ping completed", 
@@ -160,7 +183,7 @@ def ping_to_ip():
             'result': result
         })
 
-@app.route('/api/network/ping/all', methods=['POST'])
+@app.route('/api/network/ping', methods=['POST'])
 @handle_exceptions
 def ping_all_hosts():
     """测试所有主机间的连通性"""
@@ -295,30 +318,14 @@ def update_controller():
     app.logger.debug(message)
     return format_response(False, message, None, 400)
 
-# 定义一个统一的响应格式
-def format_response(success, message=None, data=None, status_code=200):
-    response = {
-        "success": success,
-        "code": status_code if success else status_code,
-        "message": message,
-        "data": data
-    }
-    return jsonify(response), status_code
-
-# 异常处理装饰器
-def handle_exceptions(func):
-    def wrapper(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except Exception as e:
-            tb = traceback.format_exc()
-            app.logger.error(
-                f"API Exception: {str(e)}\n"
-                f"Request: {request.method} {request.path}\n"
-                f"Traceback:\n{tb}"
-            )
-            return format_response(False, f"Internal Server Error: {str(e)}", None, 500)
-    wrapper.__name__ = func.__name__
-    return wrapper
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    parser = argparse.ArgumentParser(description='Run Flask app with custom arguments')
+    parser.add_argument('--cli', type=bool, help='run with param --CLI will open a mininet CLI window')
+    args = parser.parse_args()
+
+    cli = args.cli if args.cli else False
+    net = myNetwork(cli=cli)
+    controller = MininetController(net)
+    app.run(host='127.0.0.1', port=8080)
+    controller.stop_network()
+    

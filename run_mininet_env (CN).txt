@@ -1,13 +1,14 @@
 运行说明：先启动ryu控制器，再运行app.py; 若显示file exists，先清除已有网络：sudo mn -c
 
-1、source mininet-env/bin/activate  进入python3.10.6为mininet创建的虚拟环境；
+1、source mininet-env/bin/activate  进入python为mininet创建的虚拟环境；
 
 2、mininet命令：
 	启动Ryu控制器：sudo ryu-manager --verbose ryu.app.simple_switch
 	停止 Ryu 控制器: sudo pkill -9 ryu-manager
 	查找并停止运行的 Ryu 进程:ps -ef | grep ryu-manager
 	查看6653端口的占用情况：sudo netstat -tulnp | grep 6653
-	终止进程：sudo pkill -9 <id>
+	查询占用端口的进程：sudo lsof -i :6653	
+	结束进程： sudo kill 3148
 	清除已有网络：sudo mn -c
 
 	

@@ -131,7 +131,7 @@ class TestMininetController(unittest.TestCase):
 
         # 测试ping
         result = self.controller.ping('h1', 'h2')
-        # self.assertIn('0% packet loss', result)
+        # self.assertIn('h1->h2', result)
 
         # 测试全量ping
         result = self.controller.ping_all()

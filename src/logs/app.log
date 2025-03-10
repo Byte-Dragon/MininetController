@@ -1,0 +1,395 @@
+2025-03-10 01:34:25,633 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:34:25,633 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:34:25,635 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:37:13,813 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:37:13,813 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:37:13,814 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:42:01,848 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:42:01,849 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:42:01,849 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:42:58,779 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:42:58,779 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:42:58,780 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:45:01,856 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:45:01,857 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:45:01,857 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:49:14,124 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:49:14,124 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:49:14,125 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:50:10,105 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:50:10,105 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:50:10,106 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:51:32,926 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:51:32,926 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:51:32,927 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:51:33,337 - werkzeug - WARNING -  * Debugger is active!
+2025-03-10 01:51:33,391 - werkzeug - INFO -  * Debugger PIN: 110-456-350
+2025-03-10 01:53:49,710 - werkzeug - INFO -  * Detected change in '/home/lee/Desktop/ＭininetController/src/main_topology.py', reloading
+2025-03-10 01:53:49,742 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:54:29,814 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:54:29,814 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:54:29,815 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 01:54:39,771 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 01:54:39,771 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 01:54:39,772 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 02:09:09,169 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 02:09:09,178 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 02:09:09,179 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 02:55:58,829 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 02:55:58,829 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 02:55:58,830 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 02:56:06,518 - werkzeug - WARNING -  * Debugger is active!
+2025-03-10 02:56:06,523 - werkzeug - INFO -  * Debugger PIN: 110-456-350
+2025-03-10 02:56:18,560 - werkzeug - INFO -  * Detected change in '/home/lee/Desktop/ＭininetController/src/app.py', reloading
+2025-03-10 02:56:18,598 - werkzeug - INFO -  * Restarting with stat
+2025-03-10 02:57:55,895 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 02:57:55,895 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 03:01:09,981 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 03:01:09,981 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 03:04:20,781 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 03:04:20,782 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 03:04:33,221 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 03:04:33,221 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:04:27,592 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:04:27,592 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:07:00,124 - app - INFO - Request Started | POST /api/stop_network | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:07:00,125 - app - INFO - Request Completed | POST /api/stop_network | Status: 404 | Duration: 0.73ms
+2025-03-10 16:07:00,125 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:07:00] "[33mPOST /api/stop_network HTTP/1.1[0m" 404 -
+2025-03-10 16:08:10,773 - app - INFO - Request Started | POST /api/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:08:10,774 - app - INFO - Request Completed | POST /api/stop | Status: 404 | Duration: 0.38ms
+2025-03-10 16:08:10,774 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:08:10] "[33mPOST /api/stop HTTP/1.1[0m" 404 -
+2025-03-10 16:09:44,261 - app - INFO - Request Started | POST /api/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:09:44,261 - app - INFO - Request Completed | POST /api/stop | Status: 404 | Duration: 0.45ms
+2025-03-10 16:09:44,262 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:09:44] "[33mPOST /api/stop HTTP/1.1[0m" 404 -
+2025-03-10 16:10:08,686 - app - INFO - Request Started | POST /api/network/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:10:08,690 - app - ERROR - API Exception: 'NoneType' object has no attribute 'delete'
+Request: POST /api/network/stop
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 130, in stop_network
+    controller.stop_network()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 61, in stop_network
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+2025-03-10 16:10:08,690 - app - INFO - Request Completed | POST /api/network/stop | Status: 500 | Duration: 3.91ms
+2025-03-10 16:10:08,691 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:10:08] "[35m[1mPOST /api/network/stop HTTP/1.1[0m" 500 -
+2025-03-10 16:11:03,636 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:11:03,642 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 6.53ms
+2025-03-10 16:11:03,643 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:11:03] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-10 16:11:08,749 - app - INFO - Request Started | POST /api/network/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:11:08,750 - app - ERROR - API Exception: 'NoneType' object has no attribute 'delete'
+Request: POST /api/network/stop
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 130, in stop_network
+    controller.stop_network()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 61, in stop_network
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+2025-03-10 16:11:08,751 - app - INFO - Request Completed | POST /api/network/stop | Status: 500 | Duration: 1.47ms
+2025-03-10 16:11:08,751 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:11:08] "[35m[1mPOST /api/network/stop HTTP/1.1[0m" 500 -
+2025-03-10 16:11:24,623 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:11:24,629 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 6.02ms
+2025-03-10 16:11:24,630 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:11:24] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-10 16:11:41,062 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:11:41,063 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 137, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 16:11:41,063 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.64ms
+2025-03-10 16:11:41,063 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:11:41] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 16:16:09,240 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:16:09,240 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:18:01,978 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:18:01,978 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:31:03,750 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:31:03,750 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:34:56,692 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:34:56,693 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:36:48,733 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 16:36:48,734 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 16:47:58,516 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:47:58,572 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 55.28ms
+2025-03-10 16:47:58,573 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:47:58] "get /api/network/topology HTTP/1.1" 200 -
+2025-03-10 16:50:37,088 - app - INFO - Request Started | POST /api/network/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:50:37,666 - app - INFO - Request Completed | POST /api/network/stop | Status: 200 | Duration: 578.34ms
+2025-03-10 16:50:37,667 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:50:37] "POST /api/network/stop HTTP/1.1" 200 -
+2025-03-10 16:50:40,686 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:50:40,687 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 112, in wrapper
+    f"Traceback:\n{tb}"
+  File "app.py", line 141, in get_topology
+    success = "Topology retrieved"
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 16:50:40,687 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 1.11ms
+2025-03-10 16:50:40,688 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:50:40] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 16:50:48,527 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:50:48,533 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 6.95ms
+2025-03-10 16:50:48,534 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:50:48] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-10 16:50:50,672 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:50:50,672 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 112, in wrapper
+    f"Traceback:\n{tb}"
+  File "app.py", line 141, in get_topology
+    success = "Topology retrieved"
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 16:50:50,672 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.64ms
+2025-03-10 16:50:50,673 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:50:50] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 16:59:44,789 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 16:59:44,796 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 6.62ms
+2025-03-10 16:59:44,797 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 16:59:44] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-10 17:00:44,856 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:00:44,856 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:04:21,188 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:04:21,189 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:04:21,189 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.89ms
+2025-03-10 17:04:21,190 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:04:21] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 17:04:29,873 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:04:29,873 - app - ERROR - API Exception: 'NoneType' object has no attribute 'start_network'
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 126, in start_network
+    controller.start_network()
+AttributeError: 'NoneType' object has no attribute 'start_network'
+
+2025-03-10 17:04:29,874 - app - INFO - Request Completed | POST /api/network/start | Status: 500 | Duration: 0.61ms
+2025-03-10 17:04:29,874 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:04:29] "[35m[1mPOST /api/network/start HTTP/1.1[0m" 500 -
+2025-03-10 17:04:32,825 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:04:32,825 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:04:32,825 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.46ms
+2025-03-10 17:04:32,825 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:04:32] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 17:05:24,214 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:05:24,214 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:05:24,215 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.64ms
+2025-03-10 17:05:24,215 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:05:24] "[35m[1mget /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-10 17:05:34,593 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:05:34,593 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:05:40,363 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:05:40,417 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 53.64ms
+2025-03-10 17:05:40,417 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:05:40] "get /api/network/topology HTTP/1.1" 200 -
+2025-03-10 17:06:37,285 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:06:37,779 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 493.99ms
+2025-03-10 17:06:37,780 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:06:37] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-10 17:06:46,689 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:06:46,749 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 60.13ms
+2025-03-10 17:06:46,749 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:06:46] "get /api/network/topology HTTP/1.1" 200 -
+2025-03-10 17:16:22,322 - app - INFO - Request Started | POST /api/network/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:16:22,800 - app - INFO - Request Completed | POST /api/network/stop | Status: 200 | Duration: 478.55ms
+2025-03-10 17:16:22,801 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:16:22] "POST /api/network/stop HTTP/1.1" 200 -
+2025-03-10 17:16:44,423 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:16:44,423 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:16:47,258 - app - INFO - Request Started | POST /api/network/stop | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 17:16:47,765 - app - INFO - Request Completed | POST /api/network/stop | Status: 200 | Duration: 507.04ms
+2025-03-10 17:16:47,766 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:16:47] "POST /api/network/stop HTTP/1.1" 200 -
+2025-03-10 17:17:11,566 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:17:11,567 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:17:14,736 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 17:17:14,926 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 190.61ms
+2025-03-10 17:17:14,927 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:17:14] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-10 17:19:58,841 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 17:19:58,957 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 115.52ms
+2025-03-10 17:19:58,957 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:19:58] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-10 17:23:05,896 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 17:23:06,009 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 113.16ms
+2025-03-10 17:23:06,009 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:23:06] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-10 17:23:23,923 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 400 | Duration: 0.44ms
+2025-03-10 17:23:23,924 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:23:23] "[31m[1mPOST /api/nodes/ping HTTP/1.1[0m" 400 -
+2025-03-10 17:23:58,546 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 400 | Duration: 0.35ms
+2025-03-10 17:23:58,546 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:23:58] "[31m[1mPOST /api/nodes/ping HTTP/1.1[0m" 400 -
+2025-03-10 17:25:15,024 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8', 'get_full': 'True'}
+2025-03-10 17:25:15,142 - app - ERROR - API Exception: Object of type Host is not JSON serializable
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 160, in ping_between_hosts
+    return format_response(True, "Ping test completed",
+  File "app.py", line 100, in format_response
+    return jsonify(response), status_code
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Host is not JSON serializable
+
+2025-03-10 17:25:15,142 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 500 | Duration: 118.35ms
+2025-03-10 17:25:15,142 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:25:15] "[35m[1mPOST /api/nodes/ping HTTP/1.1[0m" 500 -
+2025-03-10 17:26:37,506 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8', 'get_full': 'True'}
+2025-03-10 17:26:37,622 - app - ERROR - API Exception: Object of type Host is not JSON serializable
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 160, in ping_between_hosts
+    return format_response(True, "Ping test completed",
+  File "app.py", line 100, in format_response
+    return jsonify(response), status_code
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Host is not JSON serializable
+
+2025-03-10 17:26:37,622 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 500 | Duration: 115.58ms
+2025-03-10 17:26:37,622 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:26:37] "[35m[1mPOST /api/nodes/ping HTTP/1.1[0m" 500 -
+2025-03-10 17:26:51,062 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:26:51,062 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:26:53,469 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8', 'get_full': 'True'}
+2025-03-10 17:26:53,655 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 186.04ms
+2025-03-10 17:26:53,656 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 17:26:53] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-10 17:53:25,897 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:53:25,897 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 17:53:37,674 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 17:53:37,674 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 18:10:16,133 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 400 | Duration: 0.87ms
+2025-03-10 18:10:56,821 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 18:11:09,630 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 18:11:42,767 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 18:11:42] "[31m[1mPOST /api/nodes/ping HTTP/1.1[0m" 400 -
+2025-03-10 18:11:42,783 - app - ERROR - API Exception: 
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 159, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 137, in ping
+    ploss = self.net.ping(hosts, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 668, in ping
+    result = node.cmd( 'ping -c1 %s %s' %
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-10 18:11:42,784 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 500 | Duration: 33153.27ms
+2025-03-10 18:11:42,784 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 18:11:42] "[35m[1mPOST /api/nodes/ping HTTP/1.1[0m" 500 -
+2025-03-10 18:12:00,394 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-10 18:12:00,395 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-10 18:12:04,537 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8'}
+2025-03-10 18:12:04,742 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 205.31ms
+2025-03-10 18:12:04,743 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 18:12:04] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-10 18:12:35,976 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-10 18:12:36,046 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 69.89ms
+2025-03-10 18:12:36,047 - werkzeug - INFO - 127.0.0.1 - - [10/Mar/2025 18:12:36] "get /api/network/topology HTTP/1.1" 200 -

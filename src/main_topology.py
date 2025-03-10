@@ -35,11 +35,10 @@ def myNetwork(cli=False):
            autoPinCpus: pin hosts to (real) cores (requires CPULimitedHost)?
            listenPort: base listening port to open; will be incremented for
                each additional switch in the net if inNamespace=False 
-        """
+        """    
     net = Mininet( topo=None,
                    build=False,
                    ipBase='10.0.0.0/8')
-
     info( '*** Adding controller\n' )
     c0=net.addController(name='c0',
                       controller=RemoteController, ip='127.0.0.1', port=6633)
@@ -84,8 +83,8 @@ def myNetwork(cli=False):
     net.get('s2').start([c0])
     net.get('s3').start([c0])
     net.get('s4').start([c0])
-
-    info( '*** Post configure switches and hosts\n')
+ 
+    #info( '*** Post configure switches and hosts\n')
     if cli:
         CLI(net)
     return net

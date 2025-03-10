@@ -19,7 +19,7 @@ class MininetController:
                            link=TCLink,
                            build=False)
         # 添加初始拓扑
-        c0 = net.addController(name='c0',
+        c0 = self.net.addController(name='c0',
                                controller=Controller,
                                protocol='tcp',
                                port=6633)
@@ -30,26 +30,26 @@ class MininetController:
             sw = self.net.addSwitch(f's{i}')
             self.switches[f's{i}'] = sw
 
-        h1 = net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
-        h1 = net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
-        h2 = net.addHost('h2', cls=Host, ip='10.0.0.2', defaultRoute=None)
-        h3 = net.addHost('h3', cls=Host, ip='10.0.0.3', defaultRoute=None)
-        h4 = net.addHost('h4', cls=Host, ip='10.0.0.4', defaultRoute=None)
-        h5 = net.addHost('h5', cls=Host, ip='10.0.0.5', defaultRoute=None)
-        h6 = net.addHost('h6', cls=Host, ip='10.0.0.6', defaultRoute=None)
-        h7 = net.addHost('h7', cls=Host, ip='10.0.0.7', defaultRoute=None)
-        h8 = net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
-        net.addLink(s1, s2)
-        net.addLink(s2, s3)
-        net.addLink(s3, s4)
-        net.addLink(s1, h1)
-        net.addLink(h2, s1)
-        net.addLink(h3, s2)
-        net.addLink(h4, s2)
-        net.addLink(h5, s3)
-        net.addLink(h6, s3)
-        net.addLink(h7, s4)
-        net.addLink(h8, s4)
+        h1 = self.net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
+        h1 = self.net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
+        h2 = self.net.addHost('h2', cls=Host, ip='10.0.0.2', defaultRoute=None)
+        h3 = self.net.addHost('h3', cls=Host, ip='10.0.0.3', defaultRoute=None)
+        h4 = self.net.addHost('h4', cls=Host, ip='10.0.0.4', defaultRoute=None)
+        h5 = self.net.addHost('h5', cls=Host, ip='10.0.0.5', defaultRoute=None)
+        h6 = self.net.addHost('h6', cls=Host, ip='10.0.0.6', defaultRoute=None)
+        h7 = self.net.addHost('h7', cls=Host, ip='10.0.0.7', defaultRoute=None)
+        h8 = self.net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
+        self.net.addLink(s1, s2)
+        self.net.addLink(s2, s3)
+        self.net.addLink(s3, s4)
+        self.net.addLink(s1, h1)
+        self.net.addLink(h2, s1)
+        self.net.addLink(h3, s2)
+        self.net.addLink(h4, s2)
+        self.net.addLink(h5, s3)
+        self.net.addLink(h6, s3)
+        self.net.addLink(h7, s4)
+        self.net.addLink(h8, s4)
 
     def start_network(self):
         """Start entire network"""
@@ -57,7 +57,11 @@ class MininetController:
         self.net.start()
 
     def stop_network(self):
-        """Stop entire network"""
+        """
+        Stop entire network
+        which stop all nodes and link and will terminate all interfaces
+        Do not run the method unless you finish your simulate
+        """
         self.net.stop()
 
     def get_topology(self):
@@ -125,19 +129,31 @@ class MininetController:
         return topology
 
     def ping(self, fromNode, toNode, timeout=None):
-        """Test connectivity between two hosts:fromNode and toNodeand,"""
+        """
+        Test connectivity between two hosts:fromNode and toNode
+        return: ploss packet loss percentage
+        """
         hosts = [self.net.get(fromNode),self.net.get(toNode)]
-        return self.net.ping(hosts, timeout=timeout)
+        ploss = self.net.ping(hosts, timeout=timeout)
+        result = f"ping {fromNode}->{toNode}, loss: {ploss}"
+        return result
 
     def ping_full(self, fromNode, toNode, timeout=None):
         """Ping between hosts fromNode and toNodeand,then return all data.
             hosts: list of hosts
             timeout: time to wait for a response, as string
             returns: all ping data;"""
-        hosts = [self.net.get(fromNode),self.net.get(toNode)]
-        return self.net.pingFull(hosts,timeout=timeout)
-
-    def ping(self, name, ip):
+        hosts = [self.net.get(fromNode),self.net.get(toNode)]  
+        result = []
+        all_outputs = self.net.pingFull(hosts,timeout=timeout)
+        for outputs in all_outputs:
+            src, dest, ping_outputs = outputs
+            sent, received, rttmin, rttavg, rttmax, rttdev = ping_outputs
+            output = f" {src}->{dest}: {sent}/{received}, rttmin rttavg rttmax rttdev:{rttdev} {rttmin} {rttavg} {rttmax}"
+            result.append(output)
+        return result
+        
+    def ping_ip(self, name, ip):
         """test connectivity from host h1 to ip"""
         node = self.net.get(name)
         return node.cmd('ping -c 5 ' + ip)
@@ -145,13 +161,23 @@ class MininetController:
     def ping_all(self, timeout=None):
         """Ping between all hosts.
            returns: ploss packet loss percentage"""
-        return self.net.pingAll(timeout=timeout)
-
-    def ping_full(self):
+        result = []
+        for node1 in self.net.hosts:
+            for node2 in self.net.hosts:
+                tmp = self.ping(node1, node2, timeout=timeout)
+                result.append(tmp)
+        return result
+        
+        
+    def ping_all_full(self):
         """Ping between all hosts and return all data.
             returns: all ping data;"""
-        hosts = [self.net.get(fromNode),self.net.get(toNode)]
-        return self.net.pingAllFull(timeout=timeout)
+        result = []
+        for node1 in self.net.hosts:
+            for node2 in self.net.hosts:
+                tmp = self.ping_full(node1, node2, timeout=timeout)
+                result.append(tmp)
+        return result
 
     def start_node(self, name, controller=None):
         """
@@ -452,32 +478,8 @@ class MininetController:
         )
 if __name__ == '__main__':
     from main_topology import myNetwork
-    net = myNetwork(cli=True)
+    net = myNetwork(cli=False)
     controller = MininetController(net)
     controller.start_network()
-    #print(controller.add_host('h9', '10.0.0.9'))
-    #print(controller.add_switch('s5'))
-    #print(controller.add_link('s5', 'h9'))
-    #print(controller.get_link('s5', 'h9'))
-    print(controller.get_node_by_name('nonexist'))
-    # 无效的链路配置
-    invalid_config = {
-        "links": [{
-        "from": "s1",
-         "to": "invalid_node",
-         "params": {"bandwidth": 10}
-         }]
-    }
-    results = controller.apply_params(invalid_config)
-    print(results)
-    from mininet.cli import CLI
-    CLI(net)
-    #print(controller.del_link('s5', 'h9'))
-    #print(controller.get_link('s5', 'h9'))
-    #CLI(net)
-    #print(controller.del_node('h9'))
-    #print(controller.del_node('s5'))
-    #CLI(net)
-    #print(controller.get_topology())
-    #print(controller.ping_all())
+    print(controller.ping_all_full())
     controller.stop_network()

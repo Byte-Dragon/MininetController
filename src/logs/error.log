@@ -1,0 +1,182 @@
+2025-03-10 16:10:08,690 - app - ERROR - API Exception: 'NoneType' object has no attribute 'delete'
+Request: POST /api/network/stop
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 130, in stop_network
+    controller.stop_network()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 61, in stop_network
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+2025-03-10 16:11:08,750 - app - ERROR - API Exception: 'NoneType' object has no attribute 'delete'
+Request: POST /api/network/stop
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 130, in stop_network
+    controller.stop_network()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 61, in stop_network
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+2025-03-10 16:11:41,063 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 137, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 16:50:40,687 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 112, in wrapper
+    f"Traceback:\n{tb}"
+  File "app.py", line 141, in get_topology
+    success = "Topology retrieved"
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 16:50:50,672 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 112, in wrapper
+    f"Traceback:\n{tb}"
+  File "app.py", line 141, in get_topology
+    success = "Topology retrieved"
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 112, in get_topology
+    'node1': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-10 17:04:21,189 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:04:29,873 - app - ERROR - API Exception: 'NoneType' object has no attribute 'start_network'
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 126, in start_network
+    controller.start_network()
+AttributeError: 'NoneType' object has no attribute 'start_network'
+
+2025-03-10 17:04:32,825 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:05:24,214 - app - ERROR - API Exception: 'NoneType' object has no attribute 'get_topology'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 140, in get_topology
+    topology = controller.get_topology()
+AttributeError: 'NoneType' object has no attribute 'get_topology'
+
+2025-03-10 17:25:15,142 - app - ERROR - API Exception: Object of type Host is not JSON serializable
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 160, in ping_between_hosts
+    return format_response(True, "Ping test completed",
+  File "app.py", line 100, in format_response
+    return jsonify(response), status_code
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Host is not JSON serializable
+
+2025-03-10 17:26:37,622 - app - ERROR - API Exception: Object of type Host is not JSON serializable
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 160, in ping_between_hosts
+    return format_response(True, "Ping test completed",
+  File "app.py", line 100, in format_response
+    return jsonify(response), status_code
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Host is not JSON serializable
+
+2025-03-10 18:11:42,783 - app - ERROR - API Exception: 
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 159, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/ＭininetController/src/controller.py", line 137, in ping
+    ploss = self.net.ping(hosts, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 668, in ping
+    result = node.cmd( 'ping -c1 %s %s' %
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+

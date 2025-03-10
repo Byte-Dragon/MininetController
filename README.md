@@ -32,9 +32,11 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 * Python 3.8.10
 * Flask 3.0.3
   * `sudo pip install flask`
+  * `sudo pip install flask-cors`
 * Mininet 2.3.0.dev6
   * `sudo apt-get install mininet`
   * `sudo pip install mininet`                            # Python API
+or RUN `sudo pip install --no-cache-dir -r requirements.txt`
 
 ### Quick Start
 * Clone repo
@@ -71,11 +73,11 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 | Endpoint | Method | Parameters | Description |
 | ---- | ---- | ---- | ---- |
 | `/api/network/start` | POST | None | Start the entire network |
-| `/api/network/stop` | POST | None | Stop the entire network |
+| `/api/network/stop` | POST | None | Stop the entire network,Do not run the method unless you finish your simulate |
 | `/api/network/topology` | GET | None | Get the network topology |
-| `/api/network/ping/hosts` | POST | `{ "host1": string, "host2": string, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test connectivity between hosts |
-| `/api/network/ping/ip` | POST | `{ "host": str, "ip": str }` | Test connectivity from host to IP |
-| `/api/network/ping/all` | POST | `{ "timeout": int, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test full network connectivity |
+| `/api/nodes/ping` | POST | `{ "host1": string, "host2": string, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test connectivity between hosts |
+| `/api/nodes/ping/ip` | POST | `{ "host": str, "ip": str }` | Test connectivity from host to IP |
+| `/api/network/ping` | POST | `{ "timeout": int, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test full network connectivity |
 | `/api/nodes/<node_type>` | POST | Host: `{ "name": string, "ip": string }`<br>Switch: `{ "name": string }` | Add a node |
 | `/api/nodes/del/<node_name>` | DELETE | None | Delete a node |
 | `/api/links` | POST | `{ "fromNode": string, "toNode": string, "params": object }` | Create a link |
@@ -124,7 +126,13 @@ Data format required when accessing `/api/config`:
   ]
 }
 ```
-
+### API TEST
+```bash
+* curl -X POST http://127.0.0.1:8080/api/network/start
+* curl -X POST http://127.0.0.1:8080/api/network/stop
+* curl -X GET http://127.0.0.1:8080/api/network/topology
+* curl -X POST -H "Content-Type: application/json" -d '{"host1":"h1", "host2":"h8"}' http://localhost:8080/api/nodes/ping
+```
 ---
 
 ## Notes of Log
