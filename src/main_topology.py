@@ -38,7 +38,7 @@ def myNetwork(cli=False):
         """    
     net = Mininet( topo=None,
                    build=False,
-                   ipBase='10.0.0.0/8')
+                   ipBase='10.0.0.0/10')
     info( '*** Adding controller\n' )
     c0=net.addController(name='c0',
                       controller=RemoteController, ip='127.0.0.1', port=6633)
@@ -60,17 +60,17 @@ def myNetwork(cli=False):
     h8 = net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
 
     info( '*** Add links\n')
-    net.addLink(s1, s2, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(s2, s3, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(s3, s4, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(s1, h1, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h2, s1, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h3, s2, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h4, s2, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h5, s3, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h6, s3, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h7, s4, cls=TCLink, bw=10,delay='5ms')
-    net.addLink(h8, s4, cls=TCLink, bw=10,delay='5ms')
+    net.addLink(s1, s2, cls=TCLink, bw=10,delay=5)
+    net.addLink(s2, s3, cls=TCLink, bw=10,delay=5)
+    net.addLink(s3, s4, cls=TCLink, bw=10,delay=5)
+    net.addLink(s1, h1, cls=TCLink, bw=10,delay=5)
+    net.addLink(h2, s1, cls=TCLink, bw=10,delay=5)
+    net.addLink(h3, s2, cls=TCLink, bw=10,delay=5)
+    net.addLink(h4, s2, cls=TCLink, bw=10,delay=5)
+    net.addLink(h5, s3, cls=TCLink, bw=10,delay=5)
+    net.addLink(h6, s3, cls=TCLink, bw=10,delay=5)
+    net.addLink(h7, s4, cls=TCLink, bw=10,delay=5)
+    net.addLink(h8, s4, cls=TCLink, bw=10,delay=5)
 
     info( '*** Starting network\n')
     net.build()

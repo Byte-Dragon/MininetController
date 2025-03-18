@@ -63,6 +63,7 @@ def configure_logging(app):
 
 app = Flask(__name__)
 configure_logging(app)
+#app.config['JSON_AS_ASCII'] = False
 
 # 配置跨域请求
 from flask_cors import CORS
@@ -93,11 +94,13 @@ def log_request_end(response):
 def format_response(success, message=None, data=None, status_code=200):
     response = {
         "success": success,
-        "code": status_code if success else status_code,
+        "code": status_code,
         "message": message,
         "data": data
     }
-    return jsonify(response), status_code
+    import json
+    json_response = json.dumps(response, ensure_ascii=False)
+    return json_response, status_code
 
 # 异常处理装饰器
 def handle_exceptions(func):
@@ -160,6 +163,7 @@ def ping_between_hosts():
     return format_response(True, "Ping test completed",
         {
             'type': 'host-between-hosts',
+            'get_full': get_full,
             'result': result
         })
 
@@ -204,46 +208,63 @@ def ping_all_hosts():
             'result': result
         })
     
-@app.route('/api/nodes/<node_name>/start', methods=['POST'])
+@app.route('/api/nodes/start/<node_type>', methods=['POST'])
 @handle_exceptions
-def start_node(node_name):
+def start_node(node_type):
+    # node_type = None
     data = request.json
-    controller_param = data.get('controller')
-    success, message = controller.start_node(node_name, controller_param)
+    node_name = data.get('name',None)
+    success, message = controller.start_node(node_name, node_type)
     if success:
         return format_response(True, message)
     app.logger.debug(message)
     return format_response(False, message, None, 400)
 
-@app.route('/api/nodes/<node_name>/stop', methods=['POST'])
+@app.route('/api/nodes/stop/<node_type>', methods=['POST'])
 @handle_exceptions
-def stop_node(node_name):
+def stop_node(node_type):
     data = request.json
     keep_config = data.get('keep_config', True)
-    success, message = controller.stop_node(node_name, keep_config)
+    node_name = data.get('name', None)
+    success, message = controller.stop_node(node_name, node_type, keep_config)
     if success:
         return format_response(True, message)
     app.logger.debug(message)
     return format_response(False, message, None, 400)
 
-@app.route('/api/nodes/<node_type>', methods=['POST'])
+@app.route('/api/nodes/add/<node_type>', methods=['POST'])
 @handle_exceptions
 def add_node(node_type):
     data = request.json
+    if 'name' not in data:
+        failed = "Missing required parameters: name"
+        app.logger.debug(failed)
+        return format_response(False, failed, None, 400)
+    node_name = data['name']
+    # 先验证该名字是否存在，不允许重复的名字
+    node = controller.get_node_by_name(node_name)
+    if node is not None:
+        # 重复直接返回
+        failed = "Duplicate names are not allowed, please re-request"
+        app.logger.debug(failed)
+        return format_response(False, failed, None, 400)
     if node_type == 'host':
-        if 'name' not in data or 'ip' not in data:
-            failed = "Missing required parameters: name and ip"
+        if 'ip' not in data:
+            failed = "Missing required parameters:ip"
             app.logger.debug(failed)
             return format_response(False, failed, None, 400)
-        controller.add_host(data['name'], data['ip'])
-        return format_response(True, "Host added successfully")
+        link_to = data['link_to'] if 'link_to' in data else None
+        success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+        code = 200 if success else 400
+        mes = "Host added successfully" if success else "Fail to add Host"
+        return format_response(success, mes, data, code)
     
     elif node_type == 'switch':
-        if 'name' not in data:
-            app.logger.debug("Missing required parameter: name")
-            return format_response(False, "Missing required parameter: name", None, 400)
-        controller.add_switch(data['name'], **data.get('params', {}))
-        return format_response(True, "Switch added successfully")
+        out = "Switch added successfully! "
+        if 'ip' in data:
+            out += f"Invalid payload:'ip'={data['ip']},which will not be applied"
+        data = controller.add_switch(data['name'], **data.get('params', {}))
+        return format_response(True, out, data=data)
     app.logger.debug("Invalid node type")
     return format_response(False, "Invalid node type", None, 400)
 
@@ -256,7 +277,7 @@ def delete_node(node_name):
     app.logger.debug(message)
     return format_response(False, message, None, 404)
 
-@app.route('/api/links', methods=['POST'])
+@app.route('/api/links/add', methods=['POST'])
 @handle_exceptions
 def create_link():
     data = request.json
@@ -264,14 +285,14 @@ def create_link():
     if not all(k in data for k in required):
         app.logger.debug("Create link failed: Missing required parameters<fromNode, toNode>")
         return format_response(False, "Create link failed: Missing required parameters<fromNode, toNode>", None, 400)
-    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params', {}))
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
     if new_link is not None:
         return format_response(True, "Link created successfully")
     else:
         app.logger.debug("Create link failed: Unexpected error accured")
         return format_response(False, "Create link failed: Unexpected error accured", None, 500)
 
-@app.route('/api/links', methods=['DELETE'])
+@app.route('/api/links/del', methods=['POST'])
 @handle_exceptions
 def remove_link():
     data = request.json
@@ -280,7 +301,7 @@ def remove_link():
         app.logger.debug("Remove link failed: Missing required parameters<fromNode, toNode>")
         return format_response(False, "Remove link failed: Missing required parameters<fromNode, toNode>", None, 400)
     
-    success, message = controller.del_link(data['fromNode'], data['toNode'])
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
     if success:
         return format_response(True, message)
     app.logger.debug(message)

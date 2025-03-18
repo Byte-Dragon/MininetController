@@ -79,7 +79,7 @@ class MininetController:
                 if intf.name == 'lo': continue
                 ip = intf.IP() or ""
                 params.append({
-                    'IP': ip,
+                    'ip': ip,
                     'MAC': intf.MAC() or "",
                     'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
                     'intfName': intf.name
@@ -97,8 +97,8 @@ class MininetController:
             for intf in node.intfList():
                 if intf.name == 'lo': continue
                 ip = intf.IP() or ""
-                params.append({
-                    'IP': ip,
+                interfaces.append({
+                    'ip': ip,
                     'MAC': intf.MAC() or "",
                     'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
                     'intfName': intf.name
@@ -106,23 +106,22 @@ class MininetController:
 
             topology['hosts'].append({
                 'name': node.name,
-                'params': params,
+                'params': interfaces,
                 'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
             })
 
         # 收集link信息
         for link in self.net.links:
             topology['links'].append({
-                'node1': link.intf1.node.name,
-                'node2': link.intf2.node.name,
+                'from': link.intf1.node.name,
+                'to': link.intf2.node.name,
                 'params': {
+                    'fromIntf':link.intf1.name,
+                    'toIntf':link.intf2.name,
                     'bandwidth': link.intf1.params.get('bw', None),
                     'delay': link.intf1.params.get('delay', None),
-                    'status': link.intf1.status()
-                    #'bandwidth': link.intf1.node,
-                    #'delay': link.intf1.mac,
-                    #'cd': link.intf1.params.bw,
-                    #'cdee': link.intf1.isUp()
+                    'status': link.intf1.status() and link.intf2.status()
+            
                 }
             })
 
@@ -164,34 +163,33 @@ class MininetController:
         result = []
         for node1 in self.net.hosts:
             for node2 in self.net.hosts:
-                tmp = self.ping(node1, node2, timeout=timeout)
+                tmp = self.ping(node1.name, node2.name, timeout=timeout)
                 result.append(tmp)
         return result
         
         
-    def ping_all_full(self):
+    def ping_all_full(self, timeout=None):
         """Ping between all hosts and return all data.
             returns: all ping data;"""
         result = []
         for node1 in self.net.hosts:
             for node2 in self.net.hosts:
-                tmp = self.ping_full(node1, node2, timeout=timeout)
+                tmp = self.ping_full(node1.name, node2.name, timeout=timeout)
                 result.append(tmp)
         return result
 
-    def start_node(self, name, controller=None):
+    def start_node(self, name, _type=None, controller=None):
         """
         启动指定节点
         :param name: 节点名称 (host/switch)
         :param controller: 可选参数，指定交换机控制器（仅对switch有效）
         """
-        node = self.get_node_by_name(name)
+        node = self.get_node_by_name(name, _type)
         if node is None:
             return False,f"[Error]Fail to get node by name:{name}"
 
         if isinstance(node, OVSKernelSwitch):
             # 处理交换机启动
-            	
             ctrl = controller if controller is not None else self.net.get('c0')  # 默认使用第一个控制器
             node.start([ctrl])
             return True, f"Switch {name} started with controller {ctrl.name}"
@@ -204,13 +202,13 @@ class MininetController:
         else:
             return False, f"[Error]Unsupported node type: {type(node)}"
 
-    def stop_node(self, name, keep_config=True):
+    def stop_node(self, name, _type, keep_config=True):
         """
         停止指定节点
         :param name: 节点名称
         :param keep_config: 是否保留配置（仅对host有效）（True=仅关闭接口，False=完全移除）
         """
-        node = self.get_node_by_name(name)
+        node = self.get_node_by_name(name, _type)
         if node is None:
             return False,f"[Error]Fail to get node by name:{name}"
 
@@ -227,27 +225,54 @@ class MininetController:
         else:
             return False,f"[Error]Unsupported node type: {type(node)}"
 
-    def get_node_by_name(self, name):
+    def get_node_by_name(self, name, _type=None):
         """get node by name,return Node"""
         try:
-            node = self.net.get(name)
+            if _type == "host":
+                nodes = [host for host in self.net.hosts if host.name == name]
+                if len(nodes) <= 0:
+                    raise KeyError(f'name:{name} 不存在，查找host失败')
+                else:
+                    node  = nodes[0]
+            elif _type == "switch":
+                nodes = [switch for switch in self.net.switches if switch.name == name]
+                if len(nodes) <= 0:
+                    raise KeyError(f'name:{name} 不存在，查找switch失败')
+                else:
+                    node  = nodes[0]
+            else:
+                node = self.net.get(name)
             return node
         except KeyError as e:
             print(f"[Error]Node {name} not found, CallStack:[controller.py/get_node_by_name()]")
             return None
             
 
-    def add_host(self, name, ip, **params):
+    def add_host(self, name, ip, link_to=None):
+        # Add to first switch by default  
+        if link_to is None:
+            switch = self.net.switches[0]
+        else:
+            switch = self.get_node_by_name(link_to)
+            if switch is None:
+                return False, f"Error occurred, Node:{link_to} not found"
+    
         """Add new host to network"""
-        new_host = self.net.addHost(name, ip=ip)
-        # Add to first switch by default
-        self.net.addLink(new_host, self.net.get('s1'))
-        return new_host
+        new_host = self.net.addHost(name, cls=Host, ip=ip, defaultRoute=None)
+       
+        self.net.addLink(new_host, switch,cls=TCLink, bw=10,delay=5)
+        self.start_node(name)
+        data={"name":new_host.name,
+              #"ip":new_host.intfList()[0].IP(),
+              "status":'up' if any(intf.isUp() for intf in new_host.intfList()) else 'down'
+              }
+        return True, data
 
     def add_switch(self, name, cls=None, **params):
         """params: listenPort,inNamespace"""
         new_switch = self.net.addSwitch(name=name, params=params)
-        return new_switch
+        data={"name":new_switch.name,"status":'up' if new_switch.isSetup else 'down'}
+        return data
 
     def del_node(self, name):
         """del node(host/switch/controller) by name"""
@@ -257,23 +282,23 @@ class MininetController:
             self.net.delNode(node)
             return True, f"successfully delete node{name}"
         else:
-            return False, f"[Error]Fail to delete node{name},callbacks: {info}"
+            return False, f"[Error]Fail to delete node:{name},callbacks: {info}"
         
 
     def add_link(self, fromNode, toNode, fromPort=None, toPort=None, **params):
         """add link between fromNoed and toNode"""
-        new_link = self.net.addLink(fromNode, toNode, fromPort=fromPort, toPort=toPort, params=params)
+        new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
         return new_link
 
-    def del_link(self,fromNode, toNode, index=0, allLinks=False ):
-        link, node1, node2 = self.get_link(fromNode,toNode)
+    def del_link(self,fromNode, toNode, intf=None, index=0, allLinks=False ):
+        link, node1, node2, index= self.get_link(fromNode,toNode, intf=intf)
         if link is None:
             return False,f'[Error]Link {fromNode}->{toNode} not found'
         else:
             self.net.delLinkBetween(node1,node2,index,allLinks)
-            return True, f"successfully remove Link {fromNode}->{toNode}"
+            return True, f"successfully remove Link {fromNode}->{toNode},intf matchs:{intf}"
 
-    def get_link(self, fromNode, toNode):
+    def get_link(self, fromNode, toNode, intf=None):
         """
         get link fromNode(str)->toNode(str)
         return：link, node1(Node),node2(Node)
@@ -281,9 +306,19 @@ class MininetController:
         node1 = self.get_node_by_name(fromNode)
         node2 = self.get_node_by_name(toNode)
         if node1 is not None and node2 is not None:
-            return self.net.linksBetween(node1, node2)[0], node1, node2
+            links = self.net.linksBetween(node1, node2)
+            link = links[0]
+            index = 0
+            if intf is not None:
+                #  遍历查找是否有满足intf的link
+                for lk in links:
+                    if lk.intf1.name == intf or lk.intf2.name == intf:
+                        link=lk
+                        break
+                    index += 1  # 记住查找的link所在index方便删除
+            return link, node1, node2, index
         else:
-            return None, None, None
+            return None, None, None, 0
 
     def apply_params(self, config):
         """Apply parameters to network elements
@@ -345,7 +380,7 @@ class MininetController:
         params = link_conf.get('params', {})
 
         # 遍历所有链路查找匹配项
-        link, _, _ = self.get_link(from_node,to_node)
+        link, _, _, _ = self.get_link(from_node,to_node)
         if link is None:
             return False, f"[Error]Link {from_node}->{to_node} not found"
         # 更新带宽参数

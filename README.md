@@ -77,19 +77,44 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 | `/api/network/start` | POST | None | Start the entire network |
 | `/api/network/stop` | POST | None | Stop the entire network,Do not run the method unless you finish your simulate |
 | `/api/network/topology` | GET | None | Get the network topology |
-| `/api/nodes/ping` | POST | `{ "host1": string, "host2": string, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test connectivity between hosts |
-| `/api/nodes/ping/ip` | POST | `{ "host": str, "ip": str }` | Test connectivity from host to IP |
-| `/api/network/ping` | POST | `{ "timeout": int, "get_full": False (optional, default False), "timeout": string (optional, '10ms') }` | Test full network connectivity |
-| `/api/nodes/<node_type>` | POST | Host: `{ "name": string, "ip": string }`<br>Switch: `{ "name": string }` | Add a node |
+| `/api/nodes/ping` | POST | `{ "host1": "h1", "host2": "h2", "get_full": false (optional, default false), "timeout": "10"(optional,default None) }` | Test connectivity between hosts |
+| `/api/nodes/ping/ip` | POST | `{ "host": "h1",ip": "10.0.0.8" }` | Test connectivity from host to IP |
+| `/api/network/ping` | POST | `{ "timeout": "10"(optional, string), "get_full": false (optional, default false),  }` | Test full network connectivity |
+| `/api/nodes/add/<node_type>` | POST | for Hosts: `{ "name": string, "ip": string,"link_to":string(optional,indicates which switch to connect to when initializing the host.Connect to 's1' by default)}` for Switches: `{ "name": string }` | Add a node |The switches' name must be of the form "s1" or "中国01",number "1" in"s1" will be a id for switch
 | `/api/nodes/del/<node_name>` | DELETE | None | Delete a node |
-| `/api/links` | POST | `{ "fromNode": string, "toNode": string, "params": object }` | Create a link |
-| `/api/links` | DELETE | `{ "fromNode": string, "toNode": string }` | Delete a link |
+| `/api/links/add` | POST | `{ "fromNode": string, "toNode": string, "params": object }` | Create a link |
+| `/api/links/del` | POST | `{ "fromNode": string, "toNode": string,"intf":string(one of the intfs connected via link) }` | Delete a link |
 | `/api/config` | PUT | Configuration object | Apply network configuration |
-| `/api/nodes/<name>/start` | POST | `{ "controller": string }` (optional) | Start a specific node |
-| `/api/nodes/<name>/stop` | POST | `{ "keep_config": boolean }` (optional) | Stop a specific node |
+| `/api/nodes/start/<node_type>` | POST | `{ "name": string }` | Start a specific node |
+| `/api/nodes/stop/<node_type>` | POST | `{ "name": string, "keep_config": boolean }` (keep_config is optional) | Stop a specific node |
+
+### API TEST by Curl
+```bash
+* curl -X POST http://127.0.0.1:8080/api/network/start
+* curl -X POST http://127.0.0.1:8080/api/network/stop
+* curl -X GET http://127.0.0.1:8080/api/network/topology
+
+* curl -X POST -H "Content-Type: application/json" -d '{"host1":"h1", "host2":"h8","get_full":true}' http://localhost:8080/api/nodes/ping
+* curl -X POST -H "Content-Type: application/json" -d '{"host":"h1", "ip":"10.0.0.8"}' http://localhost:8080/api/nodes/ping/ip
+* curl -X POST -H "Content-Type: application/json" -d '{"get_full":false,"timeout":"10"}' http://localhost:8080/api/network/ping
+
+* curl -X POST -H "Content-Type: application/json" -d '{"name":"祖国01"}' http://localhost:8080/api/nodes/add/switch
+* curl -X POST -H "Content-Type: application/json" -d '{"name":"中国", "ip":"10.0.0.9"}' http://localhost:8080/api/nodes/add/host
+* curl -X POST -H "Content-Type: application/json" -d '{"name":"h9", "ip":"10.0.0.9","link_to":"s2"}' http://localhost:8080/api/nodes/add/host
+* curl -X DELETE http://localhost:8080/api/nodes/del/h9
+
+* curl -X POST -H "Content-Type: application/json" -d '{"name":"h9"}' http://localhost:8080/api/nodes/start/host 
+* curl -X POST -H "Content-Type: application/json" -d '{"name":"s1","keep_config":true}' http://localhost:8080/api/nodes/stop/switch
+
+* curl -X POST -H "Content-Type: application/json" -d '{"fromNode":"h9", "toNode":"s4","params":{"delay":5,"bw": 10}}' http://localhost:8080/api/links/add
+* curl -X POST -H "Content-Type: application/json" -d '{"fromNode":"h2", "toNode":"s4","intf":"h5-eth1"}' http://localhost:8080/api/links/del
+
+```
 
 ### Supplementary Notes
-Data format required when accessing `/api/config`:
+* If you are experiencing the “400 Bad Request” problem, please make sure that your request method(POST or PUT) and parameters(true/false, not True/False or "True"/"False") are correct.
+
+* Data format required when accessing `/api/config`:
 ```json
 {
   "links": [
@@ -98,7 +123,7 @@ Data format required when accessing `/api/config`:
       "to": "s2",
       "params": {
         "bandwidth": 10,
-        "delay": "5ms"
+        "delay": 5
       }
     }
   ],
@@ -124,17 +149,12 @@ Data format required when accessing `/api/config`:
         "intfName": "s1-eth0",
         "status": "up"
       }
+      
     }
   ]
 }
 ```
-### API TEST
-```bash
-* curl -X POST http://127.0.0.1:8080/api/network/start
-* curl -X POST http://127.0.0.1:8080/api/network/stop
-* curl -X GET http://127.0.0.1:8080/api/network/topology
-* curl -X POST -H "Content-Type: application/json" -d '{"host1":"h1", "host2":"h8"}' http://localhost:8080/api/nodes/ping
-```
+
 ---
 
 ## Notes of Log

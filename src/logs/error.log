@@ -180,3 +180,555 @@ Traceback (most recent call last):
     assert self.shell and not self.waiting
 AssertionError
 
+2025-03-18 16:48:00,066 - app - ERROR - API Exception: <Host h1: h1-eth0:10.0.0.1 pid=5400> 
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 200, in ping_all_hosts
+    result = controller.ping_all(params['timeout'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 167, in ping_all
+    tmp = self.ping(node1, node2, timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in ping
+    hosts = [self.net.get(fromNode),self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: <Host h1: h1-eth0:10.0.0.1 pid=5400> 
+
+2025-03-18 17:01:09,515 - app - ERROR - API Exception: ping_all_full() takes 1 positional argument but 2 were given
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 198, in ping_all_hosts
+    result = controller.ping_all_full(params['timeout'])
+TypeError: ping_all_full() takes 1 positional argument but 2 were given
+
+2025-03-18 17:03:11,768 - app - ERROR - API Exception: ping_all_full() takes 1 positional argument but 2 were given
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 198, in ping_all_hosts
+    result = controller.ping_all_full(params['timeout'])
+TypeError: ping_all_full() takes 1 positional argument but 2 were given
+
+2025-03-18 17:03:47,886 - app - ERROR - API Exception: <Host h1: h1-eth0:10.0.0.1 pid=7452> 
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 198, in ping_all_hosts
+    result = controller.ping_all_full(params['timeout'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 178, in ping_all_full
+    tmp = self.ping_full(node1, node2, timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 146, in ping_full
+    hosts = [self.net.get(fromNode),self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: <Host h1: h1-eth0:10.0.0.1 pid=7452> 
+
+2025-03-18 17:09:28,209 - app - ERROR - API Exception: <Host h1: h1-eth0:10.0.0.1 pid=8907> 
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 200, in ping_all_hosts
+    result = controller.ping_all(params['timeout'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 167, in ping_all
+    tmp = self.ping(node1, node2, timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in ping
+    hosts = [self.net.get(fromNode),self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: <Host h1: h1-eth0:10.0.0.1 pid=8907> 
+
+2025-03-18 22:18:00,045 - app - ERROR - API Exception: Object of type OVSSwitch is not JSON serializable
+Request: POST /api/nodes/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 106, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 247, in add_node
+    return format_response(True, "Switch added successfully",data=switch)
+  File "app.py", line 100, in format_response
+    return jsonify(response), status_code
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type OVSSwitch is not JSON serializable
+
+2025-03-18 22:40:28,226 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: POST /api/nodes/add/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 107, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 234, in add_node
+    data = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-18 22:42:57,255 - app - ERROR - API Exception: name 'json' is not defined
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 144, in get_topology
+    return format_response(True, success, topology)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+
+2025-03-18 22:42:57,256 - app - ERROR - Exception on /api/network/topology [GET]
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 144, in get_topology
+    return format_response(True, success, topology)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 116, in wrapper
+    return format_response(False, f"Internal Server Error: {str(e)}", None, 500)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+2025-03-18 22:43:09,879 - app - ERROR - API Exception: name 'json' is not defined
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 144, in get_topology
+    return format_response(True, success, topology)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+
+2025-03-18 22:43:09,880 - app - ERROR - Exception on /api/network/topology [GET]
+Traceback (most recent call last):
+  File "app.py", line 108, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 144, in get_topology
+    return format_response(True, success, topology)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 116, in wrapper
+    return format_response(False, f"Internal Server Error: {str(e)}", None, 500)
+  File "app.py", line 101, in format_response
+    json_response = json.dumps(response, ensure_ascii=False)
+NameError: name 'json' is not defined
+2025-03-18 22:48:05,449 - app - ERROR - API Exception: Unable to derive default datapath ID - please either specify a dpid or use a canonical switch name such as s23.
+Request: POST /api/nodes/add/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 249, in add_node
+    data = controller.add_switch(data['name'], **data.get('params', {}))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 246, in add_switch
+    new_switch = self.net.addSwitch(name=name, params=params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 260, in addSwitch
+    sw = cls( name, **defaults )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1070, in __init__
+    Switch.__init__( self, name, **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 893, in __init__
+    self.dpid = self.defaultDpid( dpid )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 912, in defaultDpid
+    raise Exception( 'Unable to derive default datapath ID - '
+Exception: Unable to derive default datapath ID - please either specify a dpid or use a canonical switch name such as s23.
+
+2025-03-18 23:10:49,717 - app - ERROR - API Exception: name 'node' is not defined
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 242, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 242, in add_host
+    "ip":node.intfList()[1].IP(),
+NameError: name 'node' is not defined
+
+2025-03-18 23:11:36,097 - app - ERROR - API Exception: list index out of range
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 242, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 242, in add_host
+    "ip":new_host.intfList()[1].IP(),
+IndexError: list index out of range
+
+2025-03-18 23:16:52,434 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 242, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 241, in add_host
+    self.start_node(name)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 196, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-18 23:18:41,567 - app - ERROR - API Exception: list index out of range
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 242, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 243, in add_host
+    "ip":new_host.intfList()[0].IP(),
+IndexError: list index out of range
+
+2025-03-18 23:59:13,253 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 216, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 195, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:00:46,373 - app - ERROR - API Exception: list index out of range
+Request: POST /api/nodes/start/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 216, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 184, in start_node
+    node = self.get_node_by_name(name, _type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 229, in get_node_by_name
+    node = [host for host in self.net.hosts if host.name == name][0]
+IndexError: list index out of range
+
+2025-03-19 00:09:39,931 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 195, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:11:17,937 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 196, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:21:24,472 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 196, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:28:30,633 - app - ERROR - API Exception: 'type' object is not subscriptable
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 244, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 253, in add_host
+    self.net.addLink(new_host, self.net.switch[0])
+TypeError: 'type' object is not subscriptable
+
+2025-03-19 00:30:42,864 - app - ERROR - API Exception: start_node() missing 1 required positional argument: '_type'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 244, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 254, in add_host
+    self.start_node(name)
+TypeError: start_node() missing 1 required positional argument: '_type'
+
+2025-03-19 01:03:21,925 - app - ERROR - API Exception: name 'ip' is not defined
+Request: POST /api/nodes/add/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 262, in add_node
+    out += f"Invalid payload:'ip'={data[ip]},which will not be applied"
+NameError: name 'ip' is not defined
+
+2025-03-19 01:04:49,979 - app - ERROR - API Exception: 'Mininet' object has no attribute 'switchs'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 184, in start_node
+    node = self.get_node_by_name(name, _type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 236, in get_node_by_name
+    nodes = [switch for switch in self.net.switchs if switch.name == name]
+AttributeError: 'Mininet' object has no attribute 'switchs'
+
+2025-03-19 01:29:51,953 - app - ERROR - API Exception: local variable 'link_to' referenced before assignment
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 257, in add_node
+    data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+UnboundLocalError: local variable 'link_to' referenced before assignment
+
+2025-03-19 01:40:07,687 - app - ERROR - API Exception: name 'node' is not defined
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 257, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 256, in add_host
+    if node is None:
+NameError: name 'node' is not defined
+
+2025-03-19 01:46:03,718 - app - ERROR - API Exception: format_response() got multiple values for argument 'data'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 259, in add_node
+    return format_response(success, 400, mes, data=data)
+TypeError: format_response() got multiple values for argument 'data'
+
+2025-03-19 01:47:57,209 - app - ERROR - API Exception: format_response() got multiple values for argument 'message'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 259, in add_node
+    return format_response(success, 400, message=mes, data=data)
+TypeError: format_response() got multiple values for argument 'message'
+
+2025-03-19 02:02:00,568 - app - ERROR - API Exception: 'h9'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params', {}))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 289, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, params=params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h9'
+
+2025-03-19 02:05:44,505 - app - ERROR - API Exception: '2'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params', {}))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 289, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: '2'
+
+2025-03-19 02:13:03,035 - app - ERROR - API Exception: '32'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 288, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: '32'
+
+2025-03-19 02:15:14,084 - app - ERROR - API Exception: 'h-9'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 288, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h-9'
+
+2025-03-19 02:20:41,993 - app - ERROR - API Exception: list index out of range
+Request: DELETE /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 304, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 292, in del_link
+    if link is None:
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 307, in get_link
+    else:
+IndexError: list index out of range
+
+2025-03-19 02:46:06,863 - app - ERROR - API Exception: list index out of range
+Request: DELETE /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 304, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data['intf'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 294, in del_link
+    link, node1, node2 = self.get_link(fromNode,toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 310, in get_link
+    link = links[0]
+IndexError: list index out of range
+
