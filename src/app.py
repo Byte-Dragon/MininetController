@@ -122,6 +122,15 @@ def handle_exceptions(func):
 # app running 
 controller = None
 
+@app.route('/api/network/init', methods=['POST'])
+def init_network():
+    global controller
+    current_net = controller.net
+    data = request.get_json()
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+    return format_response(success, mes, None, code)
+
+
 @app.route('/api/network/start', methods=['POST'])
 @handle_exceptions
 def start_network():

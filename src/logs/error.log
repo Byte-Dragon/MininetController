@@ -732,3 +732,60 @@ Traceback (most recent call last):
     link = links[0]
 IndexError: list index out of range
 
+2025-03-19 14:34:48,811 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(self, data, build=False)
+NameError: name 'self' is not defined
+2025-03-19 14:42:19,302 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 107, in set_net_from_topo
+    c0 = self.net.addController(name='c0',
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 285, in addController
+    controller_new = controller( name, **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1399, in __init__
+    self.checkListening()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1415, in checkListening
+    raise Exception( "Please shut down the controller which is"
+Exception: Please shut down the controller which is running on port 6633:
+Active Internet connections (servers and established)
+tcp        0      0 0.0.0.0:6633            0.0.0.0:*               LISTEN      4672/python3        
+tcp        0      0 127.0.0.1:38142         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33340         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38158         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38164         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38146         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38180         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:54576         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33360         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33328         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33352         127.0.0.1:6633          TIME_WAIT   -                   
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 118, in set_net_from_topo
+    logging.error(f"部署失败: {str(e)}")
+NameError: name 'logging' is not defined

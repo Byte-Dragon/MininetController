@@ -93,6 +93,20 @@ MininetController uses Mininet for network simulation and Ryu-controller for swi
 * curl -X POST http://127.0.0.1:8080/api/network/start
 * curl -X POST http://127.0.0.1:8080/api/network/stop
 * curl -X GET http://127.0.0.1:8080/api/network/topology
+* curl -X POST http://localhost:8080/api/network/init -H "Content-Type: application/json" -d '{
+        "links": [
+            {"from": "s1", "to": "h1"},
+            {"from": "s2", "to": "h2"}
+        ],
+        "hosts": [
+            {"name": "h1", "ip": "192.168.1.2/24"},
+            {"name": "h2", "ip": "192.168.1.3/24"}
+        ],
+        "switches": [
+            {"name": "s1"},
+            {"name": "s2"}
+        ]
+    }'
 
 * curl -X POST -H "Content-Type: application/json" -d '{"host1":"h1", "host2":"h8","get_full":true}' http://localhost:8080/api/nodes/ping
 * curl -X POST -H "Content-Type: application/json" -d '{"host":"h1", "ip":"10.0.0.8"}' http://localhost:8080/api/nodes/ping/ip

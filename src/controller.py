@@ -1,9 +1,27 @@
 from mininet.net import Mininet
 from mininet.node import Controller, RemoteController, OVSKernelSwitch, Host
 from mininet.link import TCLink
+from mininet.topo import Topo
 from mininet.util import quietRun
 import json
+import logging
+class JsonTopo(Topo):
+    def __init__(self, json_data):
+        super().__init__()
 
+        nodes = {}
+        # 添加主机
+        for h in json_data['hosts']:
+            name = h['name']
+            ip = h['ip']
+            nodes[name] = self.addHost(name, cls=Host, ip=ip, defaultRoute=None)
+        # 添加交换机
+        for s in json_data['switches']:
+            name = s['name']
+            nodes[name] = self.addSwitch(name)
+        # 添加连接
+        for link in json_data['links']:
+            self.addLink(nodes[link['from']], nodes[link['to']])
 
 class MininetController:
     def __init__(self, net=None):
@@ -50,6 +68,55 @@ class MininetController:
         self.net.addLink(h6, s3)
         self.net.addLink(h7, s4)
         self.net.addLink(h8, s4)
+    
+    # 重新为controller赋新的net值
+    def set_net_from_topo(self, data, build=False, ipBase='10.0.0.0/24',controller=Controller):
+        try:
+            if not data:
+                return False, f"error: 无JSON数据", 400
+            # 验证数据完整性
+            for key in ['hosts', 'switches', 'links']:
+                if key not in data:
+                    return False, f"缺少必要字段: {key}", 400
+
+            nodes = set()
+            # 检查主机
+            for host in data['hosts']:
+                if 'name' not in host or 'ip' not in host:
+                    print(f"******************************{host}")
+                    return False, "error: 主机缺少名称或IP", 400
+                nodes.add(host['name'])
+            # 检查交换机
+            for switch in data['switches']:
+                if 'name' not in switch:
+                    return False, "error: 交换机缺少名称", 400
+                nodes.add(switch['name'])
+             # 检查链路
+            for link in data['links']:
+                if 'from' not in link or 'to' not in link:
+                    return False, "error: 链路缺少端点", 400
+                if link['from'] not in nodes or link['to'] not in nodes:
+                    return False, "error: 链路端点不存在", 400
+
+            # 创建网络拓扑
+            topo = JsonTopo(data)
+            if self.net is not None:
+                self.net.stop()
+            self.net = Mininet(topo=topo, build=False, ipBase=ipBase)
+            # 添加初始控制器
+            c0 = self.net.addController(name='c0',
+                                        controller=Controller,
+                                        protocol='tcp',
+                                        port=6633)
+            c0.start()
+            self.start_network()
+            return True, "status: 网络部署成功", 200
+        except Exception as e:
+            if self.net:
+                self.net.stop()
+                self.net = None
+            logging.error(f"部署失败: {str(e)}")
+            return False,f'error: {str(e)}', 500
 
     def start_network(self):
         """Start entire network"""
