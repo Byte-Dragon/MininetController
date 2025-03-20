@@ -789,3 +789,818 @@ Traceback (most recent call last):
   File "/home/lee/Desktop/MininetController/src/controller.py", line 118, in set_net_from_topo
     logging.error(f"部署失败: {str(e)}")
 NameError: name 'logging' is not defined
+2025-03-20 11:47:51,782 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 170, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 573, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 11:47:52,716 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 170, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 573, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 11:52:42,736 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 183, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 15:44:19,952 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 183, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 15:44:20,650 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 183, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 15:44:33,979 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 104, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 116, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 16:01:05,044 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 183, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 16:14:37,912 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 183, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 16:14:48,244 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 104, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 116, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 16:17:59,212 - app - ERROR - API Exception: 'h2'
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 171, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 202, in ping
+    hosts = [self.net.get(fromNode),self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'h2'
+
+2025-03-20 16:29:30,210 - app - ERROR - API Exception: Error creating interface pair (0-0-eth0,s1-eth1): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 138, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 123, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (0-0-eth0,s1-eth1): RTNETLINK answers: File exists
+ 
+
+2025-03-20 16:30:23,568 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 152, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 177, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 177, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-20 17:20:49,344 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 133, in init_network
+    c0 = controller.net.get('c0')
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'c0'
+2025-03-20 21:11:05,522 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 144, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = None)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 21:11:48,417 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 144, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = None)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 21:12:19,915 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 144, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = None)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 21:12:30,552 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 144, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = None)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 21:12:55,004 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 175, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 203, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 21:12:56,553 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 175, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 203, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-20 21:21:11,437 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 145, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = None)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 575, in stop
+    link.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 507, in stop
+    self.delete()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 500, in delete
+    self.intf1.delete()
+AttributeError: 'NoneType' object has no attribute 'delete'
+2025-03-20 22:24:09,298 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 115, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 145, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = c0)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 142, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-20 22:31:02,295 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 197, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 600, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 22:31:03,137 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 197, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 600, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 22:31:46,196 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 197, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 600, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 22:34:12,752 - app - ERROR - API Exception: '<' not supported between instances of 'str' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 197, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 601, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+2025-03-20 22:47:04,677 - app - ERROR - API Exception: 'TCIntf' object has no attribute 'prefixlen'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 176, in get_topology
+    ip = f'{ip}/{intf.prefixlen}'
+AttributeError: 'TCIntf' object has no attribute 'prefixlen'
+
+2025-03-20 22:47:57,630 - app - ERROR - API Exception: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 180, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 602, in _prefix_to_netmask
+    prefix = int(prefix)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2025-03-20 23:01:59,078 - app - ERROR - API Exception: name 'instanceof' is not defined
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 182, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 604, in _prefix_to_netmask
+    if instanceof(prefix, str):
+NameError: name 'instanceof' is not defined
+
+2025-03-20 23:04:27,435 - app - ERROR - API Exception: '<' not supported between instances of 'NoneType' and 'int'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 177, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 182, in get_topology
+    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 607, in _prefix_to_netmask
+    if prefix < 0 or prefix > 32: return ""
+TypeError: '<' not supported between instances of 'NoneType' and 'int'
+
+2025-03-20 23:24:42,849 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 119, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 146, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = c0)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 147, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-20 23:25:17,470 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 119, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 146, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = c0)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 147, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-20 23:25:32,309 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 119, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 146, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False,controller = c0)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 147, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-21 00:40:36,111 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 143, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-21 01:06:11,614 - app - ERROR - API Exception: Error creating interface pair (h9-eth0,祖国01-eth1): RTNETLINK answers: No such process
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 364, in add_host
+    self.net.addLink(new_host, switch, cls=TCLink, bw=10, delay=5)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 557, in __init__
+    Link.__init__( self, *args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (h9-eth0,祖国01-eth1): RTNETLINK answers: No such process
+ 
+
+2025-03-21 01:06:17,734 - app - ERROR - API Exception: argument of type 'NoneType' is not iterable
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 402, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 557, in __init__
+    Link.__init__( self, *args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 460, in __init__
+    intf1 = cls1( name=intfName1, node=node1,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 61, in __init__
+    self.config( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 358, in config
+    if "priomap" not in tcoutput and "noqueue" not in tcoutput:
+TypeError: argument of type 'NoneType' is not iterable
+
+2025-03-21 01:06:26,778 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 211, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-21 01:16:30,787 - app - ERROR - API Exception: local variable 'tmp' referenced before assignment
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 231, in ping_all_hosts
+    result = controller.ping_all(params['timeout'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 261, in ping_all
+    tmp += self.ping(node1.name, node2.name, timeout=timeout) + '\n'
+UnboundLocalError: local variable 'tmp' referenced before assignment
+

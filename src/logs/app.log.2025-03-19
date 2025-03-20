@@ -1,0 +1,1019 @@
+2025-03-19 00:00:46,373 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h945456'}
+2025-03-19 00:00:46,373 - app - ERROR - API Exception: list index out of range
+Request: POST /api/nodes/start/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 216, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 184, in start_node
+    node = self.get_node_by_name(name, _type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 229, in get_node_by_name
+    node = [host for host in self.net.hosts if host.name == name][0]
+IndexError: list index out of range
+
+2025-03-19 00:00:46,374 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 500 | Duration: 0.91ms
+2025-03-19 00:00:46,374 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:00:46] "[35m[1mPOST /api/nodes/start/host HTTP/1.1[0m" 500 -
+2025-03-19 00:05:00,561 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:05:00,561 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:06:08,718 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h945456'}
+2025-03-19 00:06:08,718 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 400 | Duration: 0.52ms
+2025-03-19 00:06:08,719 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:06:08] "[31m[1mPOST /api/nodes/start/host HTTP/1.1[0m" 400 -
+2025-03-19 00:07:32,088 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:07:32,088 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 400 | Duration: 0.3ms
+2025-03-19 00:07:32,088 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:07:32] "[31m[1mPOST /api/nodes/start/switch HTTP/1.1[0m" 400 -
+2025-03-19 00:07:47,684 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:07:47,701 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.37ms
+2025-03-19 00:07:47,702 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:07:47] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 00:07:54,891 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:07:54,995 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 104.39ms
+2025-03-19 00:07:54,996 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:07:54] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:09:09,464 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:09:09,482 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 18.12ms
+2025-03-19 00:09:09,482 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:09:09] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:09:13,955 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:09:14,069 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.27ms
+2025-03-19 00:09:14,069 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:09:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:09:39,930 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:09:39,931 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 195, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:09:39,932 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 500 | Duration: 2.07ms
+2025-03-19 00:09:39,932 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:09:39] "[35m[1mPOST /api/nodes/start/switch HTTP/1.1[0m" 500 -
+2025-03-19 00:10:55,327 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:10:55,327 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:11:06,394 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:11:06,412 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 17.88ms
+2025-03-19 00:11:06,413 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:11:06] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:11:17,936 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:11:17,937 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 196, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:11:17,937 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 500 | Duration: 1.51ms
+2025-03-19 00:11:17,937 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:11:17] "[35m[1mPOST /api/nodes/start/switch HTTP/1.1[0m" 500 -
+2025-03-19 00:11:30,553 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:11:30,659 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 106.62ms
+2025-03-19 00:11:30,660 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:11:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:12:11,695 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:12:11,714 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 19.43ms
+2025-03-19 00:12:11,715 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:12:11] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 00:12:14,673 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:12:14,784 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.45ms
+2025-03-19 00:12:14,784 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:12:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:12:53,896 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:12:53,917 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 21.42ms
+2025-03-19 00:12:53,918 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:12:53] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-19 00:20:14,364 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:20:14,365 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:20:23,903 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:20:23,922 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 19.53ms
+2025-03-19 00:20:23,923 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:20:23] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 00:20:45,460 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:20:45,479 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 19.36ms
+2025-03-19 00:20:45,480 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:20:45] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:20:51,897 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:20:52,015 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.79ms
+2025-03-19 00:20:52,015 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:20:52] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:21:04,534 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:21:04,645 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.54ms
+2025-03-19 00:21:04,645 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:21:04] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:21:24,471 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:21:24,472 - app - ERROR - API Exception: 'NoneType' object has no attribute 'setIP'
+Request: POST /api/nodes/start/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 196, in start_node
+    node.configDefault()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 620, in configDefault
+    self.config( **self.params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 611, in config
+    self.setParam( r, 'setIP', ip=ip )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 594, in setParam
+    result = f( value )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 557, in setIP
+    return self.intf( intf ).setIP( ip, prefixLen, **kwargs )
+AttributeError: 'NoneType' object has no attribute 'setIP'
+
+2025-03-19 00:21:24,472 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 500 | Duration: 1.62ms
+2025-03-19 00:21:24,474 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:21:24] "[35m[1mPOST /api/nodes/start/host HTTP/1.1[0m" 500 -
+2025-03-19 00:24:04,347 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:24:04,347 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:24:10,658 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:24:11,111 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 453.92ms
+2025-03-19 00:24:11,112 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:24:11] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:24:21,962 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:24:21,980 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.23ms
+2025-03-19 00:24:21,980 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:24:21] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 00:24:36,263 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:24:36,375 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 112.22ms
+2025-03-19 00:24:36,376 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:24:36] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:24:52,590 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:24:52,696 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 105.41ms
+2025-03-19 00:24:52,696 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:24:52] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:25:14,196 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:25:14,690 - app - INFO - Request Completed | POST /api/network/start | Status: 200 | Duration: 494.13ms
+2025-03-19 00:25:14,691 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:25:14] "POST /api/network/start HTTP/1.1" 200 -
+2025-03-19 00:25:18,511 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:25:18,642 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 130.92ms
+2025-03-19 00:25:18,642 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:25:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:25:23,582 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:25:23,690 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.91ms
+2025-03-19 00:25:23,691 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:25:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:25:24,549 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:25:24,657 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.68ms
+2025-03-19 00:25:24,658 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:25:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:27:02,074 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:27:02,074 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:28:25,106 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:28:25,123 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.35ms
+2025-03-19 00:28:25,124 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:28:25] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 00:28:30,612 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:28:30,633 - app - ERROR - API Exception: 'type' object is not subscriptable
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 244, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 253, in add_host
+    self.net.addLink(new_host, self.net.switch[0])
+TypeError: 'type' object is not subscriptable
+
+2025-03-19 00:28:30,634 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 22.49ms
+2025-03-19 00:28:30,634 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:28:30] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 00:30:38,312 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:30:38,312 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:30:42,822 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:30:42,864 - app - ERROR - API Exception: start_node() missing 1 required positional argument: '_type'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 244, in add_node
+    data = controller.add_host(data['name'], data['ip'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 254, in add_host
+    self.start_node(name)
+TypeError: start_node() missing 1 required positional argument: '_type'
+
+2025-03-19 00:30:42,867 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 45.82ms
+2025-03-19 00:30:42,868 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:30:42] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 00:33:14,524 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:33:14,525 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:33:20,963 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:33:21,012 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 49.14ms
+2025-03-19 00:33:21,013 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:33:21] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:33:58,478 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:33:58,600 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.15ms
+2025-03-19 00:33:58,601 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:33:58] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:35:36,556 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:35:36,556 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:35:41,327 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 00:35:41,372 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 45.46ms
+2025-03-19 00:35:41,373 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:35:41] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 00:35:46,491 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:35:46,619 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 127.74ms
+2025-03-19 00:35:46,620 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:35:46] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:39:02,018 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 00:39:02,023 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 5.17ms
+2025-03-19 00:39:02,023 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:39:02] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-19 00:39:09,188 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:39:09,307 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.8ms
+2025-03-19 00:39:09,308 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:39:09] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:40:13,863 - app - INFO - Request Completed | POST /api/nodes/stop/host | Status: 400 | Duration: 0.62ms
+2025-03-19 00:40:13,863 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:40:13] "[31m[1mPOST /api/nodes/stop/host HTTP/1.1[0m" 400 -
+2025-03-19 00:40:20,036 - app - INFO - Request Started | POST /api/nodes/stop/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'keep_config': True}
+2025-03-19 00:40:20,038 - app - INFO - Request Completed | POST /api/nodes/stop/host | Status: 200 | Duration: 2.01ms
+2025-03-19 00:40:20,038 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:40:20] "POST /api/nodes/stop/host HTTP/1.1" 200 -
+2025-03-19 00:40:24,429 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:40:24,563 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 134.21ms
+2025-03-19 00:40:24,564 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:40:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:44:17,874 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 00:44:17,874 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 00:44:38,673 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8', 'get_full': True}
+2025-03-19 00:44:38,695 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 21.93ms
+2025-03-19 00:44:38,696 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:44:38] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-19 00:44:51,088 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h8', 'get_full': True}
+2025-03-19 00:44:51,095 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6.39ms
+2025-03-19 00:44:51,095 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:44:51] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-19 00:44:57,953 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 400 | Duration: 0.49ms
+2025-03-19 00:44:57,953 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:44:57] "[31m[1mPOST /api/nodes/ping HTTP/1.1[0m" 400 -
+2025-03-19 00:47:32,973 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-19 00:47:33,502 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 529.24ms
+2025-03-19 00:47:33,502 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:47:33] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-19 00:48:02,164 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:48:02,282 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.79ms
+2025-03-19 00:48:02,283 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:48:02] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 00:48:08,058 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 00:48:08,165 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.01ms
+2025-03-19 00:48:08,166 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 00:48:08] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:02:44,280 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:02:44,282 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:03:21,924 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:03:21,925 - app - ERROR - API Exception: name 'ip' is not defined
+Request: POST /api/nodes/add/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 262, in add_node
+    out += f"Invalid payload:'ip'={data[ip]},which will not be applied"
+NameError: name 'ip' is not defined
+
+2025-03-19 01:03:21,925 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 500 | Duration: 1.17ms
+2025-03-19 01:03:21,926 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:03:21] "[35m[1mPOST /api/nodes/add/switch HTTP/1.1[0m" 500 -
+2025-03-19 01:03:57,483 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:03:57,483 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:04:01,442 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:04:01,459 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.85ms
+2025-03-19 01:04:01,460 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:04:01] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 01:04:13,109 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:04:13,211 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 101.84ms
+2025-03-19 01:04:13,212 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:04:13] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:04:49,978 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 01:04:49,979 - app - ERROR - API Exception: 'Mininet' object has no attribute 'switchs'
+Request: POST /api/nodes/start/switch
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 217, in start_node
+    success, message = controller.start_node(node_name, node_type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 184, in start_node
+    node = self.get_node_by_name(name, _type)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 236, in get_node_by_name
+    nodes = [switch for switch in self.net.switchs if switch.name == name]
+AttributeError: 'Mininet' object has no attribute 'switchs'
+
+2025-03-19 01:04:49,979 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 500 | Duration: 1.0ms
+2025-03-19 01:04:49,979 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:04:49] "[35m[1mPOST /api/nodes/start/switch HTTP/1.1[0m" 500 -
+2025-03-19 01:05:40,487 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:05:40,487 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:05:53,886 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:05:53,904 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.58ms
+2025-03-19 01:05:53,905 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:05:53] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-19 01:06:09,011 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 01:06:09,030 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 19.42ms
+2025-03-19 01:06:09,030 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:09] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-19 01:06:15,371 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:15,482 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 111.0ms
+2025-03-19 01:06:15,482 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:15] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:20,246 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:20,349 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 102.83ms
+2025-03-19 01:06:20,350 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:20,859 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:20,968 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 108.52ms
+2025-03-19 01:06:20,968 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:31,574 - app - INFO - Request Started | POST /api/nodes/stop/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-19 01:06:31,609 - app - INFO - Request Completed | POST /api/nodes/stop/switch | Status: 200 | Duration: 35.29ms
+2025-03-19 01:06:31,610 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:31] "POST /api/nodes/stop/switch HTTP/1.1" 200 -
+2025-03-19 01:06:36,712 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:36,848 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 136.01ms
+2025-03-19 01:06:36,849 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:36] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:37,681 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:37,786 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 104.59ms
+2025-03-19 01:06:37,786 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:37] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:38,133 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:38,253 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.22ms
+2025-03-19 01:06:38,254 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:38] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:38,803 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:38,913 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.63ms
+2025-03-19 01:06:38,914 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:38] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:41,086 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:41,195 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 108.21ms
+2025-03-19 01:06:41,196 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:41] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:06:41,969 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:06:42,074 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 104.25ms
+2025-03-19 01:06:42,074 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:06:42] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:07:50,288 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:07:50,289 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 400 | Duration: 0.47ms
+2025-03-19 01:07:50,289 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:07:50] "[31m[1mPOST /api/nodes/add/switch HTTP/1.1[0m" 400 -
+2025-03-19 01:07:58,317 - app - INFO - Request Started | POST /api/nodes/add/swit | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:07:58,318 - app - INFO - Request Completed | POST /api/nodes/add/swit | Status: 400 | Duration: 0.33ms
+2025-03-19 01:07:58,318 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:07:58] "[31m[1mPOST /api/nodes/add/swit HTTP/1.1[0m" 400 -
+2025-03-19 01:08:06,179 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9'}
+2025-03-19 01:08:06,180 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 1.45ms
+2025-03-19 01:08:06,182 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:06] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:08:10,976 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:08:11,091 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.06ms
+2025-03-19 01:08:11,091 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:08:11,580 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:08:11,694 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.19ms
+2025-03-19 01:08:11,695 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:08:26,617 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h-9', 'ip': '10.0.0.9'}
+2025-03-19 01:08:26,669 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 51.72ms
+2025-03-19 01:08:26,670 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:26] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 01:08:30,303 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:08:30,450 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 146.57ms
+2025-03-19 01:08:30,450 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:08:35,569 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:08:35,700 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 130.87ms
+2025-03-19 01:08:35,700 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:08:35] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:09:04,016 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:09:04,138 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.61ms
+2025-03-19 01:09:04,139 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:09:04] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:10:31,821 - app - INFO - Request Started | DELETE /api/nodes/del/h9 | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:10:31,826 - app - INFO - Request Completed | DELETE /api/nodes/del/h9 | Status: 200 | Duration: 5.78ms
+2025-03-19 01:10:31,827 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:10:31] "DELETE /api/nodes/del/h9 HTTP/1.1" 200 -
+2025-03-19 01:11:09,446 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:11:09,584 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 137.79ms
+2025-03-19 01:11:09,585 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:11:09] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:14:22,115 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h-9', 'toNode': 's4', 'params': {'delay': 5, 'bandwidth': 10}}
+2025-03-19 01:14:22,147 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 32.21ms
+2025-03-19 01:14:22,147 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:14:22] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 01:14:36,711 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:14:36,842 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 130.49ms
+2025-03-19 01:14:36,842 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:14:36] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:16:40,187 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:16:40,187 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:29:04,666 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:29:04,666 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:29:51,952 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '9'}
+2025-03-19 01:29:51,953 - app - ERROR - API Exception: local variable 'link_to' referenced before assignment
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 257, in add_node
+    data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+UnboundLocalError: local variable 'link_to' referenced before assignment
+
+2025-03-19 01:29:51,953 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 1.8ms
+2025-03-19 01:29:51,954 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:29:51] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 01:31:14,586 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:31:14,586 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:31:28,637 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '9'}
+2025-03-19 01:31:28,696 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 59.3ms
+2025-03-19 01:31:28,697 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:31:28] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 01:31:43,339 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:31:43,465 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 125.24ms
+2025-03-19 01:31:43,466 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:31:43] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:39:53,500 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:39:53,500 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:40:07,666 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:40:07,687 - app - ERROR - API Exception: name 'node' is not defined
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 257, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 256, in add_host
+    if node is None:
+NameError: name 'node' is not defined
+
+2025-03-19 01:40:07,688 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 21.68ms
+2025-03-19 01:40:07,689 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:40:07] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 01:42:35,394 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:42:35,394 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:42:41,735 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:42:41,752 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 18.02ms
+2025-03-19 01:42:41,753 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:42:41] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 01:43:18,009 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's2'}
+2025-03-19 01:43:18,009 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.45ms
+2025-03-19 01:43:18,009 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:43:18] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:45:43,943 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:45:43,944 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:45:48,272 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:45:48,380 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.66ms
+2025-03-19 01:45:48,382 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:45:48] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:46:03,698 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:46:03,718 - app - ERROR - API Exception: format_response() got multiple values for argument 'data'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 259, in add_node
+    return format_response(success, 400, mes, data=data)
+TypeError: format_response() got multiple values for argument 'data'
+
+2025-03-19 01:46:03,718 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 20.1ms
+2025-03-19 01:46:03,719 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:46:03] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 01:47:52,270 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:47:52,270 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:47:57,190 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:47:57,209 - app - ERROR - API Exception: format_response() got multiple values for argument 'message'
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 259, in add_node
+    return format_response(success, 400, message=mes, data=data)
+TypeError: format_response() got multiple values for argument 'message'
+
+2025-03-19 01:47:57,209 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 19.89ms
+2025-03-19 01:47:57,211 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:47:57] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-19 01:51:29,763 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:51:29,763 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.37ms
+2025-03-19 01:51:29,764 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:51:29] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:51:34,917 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:51:34,917 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.38ms
+2025-03-19 01:51:34,918 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:51:34] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:51:41,392 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:51:41,514 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.83ms
+2025-03-19 01:51:41,515 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:51:41] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:53:47,707 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:53:47,707 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:55:14,193 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:55:14,193 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:55:19,258 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:55:19,275 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 17.61ms
+2025-03-19 01:55:19,276 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:19] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:55:26,768 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:26,886 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.81ms
+2025-03-19 01:55:26,886 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:55:28,356 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:28,462 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 106.3ms
+2025-03-19 01:55:28,462 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:55:28,957 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:29,055 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 98.28ms
+2025-03-19 01:55:29,056 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:55:29,580 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:29,682 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 101.53ms
+2025-03-19 01:55:29,682 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:55:30,140 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:30,250 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.11ms
+2025-03-19 01:55:30,251 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:55:30,684 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:55:30,794 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.03ms
+2025-03-19 01:55:30,795 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:55:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:56:20,632 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:56:20,633 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:56:25,387 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:56:25,500 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.18ms
+2025-03-19 01:56:25,501 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:56:25] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:56:26,308 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:56:26,416 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 108.67ms
+2025-03-19 01:56:26,417 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:56:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:56:34,410 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:56:34,410 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.56ms
+2025-03-19 01:56:34,410 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:56:34] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:56:38,732 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:56:38,870 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 138.6ms
+2025-03-19 01:56:38,871 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:56:38] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:56:54,365 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's2'}
+2025-03-19 01:56:54,423 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 58.18ms
+2025-03-19 01:56:54,424 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:56:54] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:57:13,307 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 01:57:13,438 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 130.85ms
+2025-03-19 01:57:13,439 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:57:13] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 01:59:37,427 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 01:59:37,427 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 01:59:47,134 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 01:59:47,135 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.68ms
+2025-03-19 01:59:47,135 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:59:47] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 01:59:58,387 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's2'}
+2025-03-19 01:59:58,463 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 76.69ms
+2025-03-19 01:59:58,464 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 01:59:58] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 02:00:02,321 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:00:02,443 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.88ms
+2025-03-19 02:00:02,444 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:00:02] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:00:03,251 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:00:03,378 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 126.35ms
+2025-03-19 02:00:03,378 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:00:03] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:00:55,720 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:00:55,721 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:00:59,856 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's9'}
+2025-03-19 02:00:59,856 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 400 | Duration: 0.81ms
+2025-03-19 02:00:59,857 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:00:59] "[31m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 400 -
+2025-03-19 02:02:00,567 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h9', 'toNode': 's4', 'params': {'delay': 5, 'bandwidth': 10}}
+2025-03-19 02:02:00,568 - app - ERROR - API Exception: 'h9'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params', {}))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 289, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, params=params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h9'
+
+2025-03-19 02:02:00,568 - app - INFO - Request Completed | POST /api/links | Status: 500 | Duration: 1.7ms
+2025-03-19 02:02:00,569 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:00] "[35m[1mPOST /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:02:18,372 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:02:18,486 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.66ms
+2025-03-19 02:02:18,487 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:02:19,168 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:02:19,276 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 108.04ms
+2025-03-19 02:02:19,277 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:02:32,681 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': 's2'}
+2025-03-19 02:02:32,771 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 89.93ms
+2025-03-19 02:02:32,771 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:32] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-19 02:02:36,935 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:02:37,057 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.48ms
+2025-03-19 02:02:37,059 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:37] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:02:49,318 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h9', 'toNode': 's4', 'params': {'delay': 5, 'bandwidth': 10}}
+2025-03-19 02:02:49,353 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 35.36ms
+2025-03-19 02:02:49,354 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:49] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:02:53,956 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:02:54,102 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 146.2ms
+2025-03-19 02:02:54,103 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:02:54] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:05:14,679 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:05:14,679 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:05:44,504 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '2', 'toNode': 's4', 'params': {'delay': 5, 'bandwidth': 10}}
+2025-03-19 02:05:44,505 - app - ERROR - API Exception: '2'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params', {}))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 289, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: '2'
+
+2025-03-19 02:05:44,505 - app - INFO - Request Completed | POST /api/links | Status: 500 | Duration: 1.5ms
+2025-03-19 02:05:44,506 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:05:44] "[35m[1mPOST /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:06:14,511 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'delay': 5, 'bandwidth': 10}}
+2025-03-19 02:06:14,585 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 74.79ms
+2025-03-19 02:06:14,586 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:06:14] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:06:19,852 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:06:19,970 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.28ms
+2025-03-19 02:06:19,970 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:06:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:07:58,285 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bandwidth': 10, 'delay': 5}}
+2025-03-19 02:07:58,332 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 46.62ms
+2025-03-19 02:07:58,332 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:07:58] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:08:05,547 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:08:05,670 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.28ms
+2025-03-19 02:08:05,670 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:08:05] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:09:20,327 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:09:20,328 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:09:33,006 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bandwidth': 10, 'delay': 5}}
+2025-03-19 02:09:33,055 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 49.49ms
+2025-03-19 02:09:33,055 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:09:33] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:09:35,835 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:09:35,955 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 119.45ms
+2025-03-19 02:09:35,955 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:09:35] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:11:50,770 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:11:50,770 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:11:53,786 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bandwidth': 10, 'delay': 5}}
+2025-03-19 02:11:53,832 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 46.33ms
+2025-03-19 02:11:53,832 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:11:53] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:13:03,034 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '32', 'toNode': 's4', 'params': {'w': 10, 'delay': 5}}
+2025-03-19 02:13:03,035 - app - ERROR - API Exception: '32'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 288, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: '32'
+
+2025-03-19 02:13:03,035 - app - INFO - Request Completed | POST /api/links | Status: 500 | Duration: 1.32ms
+2025-03-19 02:13:03,035 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:13:03] "[35m[1mPOST /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:13:15,238 - app - INFO - Request Completed | POST /api/links | Status: 400 | Duration: 0.44ms
+2025-03-19 02:13:15,238 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:13:15] "[31m[1mPOST /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:13:26,289 - app - INFO - Request Completed | POST /api/links | Status: 400 | Duration: 0.28ms
+2025-03-19 02:13:26,289 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:13:26] "[31m[1mPOST /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:13:54,561 - app - INFO - Request Completed | POST /api/links | Status: 400 | Duration: 0.28ms
+2025-03-19 02:13:54,561 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:13:54] "[31m[1mPOST /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:14:05,863 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bandwidth': 10, 'delay': 5}}
+2025-03-19 02:14:05,909 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 46.53ms
+2025-03-19 02:14:05,910 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:14:05] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:14:11,199 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bandwidth': 10, 'delay': 5}}
+2025-03-19 02:14:11,244 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 45.29ms
+2025-03-19 02:14:11,245 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:14:11] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:14:21,563 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'params': {'bw': 10, 'delay': 5}}
+2025-03-19 02:14:21,624 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 60.59ms
+2025-03-19 02:14:21,624 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:14:21] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:14:28,535 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:14:28,683 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 147.58ms
+2025-03-19 02:14:28,684 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:14:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:15:14,083 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h-9', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:15:14,084 - app - ERROR - API Exception: 'h-9'
+Request: POST /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 288, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 288, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h-9'
+
+2025-03-19 02:15:14,084 - app - INFO - Request Completed | POST /api/links | Status: 500 | Duration: 0.79ms
+2025-03-19 02:15:14,084 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:15:14] "[35m[1mPOST /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:15:37,098 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:15:37,161 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 63.53ms
+2025-03-19 02:15:37,162 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:15:37] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:15:40,438 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:15:40,591 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 152.95ms
+2025-03-19 02:15:40,592 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:15:40] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:18:47,040 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:18:47,193 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 153.67ms
+2025-03-19 02:18:47,194 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:18:47] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:19:57,081 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4'}
+2025-03-19 02:19:57,112 - app - INFO - Request Completed | DELETE /api/links | Status: 200 | Duration: 31.17ms
+2025-03-19 02:19:57,112 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:19:57] "DELETE /api/links HTTP/1.1" 200 -
+2025-03-19 02:20:06,066 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:20:06,205 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 138.76ms
+2025-03-19 02:20:06,206 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:06] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:20:22,245 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4'}
+2025-03-19 02:20:22,272 - app - INFO - Request Completed | DELETE /api/links | Status: 200 | Duration: 27.37ms
+2025-03-19 02:20:22,272 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:22] "DELETE /api/links HTTP/1.1" 200 -
+2025-03-19 02:20:22,942 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4'}
+2025-03-19 02:20:22,976 - app - INFO - Request Completed | DELETE /api/links | Status: 200 | Duration: 33.87ms
+2025-03-19 02:20:22,976 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:22] "DELETE /api/links HTTP/1.1" 200 -
+2025-03-19 02:20:23,502 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4'}
+2025-03-19 02:20:23,539 - app - INFO - Request Completed | DELETE /api/links | Status: 200 | Duration: 36.85ms
+2025-03-19 02:20:23,540 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:23] "DELETE /api/links HTTP/1.1" 200 -
+2025-03-19 02:20:26,198 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:20:26,315 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.87ms
+2025-03-19 02:20:26,316 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:20:41,992 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4'}
+2025-03-19 02:20:41,993 - app - ERROR - API Exception: list index out of range
+Request: DELETE /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 304, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 292, in del_link
+    if link is None:
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 307, in get_link
+    else:
+IndexError: list index out of range
+
+2025-03-19 02:20:41,993 - app - INFO - Request Completed | DELETE /api/links | Status: 500 | Duration: 1.2ms
+2025-03-19 02:20:41,994 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:20:41] "[35m[1mDELETE /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:21:09,503 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:21:09,569 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 65.56ms
+2025-03-19 02:21:09,569 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:21:09] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:21:12,422 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:21:12,555 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 132.33ms
+2025-03-19 02:21:12,557 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:21:12] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:26:26,394 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:26:26,395 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:26:35,711 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:26:35,763 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 52.28ms
+2025-03-19 02:26:35,764 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:26:35] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:26:38,965 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:26:39,027 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 61.22ms
+2025-03-19 02:26:39,027 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:26:39] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:26:43,411 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:26:43,535 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 123.96ms
+2025-03-19 02:26:43,536 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:26:43] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:44:45,720 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:44:45,721 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:44:56,501 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:44:56,569 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 68.08ms
+2025-03-19 02:44:56,570 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:44:56] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:45:04,940 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:45:05,050 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.38ms
+2025-03-19 02:45:05,051 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:45:05] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:45:20,552 - app - INFO - Request Started | POST /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:45:20,612 - app - INFO - Request Completed | POST /api/links | Status: 200 | Duration: 59.86ms
+2025-03-19 02:45:20,612 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:45:20] "POST /api/links HTTP/1.1" 200 -
+2025-03-19 02:45:22,477 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:45:22,628 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 151.11ms
+2025-03-19 02:45:22,628 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:45:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:46:06,862 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's4', 'intf': 'h5-eth2'}
+2025-03-19 02:46:06,863 - app - ERROR - API Exception: list index out of range
+Request: DELETE /api/links
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 304, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data['intf'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 294, in del_link
+    link, node1, node2 = self.get_link(fromNode,toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 310, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-19 02:46:06,863 - app - INFO - Request Completed | DELETE /api/links | Status: 500 | Duration: 1.11ms
+2025-03-19 02:46:06,863 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:06] "[35m[1mDELETE /api/links HTTP/1.1[0m" 500 -
+2025-03-19 02:46:18,677 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:46:18,800 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.19ms
+2025-03-19 02:46:18,800 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:46:19,936 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:46:20,070 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 134.3ms
+2025-03-19 02:46:20,072 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:46:21,059 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:46:21,224 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 165.09ms
+2025-03-19 02:46:21,224 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:46:22,128 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:46:22,249 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.01ms
+2025-03-19 02:46:22,250 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:46:47,394 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'in5f': 'h5-eth2'}
+2025-03-19 02:46:47,395 - app - INFO - Request Completed | DELETE /api/links | Status: 400 | Duration: 0.48ms
+2025-03-19 02:46:47,395 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:46:47] "[31m[1mDELETE /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:48:36,462 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'in5f': 'h5-eth2'}
+2025-03-19 02:48:36,462 - app - INFO - Request Completed | DELETE /api/links | Status: 400 | Duration: 0.31ms
+2025-03-19 02:48:36,463 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:48:36] "[31m[1mDELETE /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:48:49,459 - app - INFO - Request Started | DELETE /api/links | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4'}
+2025-03-19 02:48:49,459 - app - INFO - Request Completed | DELETE /api/links | Status: 400 | Duration: 0.31ms
+2025-03-19 02:48:49,459 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:48:49] "[31m[1mDELETE /api/links HTTP/1.1[0m" 400 -
+2025-03-19 02:50:22,384 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 02:50:22,384 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 02:50:38,219 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:50:38,278 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 59.55ms
+2025-03-19 02:50:38,279 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:50:38] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 02:50:40,594 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 02:50:40,671 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 77.41ms
+2025-03-19 02:50:40,672 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:50:40] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 02:50:43,001 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:50:43,123 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.32ms
+2025-03-19 02:50:43,124 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:50:43] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:50:43,427 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:50:43,570 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 142.97ms
+2025-03-19 02:50:43,571 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:50:43] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 02:51:29,120 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'in5f': 'h5-eth2'}
+2025-03-19 02:51:29,120 - app - INFO - Request Completed | POST /api/links/del | Status: 400 | Duration: 0.38ms
+2025-03-19 02:51:29,120 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:51:29] "[31m[1mPOST /api/links/del HTTP/1.1[0m" 400 -
+2025-03-19 02:52:30,249 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'in5f': 'h5-eth2'}
+2025-03-19 02:52:30,250 - app - INFO - Request Completed | POST /api/links/del | Status: 400 | Duration: 0.42ms
+2025-03-19 02:52:30,250 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:52:30] "[31m[1mPOST /api/links/del HTTP/1.1[0m" 400 -
+2025-03-19 02:52:38,740 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'intf': 'h5-eth2'}
+2025-03-19 02:52:38,772 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 31.5ms
+2025-03-19 02:52:38,772 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:52:38] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-19 02:52:49,410 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 02:52:49,528 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.69ms
+2025-03-19 02:52:49,528 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 02:52:49] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:01:11,885 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 03:01:11,885 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 03:01:25,386 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:01:25,457 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 71.55ms
+2025-03-19 03:01:25,458 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:01:25] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:01:26,529 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:01:26,592 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 62.62ms
+2025-03-19 03:01:26,592 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:01:26] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:01:29,773 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:01:29,895 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 122.26ms
+2025-03-19 03:01:29,896 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:01:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:01:30,598 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:01:30,735 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 136.71ms
+2025-03-19 03:01:30,736 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:01:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:02:00,538 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'intf': 'h5-eth2'}
+2025-03-19 03:02:00,571 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 33.19ms
+2025-03-19 03:02:00,572 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:02:00] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-19 03:02:06,043 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:02:06,158 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.59ms
+2025-03-19 03:02:06,158 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:02:06] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:02:29,627 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:02:29,698 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 70.95ms
+2025-03-19 03:02:29,699 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:02:29] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:02:32,237 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:02:32,391 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 154.29ms
+2025-03-19 03:02:32,392 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:02:32] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:03:02,054 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4'}
+2025-03-19 03:03:02,055 - app - INFO - Request Completed | POST /api/links/del | Status: 400 | Duration: 0.39ms
+2025-03-19 03:03:02,055 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:03:02] "[31m[1mPOST /api/links/del HTTP/1.1[0m" 400 -
+2025-03-19 03:04:16,462 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 03:04:16,462 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 03:05:24,507 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 03:05:24,507 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 03:05:30,793 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:05:30,843 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 49.98ms
+2025-03-19 03:05:30,844 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:05:30] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:05:32,537 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:05:32,591 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 53.95ms
+2025-03-19 03:05:32,591 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:05:32] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:05:40,890 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:05:41,011 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.9ms
+2025-03-19 03:05:41,012 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:05:41] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:05:41,684 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:05:41,814 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 129.22ms
+2025-03-19 03:05:41,814 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:05:41] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:05:50,385 - app - INFO - Request Started | POST /api/links/de | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4'}
+2025-03-19 03:05:50,386 - app - INFO - Request Completed | POST /api/links/de | Status: 404 | Duration: 0.62ms
+2025-03-19 03:05:50,386 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:05:50] "[33mPOST /api/links/de HTTP/1.1[0m" 404 -
+2025-03-19 03:06:02,493 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4'}
+2025-03-19 03:06:02,532 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 38.59ms
+2025-03-19 03:06:02,532 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:06:02] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-19 03:06:09,223 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:06:09,336 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.24ms
+2025-03-19 03:06:09,337 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:06:09] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:06:21,361 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:06:21,427 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 65.99ms
+2025-03-19 03:06:21,428 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:06:21] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:06:22,691 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'params': {'delay': 5, 'bw': 10}}
+2025-03-19 03:06:22,759 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 68.71ms
+2025-03-19 03:06:22,760 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:06:22] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-19 03:06:26,697 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:06:26,868 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 170.84ms
+2025-03-19 03:06:26,868 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:06:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 03:07:39,335 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h5', 'toNode': 's4', 'intf': 's4-eth6'}
+2025-03-19 03:07:39,367 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 32.86ms
+2025-03-19 03:07:39,368 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:07:39] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-19 03:07:42,205 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 03:07:42,371 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 166.68ms
+2025-03-19 03:07:42,372 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 03:07:42] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:30:38,371 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 14:30:38,373 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 14:30:49,686 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:30:49,917 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 231.21ms
+2025-03-19 14:30:49,918 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:30:49] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:30:50,056 - app - INFO - Request Started | GET /favicon.ico | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:30:50,057 - app - INFO - Request Completed | GET /favicon.ico | Status: 404 | Duration: 1.22ms
+2025-03-19 14:30:50,058 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:30:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-19 14:30:53,312 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:30:53,450 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 137.94ms
+2025-03-19 14:30:53,450 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:30:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:30:54,413 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:30:54,520 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 106.62ms
+2025-03-19 14:30:54,520 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:30:54] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:34:48,811 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/24'}, {'name': 'h2', 'ip': '192.168.1.3/24'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:34:48,811 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(self, data, build=False)
+NameError: name 'self' is not defined
+2025-03-19 14:34:48,815 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 4.91ms
+2025-03-19 14:34:48,816 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:34:48] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-19 14:35:31,628 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 14:35:31,629 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 14:36:47,550 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/24'}, {'name': 'h2', 'ip': '192.168.1.3/24'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:36:47,550 - app - INFO - Request Completed | POST /api/network/init | Status: 400 | Duration: 0.68ms
+2025-03-19 14:36:47,551 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:36:47] "[31m[1mPOST /api/network/init HTTP/1.1[0m" 400 -
+2025-03-19 14:38:11,013 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:38:11,120 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.11ms
+2025-03-19 14:38:11,121 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:38:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:38:11,767 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:38:11,871 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 103.49ms
+2025-03-19 14:38:11,871 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:38:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:38:12,279 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:38:12,383 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 104.74ms
+2025-03-19 14:38:12,384 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:38:12] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-19 14:38:36,691 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:38:36,691 - app - INFO - Request Completed | POST /api/network/init | Status: 400 | Duration: 0.54ms
+2025-03-19 14:38:36,692 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:38:36] "[31m[1mPOST /api/network/init HTTP/1.1[0m" 400 -
+2025-03-19 14:40:17,986 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 14:40:17,987 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 14:40:49,449 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:40:49,449 - app - INFO - Request Completed | POST /api/network/init | Status: 400 | Duration: 0.6ms
+2025-03-19 14:40:49,450 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:40:49] "[31m[1mPOST /api/network/init HTTP/1.1[0m" 400 -
+2025-03-19 14:41:33,105 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 14:41:33,105 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 14:42:18,764 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:42:19,302 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 107, in set_net_from_topo
+    c0 = self.net.addController(name='c0',
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 285, in addController
+    controller_new = controller( name, **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1399, in __init__
+    self.checkListening()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1415, in checkListening
+    raise Exception( "Please shut down the controller which is"
+Exception: Please shut down the controller which is running on port 6633:
+Active Internet connections (servers and established)
+tcp        0      0 0.0.0.0:6633            0.0.0.0:*               LISTEN      4672/python3        
+tcp        0      0 127.0.0.1:38142         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33340         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38158         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38164         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38146         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:38180         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:54576         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33360         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33328         127.0.0.1:6633          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:33352         127.0.0.1:6633          TIME_WAIT   -                   
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 130, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 118, in set_net_from_topo
+    logging.error(f"部署失败: {str(e)}")
+NameError: name 'logging' is not defined
+2025-03-19 14:42:19,306 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 542.26ms
+2025-03-19 14:42:19,307 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:42:19] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-19 14:43:38,022 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-19 14:43:38,023 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 14:43:56,114 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:43:56,650 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 536.1ms
+2025-03-19 14:43:56,651 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:43:56] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-19 14:44:39,020 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}
+2025-03-19 14:44:39,650 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 630.59ms
+2025-03-19 14:44:39,651 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:44:39] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-19 14:44:42,641 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-19 14:44:42,657 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 16.33ms
+2025-03-19 14:44:42,658 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 14:44:42] "GET /api/network/topology HTTP/1.1" 200 -

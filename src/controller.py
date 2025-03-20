@@ -1,10 +1,12 @@
 from mininet.net import Mininet
-from mininet.node import Controller, RemoteController, OVSKernelSwitch, Host
+from mininet.node import Controller, RemoteController, OVSController, OVSKernelSwitch, Host
 from mininet.link import TCLink
 from mininet.topo import Topo
 from mininet.util import quietRun
 import json
 import logging
+
+
 class JsonTopo(Topo):
     def __init__(self, json_data):
         super().__init__()
@@ -14,14 +16,17 @@ class JsonTopo(Topo):
         for h in json_data['hosts']:
             name = h['name']
             ip = h['ip']
+            if '/' not in ip:
+                ip += '/24'
             nodes[name] = self.addHost(name, cls=Host, ip=ip, defaultRoute=None)
         # 添加交换机
         for s in json_data['switches']:
             name = s['name']
-            nodes[name] = self.addSwitch(name)
+            nodes[name] = self.addSwitch(name, cls=OVSKernelSwitch)
         # 添加连接
         for link in json_data['links']:
             self.addLink(nodes[link['from']], nodes[link['to']])
+
 
 class MininetController:
     def __init__(self, net=None):
@@ -30,7 +35,7 @@ class MininetController:
             self._init_network()
 
     def _init_network(self, topo=None, controller=Controller, switch=OVSKernelSwitch):
-        """Initialize network topology"""
+        """Initialize network topology while self.net is None"""
         self.net = Mininet(topo=topo,
                            controller=controller,
                            switch=switch,
@@ -38,17 +43,11 @@ class MininetController:
                            build=False)
         # 添加初始拓扑
         c0 = self.net.addController(name='c0',
-                               controller=Controller,
-                               protocol='tcp',
-                               port=6633)
+                                    controller=Controller,
+                                    protocol='tcp',
+                                    port=6633)
+        c0.start()
 
-        # Add switches
-        self.switches = {}
-        for i in range(1, 5):
-            sw = self.net.addSwitch(f's{i}')
-            self.switches[f's{i}'] = sw
-
-        h1 = self.net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
         h1 = self.net.addHost('h1', cls=Host, ip='10.0.0.1', defaultRoute=None)
         h2 = self.net.addHost('h2', cls=Host, ip='10.0.0.2', defaultRoute=None)
         h3 = self.net.addHost('h3', cls=Host, ip='10.0.0.3', defaultRoute=None)
@@ -57,6 +56,22 @@ class MininetController:
         h6 = self.net.addHost('h6', cls=Host, ip='10.0.0.6', defaultRoute=None)
         h7 = self.net.addHost('h7', cls=Host, ip='10.0.0.7', defaultRoute=None)
         h8 = self.net.addHost('h8', cls=Host, ip='10.0.0.8', defaultRoute=None)
+
+        s1 = self.net.addSwitch('s1', cls=OVSKernelSwitch)
+        s2 = self.net.addSwitch('s2', cls=OVSKernelSwitch)
+        s3 = self.net.addSwitch('s3', cls=OVSKernelSwitch)
+        s4 = self.net.addSwitch('s4', cls=OVSKernelSwitch)
+
+        # 启动switch并手动添加流表规则
+        self.net.get('s1').start([c0])
+        self.net.get('s2').start([c0])
+        self.net.get('s3').start([c0])
+        self.net.get('s4').start([c0])
+        self.net.get('s1').cmd('sudo ovs-ofctl add-flow s1 actions=NORMAL')
+        self.net.get('s2').cmd('sudo ovs-ofctl add-flow s2 actions=NORMAL')
+        self.net.get('s3').cmd('sudo ovs-ofctl add-flow s3 actions=NORMAL')
+        self.net.get('s4').cmd('sudo ovs-ofctl add-flow s4 actions=NORMAL')
+
         self.net.addLink(s1, s2)
         self.net.addLink(s2, s3)
         self.net.addLink(s3, s4)
@@ -68,9 +83,10 @@ class MininetController:
         self.net.addLink(h6, s3)
         self.net.addLink(h7, s4)
         self.net.addLink(h8, s4)
-    
+        self.net.start()
+
     # 重新为controller赋新的net值
-    def set_net_from_topo(self, data, build=False, ipBase='10.0.0.0/24',controller=Controller):
+    def set_net_from_topo(self, data, build=False, ipBase='10.0.0.0/24'):
         try:
             if not data:
                 return False, f"error: 无JSON数据", 400
@@ -83,7 +99,6 @@ class MininetController:
             # 检查主机
             for host in data['hosts']:
                 if 'name' not in host or 'ip' not in host:
-                    print(f"******************************{host}")
                     return False, "error: 主机缺少名称或IP", 400
                 nodes.add(host['name'])
             # 检查交换机
@@ -91,7 +106,7 @@ class MininetController:
                 if 'name' not in switch:
                     return False, "error: 交换机缺少名称", 400
                 nodes.add(switch['name'])
-             # 检查链路
+            # 检查链路
             for link in data['links']:
                 if 'from' not in link or 'to' not in link:
                     return False, "error: 链路缺少端点", 400
@@ -103,20 +118,25 @@ class MininetController:
             if self.net is not None:
                 self.net.stop()
             self.net = Mininet(topo=topo, build=False, ipBase=ipBase)
-            # 添加初始控制器
             c0 = self.net.addController(name='c0',
-                                        controller=Controller,
+                                        controller=OVSController,
                                         protocol='tcp',
                                         port=6633)
             c0.start()
             self.start_network()
+            # 将控制器传递给switch，并对OVSController和Controller手动设置流表规则
+            for switch in self.net.switches:
+                switch.start([c0])
+                if isinstance(c0, (Controller, OVSController)):
+                    switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} actions=NORMAL')
+            
             return True, "status: 网络部署成功", 200
         except Exception as e:
             if self.net:
                 self.net.stop()
                 self.net = None
             logging.error(f"部署失败: {str(e)}")
-            return False,f'error: {str(e)}', 500
+            return False, f'error: {e}', 500
 
     def start_network(self):
         """Start entire network"""
@@ -145,10 +165,14 @@ class MininetController:
             for intf in node.intfList():
                 if intf.name == 'lo': continue
                 ip = intf.IP() or ""
+                mask = self._prefix_to_netmask(intf.prefixLen) if ip else ""
+                if ip and '/' not in ip:
+                    # 单独处理未携带掩码的ip
+                    ip = f'{ip}/{intf.prefixLen}'
                 params.append({
                     'ip': ip,
                     'MAC': intf.MAC() or "",
-                    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+                    'Mask': mask,
                     'intfName': intf.name
                 })
 
@@ -164,10 +188,14 @@ class MininetController:
             for intf in node.intfList():
                 if intf.name == 'lo': continue
                 ip = intf.IP() or ""
+                mask = self._prefix_to_netmask(intf.prefixLen) if ip else ""
+                if ip and '/' not in ip:
+                    # 单独处理未携带掩码的ip
+                    ip = f'{ip}/{intf.prefixLen}'
                 interfaces.append({
                     'ip': ip,
                     'MAC': intf.MAC() or "",
-                    'Mask': self._prefix_to_netmask(intf.prefixLen) if ip else "",
+                    'Mask': mask,
                     'intfName': intf.name
                 })
 
@@ -183,12 +211,12 @@ class MininetController:
                 'from': link.intf1.node.name,
                 'to': link.intf2.node.name,
                 'params': {
-                    'fromIntf':link.intf1.name,
-                    'toIntf':link.intf2.name,
+                    'fromIntf': link.intf1.name,
+                    'toIntf': link.intf2.name,
                     'bandwidth': link.intf1.params.get('bw', None),
                     'delay': link.intf1.params.get('delay', None),
                     'status': link.intf1.status() and link.intf2.status()
-            
+
                 }
             })
 
@@ -199,7 +227,7 @@ class MininetController:
         Test connectivity between two hosts:fromNode and toNode
         return: ploss packet loss percentage
         """
-        hosts = [self.net.get(fromNode),self.net.get(toNode)]
+        hosts = [self.net.get(fromNode), self.net.get(toNode)]
         ploss = self.net.ping(hosts, timeout=timeout)
         result = f"ping {fromNode}->{toNode}, loss: {ploss}"
         return result
@@ -209,16 +237,16 @@ class MininetController:
             hosts: list of hosts
             timeout: time to wait for a response, as string
             returns: all ping data;"""
-        hosts = [self.net.get(fromNode),self.net.get(toNode)]  
+        hosts = [self.net.get(fromNode), self.net.get(toNode)]
         result = []
-        all_outputs = self.net.pingFull(hosts,timeout=timeout)
+        all_outputs = self.net.pingFull(hosts, timeout=timeout)
         for outputs in all_outputs:
             src, dest, ping_outputs = outputs
             sent, received, rttmin, rttavg, rttmax, rttdev = ping_outputs
             output = f" {src}->{dest}: {sent}/{received}, rttmin rttavg rttmax rttdev:{rttdev} {rttmin} {rttavg} {rttmax}"
             result.append(output)
         return result
-        
+
     def ping_ip(self, name, ip):
         """test connectivity from host h1 to ip"""
         node = self.net.get(name)
@@ -229,12 +257,12 @@ class MininetController:
            returns: ploss packet loss percentage"""
         result = []
         for node1 in self.net.hosts:
+            tmp = ''
             for node2 in self.net.hosts:
-                tmp = self.ping(node1.name, node2.name, timeout=timeout)
-                result.append(tmp)
+                tmp += self.ping(node1.name, node2.name, timeout=timeout) + '\n'
+            result.append(tmp)
         return result
-        
-        
+
     def ping_all_full(self, timeout=None):
         """Ping between all hosts and return all data.
             returns: all ping data;"""
@@ -251,23 +279,31 @@ class MininetController:
         :param name: 节点名称 (host/switch)
         :param controller: 可选参数，指定交换机控制器（仅对switch有效）
         """
-        node = self.get_node_by_name(name, _type)
-        if node is None:
-            return False,f"[Error]Fail to get node by name:{name}"
+        try:
+            node = self.get_node_by_name(name, _type)
+            if node is None:
+                return False, f"[Error]Fail to get node by name:{name}"
 
-        if isinstance(node, OVSKernelSwitch):
-            # 处理交换机启动
-            ctrl = controller if controller is not None else self.net.get('c0')  # 默认使用第一个控制器
-            node.start([ctrl])
-            return True, f"Switch {name} started with controller {ctrl.name}"
-        elif isinstance(node, Host):
-            # 启动主机网络接口
-            node.configDefault()
-            for intf in node.intfList():
-                intf.ifconfig('up')
-            return True, f"Host {name} interfaces up"
-        else:
-            return False, f"[Error]Unsupported node type: {type(node)}"
+            if isinstance(node, OVSKernelSwitch):
+                # 处理交换机启动
+                ctrl = controller if controller is not None else self.net.get('c0')  # 默认使用第一个控制器
+                node.start([ctrl])
+                
+                if isinstance(ctrl, (Controller, OVSController)):
+                    for switch in self.net.switches:
+                        switch.start([ctrl])
+                        switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} actions=NORMAL')
+                return True, f"Switch {name} started with controller {ctrl.name}"
+            elif isinstance(node, Host):
+                # 启动主机网络接口
+                node.configDefault()
+                for intf in node.intfList():
+                    intf.ifconfig('up')
+                return True, f"Host {name} interfaces up"
+            else:
+                return False, f"[Error]Unsupported node type: {type(node)}"
+        except:
+            return False, f"[KeyError]: {name}"
 
     def stop_node(self, name, _type, keep_config=True):
         """
@@ -277,20 +313,20 @@ class MininetController:
         """
         node = self.get_node_by_name(name, _type)
         if node is None:
-            return False,f"[Error]Fail to get node by name:{name}"
+            return False, f"[Error]Fail to get node by name:{name}"
 
         if isinstance(node, OVSKernelSwitch):
             node.stop(deleteIntfs=not keep_config)
-            return True,f"Switch {name} stopped"
+            return True, f"Switch {name} stopped"
         elif isinstance(node, Host):
             # 关闭所有接口
             for intf in node.intfList():
                 intf.ifconfig('down')
             if not keep_config:
                 node.terminate()
-            return True,f"Host {name} {'stopped' if keep_config else 'removed'}"
+            return True, f"Host {name} {'stopped' if keep_config else 'removed'}"
         else:
-            return False,f"[Error]Unsupported node type: {type(node)}"
+            return False, f"[Error]Unsupported node type: {type(node)}"
 
     def get_node_by_name(self, name, _type=None):
         """get node by name,return Node"""
@@ -300,69 +336,68 @@ class MininetController:
                 if len(nodes) <= 0:
                     raise KeyError(f'name:{name} 不存在，查找host失败')
                 else:
-                    node  = nodes[0]
+                    node = nodes[0]
             elif _type == "switch":
                 nodes = [switch for switch in self.net.switches if switch.name == name]
                 if len(nodes) <= 0:
                     raise KeyError(f'name:{name} 不存在，查找switch失败')
                 else:
-                    node  = nodes[0]
+                    node = nodes[0]
             else:
                 node = self.net.get(name)
             return node
         except KeyError as e:
-            print(f"[Error]Node {name} not found, CallStack:[controller.py/get_node_by_name()]")
+            print(f"[Error]Node {name} not found, CallStack:[controller.py/get_node_by_name()")
             return None
-            
 
     def add_host(self, name, ip, link_to=None):
-        # Add to first switch by default  
+        # Add to first switch by default
         if link_to is None:
             switch = self.net.switches[0]
         else:
             switch = self.get_node_by_name(link_to)
             if switch is None:
                 return False, f"Error occurred, Node:{link_to} not found"
-    
+
         """Add new host to network"""
         new_host = self.net.addHost(name, cls=Host, ip=ip, defaultRoute=None)
-       
-        self.net.addLink(new_host, switch,cls=TCLink, bw=10,delay=5)
+
+        self.net.addLink(new_host, switch, cls=TCLink, bw=10, delay=5)
         self.start_node(name)
-        data={"name":new_host.name,
-              #"ip":new_host.intfList()[0].IP(),
-              "status":'up' if any(intf.isUp() for intf in new_host.intfList()) else 'down'
-              }
+        data = {"name": new_host.name,
+                # "ip":new_host.intfList()[0].IP(),
+                "status": 'up' if any(intf.isUp() for intf in new_host.intfList()) else 'down'
+                }
         return True, data
 
     def add_switch(self, name, cls=None, **params):
         """params: listenPort,inNamespace"""
         new_switch = self.net.addSwitch(name=name, params=params)
-        data={"name":new_switch.name,"status":'up' if new_switch.isSetup else 'down'}
+        self.start_node(new_switch.name)
+        data = {"name": new_switch.name, "status": 'up' if new_switch.isSetup else 'down'}
         return data
 
     def del_node(self, name):
         """del node(host/switch/controller) by name"""
-        
+
         node = self.get_node_by_name(name)
         if node is not None:
             self.net.delNode(node)
             return True, f"successfully delete node{name}"
         else:
             return False, f"[Error]Fail to delete node:{name},callbacks: {info}"
-        
 
     def add_link(self, fromNode, toNode, fromPort=None, toPort=None, **params):
         """add link between fromNoed and toNode"""
         new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
         return new_link
 
-    def del_link(self,fromNode, toNode, intf=None, index=0, allLinks=False ):
-        link, node1, node2, index= self.get_link(fromNode,toNode, intf=intf)
+    def del_link(self, fromNode, toNode, intf=None, index=0, allLinks=False):
+        link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
         if link is None:
-            return False,f'[Error]Link {fromNode}->{toNode} not found'
+            return False, f'[Error]Link {fromNode}->{toNode} not found'
         else:
-            self.net.delLinkBetween(node1,node2,index,allLinks)
+            self.net.delLinkBetween(node1, node2, index, allLinks)
             return True, f"successfully remove Link {fromNode}->{toNode},intf matchs:{intf}"
 
     def get_link(self, fromNode, toNode, intf=None):
@@ -380,7 +415,7 @@ class MininetController:
                 #  遍历查找是否有满足intf的link
                 for lk in links:
                     if lk.intf1.name == intf or lk.intf2.name == intf:
-                        link=lk
+                        link = lk
                         break
                     index += 1  # 记住查找的link所在index方便删除
             return link, node1, node2, index
@@ -427,7 +462,7 @@ class MininetController:
             ]
 	    }"""
         result = []
-       
+
         if 'hosts' in config:
             for host_conf in config['hosts']:
                 result.append(self.update_node_params(host_conf))
@@ -447,7 +482,7 @@ class MininetController:
         params = link_conf.get('params', {})
 
         # 遍历所有链路查找匹配项
-        link, _, _, _ = self.get_link(from_node,to_node)
+        link, _, _, _ = self.get_link(from_node, to_node)
         if link is None:
             return False, f"[Error]Link {from_node}->{to_node} not found"
         # 更新带宽参数
@@ -480,8 +515,7 @@ class MininetController:
         try:
             node = self.net.get(node_name)
         except:
-            return False,f"[Error]node {node_name} not found"
-
+            return False, f"[Error]node {node_name} not found"
 
         # 获取指定接口
         intf_name = params.get('intfName', '')
@@ -492,12 +526,15 @@ class MininetController:
             try:
                 intf = node.intf(intf_name)
             except:
-                return False,f"[Error]Interface {intf_name} not found on {node_name}"
+                return False, f"[Error]Interface {intf_name} not found on {node_name}"
 
         # IP地址配置
-        if 'IP' in params:
-            ip = params['IP']
-            mask = params.get('Mask', '255.255.255.0')
+        if 'ip' in params:
+            mask = params.get('Mask', '255.255.0.0')
+            ip = params['ip']
+            if '/' in ip:
+                _, prefix = ip.split('/')
+                mask = self._prefix_to_netmask(prefix)
             prefix_len = self._netmask_to_prefix(mask)
             intf.setIP(ip, prefixLen=prefix_len)
 
@@ -569,6 +606,8 @@ class MininetController:
 
     @staticmethod
     def _prefix_to_netmask(prefix):
+        if isinstance(prefix, str):
+            prefix = int(prefix)
         """将前缀长度转换为子网掩码"""
         if prefix < 0 or prefix > 32: return ""
         mask = (0xffffffff << (32 - int(prefix))) & 0xffffffff
@@ -578,8 +617,11 @@ class MininetController:
             (mask >> 8) & 0xff,
             mask & 0xff
         )
+
+
 if __name__ == '__main__':
     from main_topology import myNetwork
+
     net = myNetwork(cli=False)
     controller = MininetController(net)
     controller.start_network()

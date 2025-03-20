@@ -118,6 +118,9 @@ def handle_exceptions(func):
     wrapper.__name__ = func.__name__
     return wrapper
 
+def start_mininet_cli(net):
+    from mininet.cli import CLI
+    CLI(net)
 
 # app running 
 controller = None
@@ -125,10 +128,25 @@ controller = None
 @app.route('/api/network/init', methods=['POST'])
 def init_network():
     global controller
-    current_net = controller.net
-    data = request.get_json()
+    # 获取请求的json body和相关参数
+    req_body = request.get_json()
+    
+    # 是否需要启动一个cli对象, 默认为false
+    cli = req_body.get("cli", False) 
+    data = req_body.get("data", {})
+        
+    # 重新生成网络
     success, mes, code = controller.set_net_from_topo(data, build=False)
+    
+    # 启动mininet-CLI
+    if cli:
+        import threading
+        # 在新线程中启动mininet CLI供测试所用
+        flask_thread = threading.Thread(target=lambda: start_mininet_cli(controller.net))
+        flask_thread.daemon = True  # 设置为守护线程，以便在主线程退出时自动退出
+        flask_thread.start()
     return format_response(success, mes, None, code)
+    
 
 
 @app.route('/api/network/start', methods=['POST'])
@@ -348,14 +366,38 @@ def update_controller():
     app.logger.debug(message)
     return format_response(False, message, None, 400)
 
+
+    
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run Flask app with custom arguments')
     parser.add_argument('--cli', type=bool, help='run with param --CLI will open a mininet CLI window')
     args = parser.parse_args()
-
     cli = args.cli if args.cli else False
-    net = myNetwork(cli=cli)
+    
+    # 创建MininetController对象
+    net = myNetwork(cli=False)
     controller = MininetController(net)
-    app.run(host='127.0.0.1', port=8080)
-    controller.stop_network()
+    
+    # 启动flask app
+    if not cli:
+        app.run(host='127.0.0.1', port=8080)
+        controller.stop_network()
+    else:
+        # 如果需要启动cli，新建线程再启动。使用完及时exit命令退出，不然在init命令中会重开新的cli，会有线程输出结果乱序的情况出现。
+        import threading
+        # 在新线程中启动 Flask 应用
+        flask_thread = threading.Thread(target=lambda: app.run(host='127.0.0.1', port=8080))
+        flask_thread.daemon = False  # 设置为守护线程，以便在主线程退出时自动退出
+        flask_thread.start()
+        # 启动 Mininet CLI
+        start_mininet_cli(controller.net)
+        
+        # 监测app运行结束后，停止网络
+        # 有点bug, 不知道为什么ctrl + c停止后，is_alive()会报错
+        while True:
+            print("轮询中")
+            if not flask_thread.is_alive():
+                print("检测到线程已结束，调用 stop 方法")
+                controller.stop_network()
+                break
     
