@@ -1,0 +1,1244 @@
+2025-03-22 10:15:49,295 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:15:49,296 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:33:19,719 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 's1', 'get_full': True}
+2025-03-22 10:33:19,735 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 16.66ms
+2025-03-22 10:33:19,736 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:33:19] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 10:47:02,214 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:47:03,851 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1636.41ms
+2025-03-22 10:47:03,851 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:47:03] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 10:47:06,367 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:50:15,548 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:50:15,548 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 119, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 139, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-22 10:50:15,568 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 20.4ms
+2025-03-22 10:50:15,569 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:50:15] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:50:54,673 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:50:54,673 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:51:17,691 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:51:19,438 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1748.18ms
+2025-03-22 10:51:19,439 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:51:19] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 10:51:21,746 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:52:33,091 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:52:33,091 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:52:35,888 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:52:36,078 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 190.36ms
+2025-03-22 10:52:36,079 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:52:36] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:52:43,870 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:52:44,009 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 138.94ms
+2025-03-22 10:52:44,010 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:52:44] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:54:03,473 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:54:03,473 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:54:10,407 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:54:12,079 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1672.42ms
+2025-03-22 10:54:12,080 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:54:12] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 10:54:14,611 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:57:06,737 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:57:06,737 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:57:10,800 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:57:11,339 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 539.7ms
+2025-03-22 10:57:11,341 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:57:11] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:57:13,152 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:57:14,158 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1006.91ms
+2025-03-22 10:57:14,159 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:57:14] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 10:57:15,519 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:57:15,727 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 207.71ms
+2025-03-22 10:57:15,727 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:57:15] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:57:16,756 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:57:17,794 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1039.02ms
+2025-03-22 10:57:17,795 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:57:17] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 10:57:18,716 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:58:10,070 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:58:10,070 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:58:15,898 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:58:16,375 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 479.58ms
+2025-03-22 10:58:16,376 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:58:16] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 10:59:29,059 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 10:59:29,059 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 10:59:34,991 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 10:59:35,535 - app - INFO - Request Completed | POST /api/network/init | Status: 500 | Duration: 544.18ms
+2025-03-22 10:59:35,536 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 10:59:35] "[35m[1mPOST /api/network/init HTTP/1.1[0m" 500 -
+2025-03-22 11:00:40,595 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 11:00:40,595 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 11:00:50,901 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 11:08:11,387 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 11:08:11,387 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 11:09:17,394 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 11:09:19,513 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 2119.65ms
+2025-03-22 11:09:19,515 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:09:19] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 11:10:32,402 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h3'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h3', 'ip': '192.168.1.6/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 11:25:16,549 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 11:25:16,549 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 11:25:38,607 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:25:38,902 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 295.16ms
+2025-03-22 11:25:38,903 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:25:38] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:26:00,845 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h3'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h3', 'ip': '192.168.1.6/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 11:26:02,082 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1237.47ms
+2025-03-22 11:26:02,083 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:26:02] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 11:26:05,986 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:26:05,999 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 13.63ms
+2025-03-22 11:26:06,000 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:26:06] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:30:13,575 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 11:30:13,575 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 11:30:31,195 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 11:30:32,492 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1296.63ms
+2025-03-22 11:30:32,493 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:30:32] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 11:30:38,044 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:30:50,348 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 12304.08ms
+2025-03-22 11:30:50,348 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:30:50] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:31:55,191 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 's1'}
+2025-03-22 11:31:55,192 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:31:55,192 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 1.12ms
+2025-03-22 11:31:55,192 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:31:55] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:32:34,716 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 'h1'}
+2025-03-22 11:32:34,754 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 37.85ms
+2025-03-22 11:32:34,754 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:32:34] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-22 11:32:39,226 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:32:51,501 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 12274.47ms
+2025-03-22 11:32:51,501 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:32:51] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:33:46,752 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:33:46,775 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 23.15ms
+2025-03-22 11:33:46,776 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:33:46] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:33:53,600 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:33:53,620 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 19.34ms
+2025-03-22 11:33:53,621 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:33:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:39:31,199 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's1', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-22 11:39:31,281 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 82.89ms
+2025-03-22 11:39:31,282 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:39:31] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-22 11:42:54,322 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:43:06,603 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 12281.32ms
+2025-03-22 11:43:06,603 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:43:06] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:43:06,763 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:43:06,790 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 27.07ms
+2025-03-22 11:43:06,791 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:43:06] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:47:13,771 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:47:13,852 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 150, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-22 11:47:13,853 - app - INFO - Request Completed | POST /api/network/start | Status: 500 | Duration: 81.6ms
+2025-03-22 11:47:13,853 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:47:13] "[35m[1mPOST /api/network/start HTTP/1.1[0m" 500 -
+2025-03-22 11:48:01,473 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 's1'}
+2025-03-22 11:48:01,590 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 116.47ms
+2025-03-22 11:48:01,590 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:48:01] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-22 11:48:08,244 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:48:08,253 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 9.01ms
+2025-03-22 11:48:08,253 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:48:08] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:49:40,073 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:49:40,101 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 28.29ms
+2025-03-22 11:49:40,102 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:49:40] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:53:42,089 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 'h1', 'params': {'delay': 5, 'bw': 10}}
+2025-03-22 11:53:42,155 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 66.66ms
+2025-03-22 11:53:42,156 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:53:42] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-22 11:55:03,276 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 's1'}
+2025-03-22 11:55:03,370 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 94.13ms
+2025-03-22 11:55:03,370 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:55:03] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-22 11:55:06,725 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 11:55:06,765 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 40.87ms
+2025-03-22 11:55:06,766 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:55:06] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 11:55:16,922 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:55:16,958 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 36.4ms
+2025-03-22 11:55:16,959 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:55:16] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:56:39,588 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 's2'}
+2025-03-22 11:56:39,588 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:56:39,588 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 0.78ms
+2025-03-22 11:56:39,589 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:56:39] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:57:48,170 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 's1'}
+2025-03-22 11:57:48,170 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:57:48,170 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 0.65ms
+2025-03-22 11:57:48,170 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:57:48] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:57:55,594 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:57:55,640 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 46.26ms
+2025-03-22 11:57:55,641 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:57:55] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:57:56,591 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:57:56,631 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.69ms
+2025-03-22 11:57:56,632 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:57:56] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:58:14,877 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's2', 'toNode': 's1'}
+2025-03-22 11:58:14,877 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:58:14,878 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 0.68ms
+2025-03-22 11:58:14,878 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:58:14] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:58:28,935 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:58:28,970 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 34.91ms
+2025-03-22 11:58:28,970 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:58:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:58:59,141 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's1', 'toNode': 's2'}
+2025-03-22 11:58:59,142 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:58:59,142 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 0.72ms
+2025-03-22 11:58:59,142 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:58:59] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:59:15,533 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 's1', 'toNode': 'h1'}
+2025-03-22 11:59:15,533 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:59:15,533 - app - INFO - Request Completed | POST /api/links/del | Status: 500 | Duration: 0.66ms
+2025-03-22 11:59:15,533 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:15] "[35m[1mPOST /api/links/del HTTP/1.1[0m" 500 -
+2025-03-22 11:59:19,788 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:19,828 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.61ms
+2025-03-22 11:59:19,828 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:20,373 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:20,412 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 38.14ms
+2025-03-22 11:59:20,412 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:20,523 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:20,563 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 40.06ms
+2025-03-22 11:59:20,564 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:20,734 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:20,776 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 41.52ms
+2025-03-22 11:59:20,777 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,030 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,070 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.5ms
+2025-03-22 11:59:21,070 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,209 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,247 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 38.08ms
+2025-03-22 11:59:21,247 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,377 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,420 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 42.46ms
+2025-03-22 11:59:21,420 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,526 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,569 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 43.36ms
+2025-03-22 11:59:21,570 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,670 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,707 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 36.66ms
+2025-03-22 11:59:21,707 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,828 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:21,873 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 44.14ms
+2025-03-22 11:59:21,873 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:21,981 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,023 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 42.24ms
+2025-03-22 11:59:22,024 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:22,147 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,188 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 41.52ms
+2025-03-22 11:59:22,189 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:22,293 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,332 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.16ms
+2025-03-22 11:59:22,333 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:22,453 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,494 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 40.96ms
+2025-03-22 11:59:22,494 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:22,572 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,611 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 38.77ms
+2025-03-22 11:59:22,612 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:22,918 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:22,964 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 45.99ms
+2025-03-22 11:59:22,965 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:23,178 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:23,223 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 44.37ms
+2025-03-22 11:59:23,223 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:23,941 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:23,978 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 37.47ms
+2025-03-22 11:59:23,979 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 11:59:24,260 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 11:59:24,299 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.0ms
+2025-03-22 11:59:24,299 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 11:59:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 14:44:08,383 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 14:44:08,383 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 14:45:40,198 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 14:45:40,365 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 167.18ms
+2025-03-22 14:45:40,366 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 14:45:40] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 14:45:41,804 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 14:45:41,928 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 123.52ms
+2025-03-22 14:45:41,929 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 14:45:41] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 14:45:42,760 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 14:45:42,875 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.24ms
+2025-03-22 14:45:42,875 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 14:45:42] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:00:37,601 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:00:37,710 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 109.13ms
+2025-03-22 15:00:37,711 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:00:37] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:44,286 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 15:01:44,287 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 15:01:50,183 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:50,287 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 103.42ms
+2025-03-22 15:01:50,288 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:50] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:50,702 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:50,810 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.8ms
+2025-03-22 15:01:50,811 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:50] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:51,062 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:51,180 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.0ms
+2025-03-22 15:01:51,180 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:51] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:51,400 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:51,507 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.07ms
+2025-03-22 15:01:51,507 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:51] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:51,711 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:51,826 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.65ms
+2025-03-22 15:01:51,827 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:51] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:52,030 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:52,145 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.78ms
+2025-03-22 15:01:52,145 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:52] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:52,350 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:52,458 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.31ms
+2025-03-22 15:01:52,458 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:52] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:52,679 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:52,790 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.68ms
+2025-03-22 15:01:52,791 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:52] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:53,007 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:53,121 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.47ms
+2025-03-22 15:01:53,122 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:53,345 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:53,450 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 104.96ms
+2025-03-22 15:01:53,451 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:01:53,705 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:01:53,821 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.45ms
+2025-03-22 15:01:53,822 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:01:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:02:04,624 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:02:05,986 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1362.35ms
+2025-03-22 15:02:05,987 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:05] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:02:07,658 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:02:08,499 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 841.34ms
+2025-03-22 15:02:08,500 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:08] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:02:09,830 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:02:10,644 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 814.3ms
+2025-03-22 15:02:10,645 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:10] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:02:11,862 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:02:13,035 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1172.37ms
+2025-03-22 15:02:13,036 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:13] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:02:14,178 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:02:15,034 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 856.08ms
+2025-03-22 15:02:15,035 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:15] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:02:42,946 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 15:02:55,222 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 12276.17ms
+2025-03-22 15:02:55,222 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:55] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 15:02:56,385 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:02:56,424 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 38.85ms
+2025-03-22 15:02:56,425 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:56] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:02:57,008 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:02:57,033 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 24.31ms
+2025-03-22 15:02:57,033 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:57] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:02:57,562 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:02:57,588 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 25.92ms
+2025-03-22 15:02:57,589 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:02:57] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:03:18,139 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:03:18,228 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-22 15:03:18,229 - app - INFO - Request Completed | POST /api/network/start | Status: 500 | Duration: 89.83ms
+2025-03-22 15:03:18,229 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:03:18] "[35m[1mPOST /api/network/start HTTP/1.1[0m" 500 -
+2025-03-22 15:04:15,386 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:04:16,375 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 989.75ms
+2025-03-22 15:04:16,376 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:04:16] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:04:19,539 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:04:19,570 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 30.82ms
+2025-03-22 15:04:19,570 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:04:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:04:31,749 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 15:04:56,310 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 24561.13ms
+2025-03-22 15:04:56,310 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:04:56] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 15:05:16,458 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:05:16,463 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 5.35ms
+2025-03-22 15:05:16,464 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:16] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:05:31,462 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:05:37,617 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6155.05ms
+2025-03-22 15:05:37,617 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:37] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:05:48,964 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:05:49,851 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 886.52ms
+2025-03-22 15:05:49,851 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:49] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:05:53,033 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:05:53,065 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 32.9ms
+2025-03-22 15:05:53,066 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:05:53,625 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:05:53,650 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 24.66ms
+2025-03-22 15:05:53,651 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:53] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:05:54,235 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:05:54,264 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 28.92ms
+2025-03-22 15:05:54,264 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:05:54] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:06:14,632 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:06:20,785 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6153.4ms
+2025-03-22 15:06:20,786 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:06:20] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:06:39,182 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 's1', 'get_full': True}
+2025-03-22 15:06:49,190 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 10008.71ms
+2025-03-22 15:06:49,191 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:06:49] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:08:21,337 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:08:21,361 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 24.11ms
+2025-03-22 15:08:21,362 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:08:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:08:21,993 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:08:22,023 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 30.05ms
+2025-03-22 15:08:22,024 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:08:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:12:04,177 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:06,447 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:06,447 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,448 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.97ms
+2025-03-22 15:12:06,448 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:06] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:06,631 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:06,632 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,632 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.63ms
+2025-03-22 15:12:06,632 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:06] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:06,791 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:06,791 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,791 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.59ms
+2025-03-22 15:12:06,792 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:06] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:06,959 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:06,959 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,960 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 1.47ms
+2025-03-22 15:12:06,961 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:06] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:07,854 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:07,855 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:07,855 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.65ms
+2025-03-22 15:12:07,855 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:07] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,031 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,031 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,031 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.75ms
+2025-03-22 15:12:08,032 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,192 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,192 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,193 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 1.6ms
+2025-03-22 15:12:08,194 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,367 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,367 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,368 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 1.48ms
+2025-03-22 15:12:08,368 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,520 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,520 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,520 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.89ms
+2025-03-22 15:12:08,521 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,681 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,682 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,682 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.54ms
+2025-03-22 15:12:08,682 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:08,847 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:08,848 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,848 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.63ms
+2025-03-22 15:12:08,848 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:08] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:09,008 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:09,010 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:09,011 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 2.44ms
+2025-03-22 15:12:09,011 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:09] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:10,571 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:10,571 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:10,572 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.69ms
+2025-03-22 15:12:10,572 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:10] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:10,745 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:10,746 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:10,746 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.73ms
+2025-03-22 15:12:10,746 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:10] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:34,703 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:34,703 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:34,704 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.63ms
+2025-03-22 15:12:34,704 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:34] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:12:38,708 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:12:38,708 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:38,708 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 0.62ms
+2025-03-22 15:12:38,709 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:12:38] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-22 15:13:26,699 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:04,942 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 15:17:04,942 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 15:17:12,995 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:13,113 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.25ms
+2025-03-22 15:17:13,114 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:13] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:13,716 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:13,824 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 107.89ms
+2025-03-22 15:17:13,825 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:13] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:14,027 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:14,147 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 119.76ms
+2025-03-22 15:17:14,148 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:14,325 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:14,441 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.6ms
+2025-03-22 15:17:14,442 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:14,613 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:14,726 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 112.54ms
+2025-03-22 15:17:14,727 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:14,920 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:15,033 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 112.97ms
+2025-03-22 15:17:15,034 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:15] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:15,257 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:15,374 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.05ms
+2025-03-22 15:17:15,375 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:15] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:15,588 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:15,702 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.67ms
+2025-03-22 15:17:15,702 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:15] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:15,907 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:16,025 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.59ms
+2025-03-22 15:17:16,025 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:16] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:16,210 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:16,330 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 119.88ms
+2025-03-22 15:17:16,331 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:16] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:16,500 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:16,623 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 123.67ms
+2025-03-22 15:17:16,624 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:16] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:16,796 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:16,915 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.77ms
+2025-03-22 15:17:16,916 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:16] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:17,094 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:17,215 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.82ms
+2025-03-22 15:17:17,216 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:17] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:17,392 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:17,502 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.08ms
+2025-03-22 15:17:17,503 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:17] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:17,678 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:17,796 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.21ms
+2025-03-22 15:17:17,796 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:17] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:17,983 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:18,108 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 125.11ms
+2025-03-22 15:17:18,109 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:18,280 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:18,402 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.65ms
+2025-03-22 15:17:18,403 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:18,944 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:19,062 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.91ms
+2025-03-22 15:17:19,062 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:19,213 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:19,341 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 127.74ms
+2025-03-22 15:17:19,342 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:19] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:20,806 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:20,927 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.55ms
+2025-03-22 15:17:20,928 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:20] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:21,145 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:21,260 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.86ms
+2025-03-22 15:17:21,261 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:21,481 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:21,597 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.17ms
+2025-03-22 15:17:21,598 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:21,807 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:21,923 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.64ms
+2025-03-22 15:17:21,924 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:21] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:22,153 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:22,264 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 110.53ms
+2025-03-22 15:17:22,265 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:22,489 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:22,607 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.22ms
+2025-03-22 15:17:22,608 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:22,828 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:22,943 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.64ms
+2025-03-22 15:17:22,944 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:22] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:23,171 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:23,286 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.43ms
+2025-03-22 15:17:23,287 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:23,515 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:23,627 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 111.91ms
+2025-03-22 15:17:23,629 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:23,844 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:23,962 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.7ms
+2025-03-22 15:17:23,964 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:23] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:24,188 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:24,304 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.13ms
+2025-03-22 15:17:24,305 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:24,541 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:24,656 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 114.25ms
+2025-03-22 15:17:24,657 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:24,887 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:24,998 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 111.53ms
+2025-03-22 15:17:24,999 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:24] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:25,207 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:25,324 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.07ms
+2025-03-22 15:17:25,325 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:25] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:25,559 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:25,673 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 113.52ms
+2025-03-22 15:17:25,674 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:25] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:25,896 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:26,017 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.38ms
+2025-03-22 15:17:26,018 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:26,242 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:26,351 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 109.34ms
+2025-03-22 15:17:26,352 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:26,577 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:26,690 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 112.56ms
+2025-03-22 15:17:26,690 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:26] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:26,930 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:27,047 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.1ms
+2025-03-22 15:17:27,047 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:27] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:27,260 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:27,380 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 119.96ms
+2025-03-22 15:17:27,381 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:27] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:27,606 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:27,722 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 115.84ms
+2025-03-22 15:17:27,723 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:27] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:27,950 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:28,070 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.27ms
+2025-03-22 15:17:28,071 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:28,289 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:28,405 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.02ms
+2025-03-22 15:17:28,406 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:28,630 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:28,747 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 116.48ms
+2025-03-22 15:17:28,747 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:28] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:28,982 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:29,099 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 117.05ms
+2025-03-22 15:17:29,100 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:29,336 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:29,456 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.04ms
+2025-03-22 15:17:29,457 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:29,672 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:29,792 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.17ms
+2025-03-22 15:17:29,793 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:29] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:30,056 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:17:30,178 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.71ms
+2025-03-22 15:17:30,179 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:30] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:17:37,958 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:39,573 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1615.02ms
+2025-03-22 15:17:39,574 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:39] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:48,062 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:48,948 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 886.5ms
+2025-03-22 15:17:48,949 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:48] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:49,705 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:50,500 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 795.32ms
+2025-03-22 15:17:50,501 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:50] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:51,228 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:52,047 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 819.83ms
+2025-03-22 15:17:52,048 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:52] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:52,657 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:53,903 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1246.63ms
+2025-03-22 15:17:53,904 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:53] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:54,688 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:55,635 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 947.13ms
+2025-03-22 15:17:55,635 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:55] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:56,374 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:57,668 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1293.79ms
+2025-03-22 15:17:57,668 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:57] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:17:58,625 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:17:59,414 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 788.63ms
+2025-03-22 15:17:59,415 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:17:59] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:18:01,015 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:18:01,757 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 742.56ms
+2025-03-22 15:18:01,758 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:01] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:18:02,618 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h1'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:18:03,460 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 842.22ms
+2025-03-22 15:18:03,461 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:03] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:18:10,649 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:10,684 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 35.15ms
+2025-03-22 15:18:10,686 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:10] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,005 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:11,033 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 27.75ms
+2025-03-22 15:18:11,034 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,317 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:11,344 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 27.32ms
+2025-03-22 15:18:11,345 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,498 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:11,531 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 32.7ms
+2025-03-22 15:18:11,532 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,660 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:11,696 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 35.09ms
+2025-03-22 15:18:11,696 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,828 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:11,862 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 33.53ms
+2025-03-22 15:18:11,863 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:11,996 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:12,026 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 30.17ms
+2025-03-22 15:18:12,027 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:12] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:18:12,167 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:18:12,201 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 34.47ms
+2025-03-22 15:18:12,202 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:18:12] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:19:09,973 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 's1', 'get_full': True}
+2025-03-22 15:19:19,982 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 10009.24ms
+2025-03-22 15:19:19,982 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:19:19] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:19:50,842 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 's1', 'get_full': True}
+2025-03-22 15:20:00,849 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 10006.9ms
+2025-03-22 15:20:00,849 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:20:00] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:21:55,475 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:22:01,617 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6142.42ms
+2025-03-22 15:22:01,617 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:22:01] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:22:29,535 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h2', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-22 15:22:29,595 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 59.38ms
+2025-03-22 15:22:29,595 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:22:29] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-22 15:22:33,169 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:22:33,205 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 35.4ms
+2025-03-22 15:22:33,205 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:22:33] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:22:33,950 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:22:33,990 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 39.96ms
+2025-03-22 15:22:33,990 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:22:33] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:22:51,981 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'ho2t1': 'h1', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:22:51,982 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 400 | Duration: 0.38ms
+2025-03-22 15:22:51,982 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:22:51] "[31m[1mPOST /api/nodes/ping HTTP/1.1[0m" 400 -
+2025-03-22 15:23:19,359 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:23:19,364 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 4.73ms
+2025-03-22 15:23:19,364 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:23:19] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:27:41,333 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 's2'}
+2025-03-22 15:27:41,409 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 75.24ms
+2025-03-22 15:27:41,409 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:27:41] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-22 15:27:46,704 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:27:46,708 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 4.22ms
+2025-03-22 15:27:46,708 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:27:46] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:29:58,151 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:29:58,156 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 5.61ms
+2025-03-22 15:29:58,156 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:29:58] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:30:37,742 - app - INFO - Request Started | POST /api/links/del | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': 'h1', 'toNode': 's2'}
+2025-03-22 15:30:37,774 - app - INFO - Request Completed | POST /api/links/del | Status: 200 | Duration: 32.06ms
+2025-03-22 15:30:37,774 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:30:37] "POST /api/links/del HTTP/1.1" 200 -
+2025-03-22 15:30:46,779 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:30:46,810 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 31.3ms
+2025-03-22 15:30:46,811 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:30:46] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:30:47,391 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 15:30:47,420 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 29.04ms
+2025-03-22 15:30:47,421 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:30:47] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 15:30:59,808 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:30:59,812 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 4.54ms
+2025-03-22 15:30:59,812 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:30:59] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 15:31:34,859 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 15:31:36,013 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1154.93ms
+2025-03-22 15:31:36,014 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:31:36] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 15:31:41,030 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 15:31:41,040 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 9.5ms
+2025-03-22 15:31:41,040 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 15:31:41] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 16:02:54,971 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 16:02:54,973 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 16:04:19,049 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 'h3'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 16:04:20,368 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1318.99ms
+2025-03-22 16:04:20,369 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:04:20] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 16:05:11,102 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 16:05:11,146 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 43.62ms
+2025-03-22 16:05:11,147 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:05:11] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-22 16:05:20,361 - app - INFO - Request Started | GET /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-22 16:05:20,364 - app - INFO - Request Completed | GET /api/network/ping | Status: 405 | Duration: 2.56ms
+2025-03-22 16:05:20,364 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:05:20] "[31m[1mGET /api/network/ping HTTP/1.1[0m" 405 -
+2025-03-22 16:20:26,579 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 16:20:59,464 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-22 16:20:59,464 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 16:21:38,309 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 16:21:38,887 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 578.71ms
+2025-03-22 16:21:38,888 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:21:38] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-22 16:21:58,221 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 16:21:58,227 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 5.35ms
+2025-03-22 16:21:58,227 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:21:58] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 16:23:24,674 - app - INFO - Request Started | POST /api/nodes/stop/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h2', 'keep_config': True}
+2025-03-22 16:23:24,678 - app - INFO - Request Completed | POST /api/nodes/stop/host | Status: 200 | Duration: 4.69ms
+2025-03-22 16:23:24,679 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:23:24] "POST /api/nodes/stop/host HTTP/1.1" 200 -
+2025-03-22 16:23:30,055 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 16:23:40,060 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 10005.12ms
+2025-03-22 16:23:40,060 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:23:40] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 16:23:52,019 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h2'}
+2025-03-22 16:23:52,024 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 6.02ms
+2025-03-22 16:23:52,025 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:23:52] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-22 16:23:55,600 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h2', 'host2': 'h3', 'get_full': True}
+2025-03-22 16:23:55,611 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 11.13ms
+2025-03-22 16:23:55,612 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:23:55] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-22 16:36:04,659 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': False, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 'h3'}, {'from': 's1', 'to': 's2'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}, {'name': 'h3', 'ip': '192.168.1.4'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-22 16:36:06,835 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 2176.3ms
+2025-03-22 16:36:06,836 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:36:06] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-22 16:36:19,622 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-22 16:36:19,670 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 48.18ms
+2025-03-22 16:36:19,670 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 16:36:19] "POST /api/network/ping HTTP/1.1" 200 -

@@ -5,6 +5,7 @@ from mininet.topo import Topo
 from mininet.util import quietRun
 import json
 import logging
+import config as conf
 
 
 class JsonTopo(Topo):
@@ -116,19 +117,29 @@ class MininetController:
             # 创建网络拓扑
             topo = JsonTopo(data)
             if self.net is not None:
-                self.net.stop()
+                try:
+                    self.stop_network()
+                except Exception as e:
+                    print(f"无法停止网络, Exception:{e}")
             self.net = Mininet(topo=topo, build=False, ipBase=ipBase)
             c0 = self.net.addController(name='c0',
+                                        controller=RemoteController,
+                                        ip='127.0.0.1',
+                                        port=6633)
+            '''c0 = self.net.addController(name='c0',
                                         controller=OVSController,
                                         protocol='tcp',
-                                        port=6633)
+                                        port=6633)     '''                       
             c0.start()
             self.start_network()
-            # 将控制器传递给switch，并对OVSController和Controller手动设置流表规则
             for switch in self.net.switches:
                 switch.start([c0])
+                self.add_ens_port(switch)
+            # 将控制器传递给switch，并对OVSController和Controller手动设置流表规则
+            '''for switch in self.net.switches:
+                switch.start([c0])
                 if isinstance(c0, (Controller, OVSController)):
-                    switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} actions=NORMAL')
+                    switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} actions=NORMAL')'''
             
             return True, "status: 网络部署成功", 200
         except Exception as e:
@@ -142,6 +153,7 @@ class MininetController:
         """Start entire network"""
         self.net.build()
         self.net.start()
+        
 
     def stop_network(self):
         """
@@ -149,6 +161,8 @@ class MininetController:
         which stop all nodes and link and will terminate all interfaces
         Do not run the method unless you finish your simulate
         """
+        for switch in self.net.switches:
+            self.del_ens_port(switch)
         self.net.stop()
 
     def get_topology(self):
@@ -229,6 +243,8 @@ class MininetController:
         """
         hosts = [self.net.get(fromNode), self.net.get(toNode)]
         ploss = self.net.ping(hosts, timeout=timeout)
+        if isinstance(ploss, int) and ploss == 0:
+            ploss = "No packets sent, intf do not exist"
         result = f"ping {fromNode}->{toNode}, loss: {ploss}"
         return result
 
@@ -272,7 +288,16 @@ class MininetController:
                 tmp = self.ping_full(node1.name, node2.name, timeout=timeout)
                 result.append(tmp)
         return result
-
+        
+        
+    def add_ens_port(self, switch):
+        switch.cmd(f'sudo ovs-vsctl add-port {switch.name} {conf.ENS_PORT_NAME}')
+    
+    
+    def del_ens_port(self, switch):
+        switch.cmd(f'sudo ovs-vsctl del-port {switch.name} {conf.ENS_PORT_NAME}')
+    
+    
     def start_node(self, name, _type=None, controller=None):
         """
         启动指定节点
@@ -288,11 +313,8 @@ class MininetController:
                 # 处理交换机启动
                 ctrl = controller if controller is not None else self.net.get('c0')  # 默认使用第一个控制器
                 node.start([ctrl])
-                
-                if isinstance(ctrl, (Controller, OVSController)):
-                    for switch in self.net.switches:
-                        switch.start([ctrl])
-                        switch.cmd(f'sudo ovs-ofctl add-flow {switch.name} actions=NORMAL')
+                self.add_ens_port(node)
+                       
                 return True, f"Switch {name} started with controller {ctrl.name}"
             elif isinstance(node, Host):
                 # 启动主机网络接口
@@ -317,6 +339,7 @@ class MininetController:
 
         if isinstance(node, OVSKernelSwitch):
             node.stop(deleteIntfs=not keep_config)
+            self.del_ens_port(node)
             return True, f"Switch {name} stopped"
         elif isinstance(node, Host):
             # 关闭所有接口
@@ -364,6 +387,9 @@ class MininetController:
 
         self.net.addLink(new_host, switch, cls=TCLink, bw=10, delay=5)
         self.start_node(name)
+        c0 = self.net.get('c0')
+        for sw in self.net.switches:
+            sw.start([c0])
         data = {"name": new_host.name,
                 # "ip":new_host.intfList()[0].IP(),
                 "status": 'up' if any(intf.isUp() for intf in new_host.intfList()) else 'down'
@@ -390,6 +416,10 @@ class MininetController:
     def add_link(self, fromNode, toNode, fromPort=None, toPort=None, **params):
         """add link between fromNoed and toNode"""
         new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+        for switch in self.net.switches:
+                switch.start([self.net.get('c0')])
+        self.start_node(fromNode)
+        self.start_node(toNode)
         return new_link
 
     def del_link(self, fromNode, toNode, intf=None, index=0, allLinks=False):

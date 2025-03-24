@@ -1604,3 +1604,2657 @@ Traceback (most recent call last):
     tmp += self.ping(node1.name, node2.name, timeout=timeout) + '\n'
 UnboundLocalError: local variable 'tmp' referenced before assignment
 
+2025-03-22 10:50:15,548 - app - ERROR - Exception on /api/network/init [POST]
+Traceback (most recent call last):
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 119, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "app.py", line 139, in init_network
+    success, mes, code = controller.set_net_from_topo(data, build=False)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 136, in set_net_from_topo
+    self.net.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 567, in stop
+    controller.stop()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 1432, in stop
+    self.cmd( 'kill %' + self.command )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+2025-03-22 11:31:55,192 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:47:13,852 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 150, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-22 11:56:39,588 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:57:48,170 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:58:14,877 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:58:59,142 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 11:59:15,533 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 403, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 419, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-22 15:03:18,228 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-22 15:12:06,447 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,632 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,791 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:06,959 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:07,855 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,031 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,192 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,367 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,520 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,682 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:08,848 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:09,010 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:10,571 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:10,746 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:34,703 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-22 15:12:38,708 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in get_topology
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 216, in <genexpr>
+    'status': 'up' if any(intf.isUp() for intf in node.intfList()) else 'down'
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-24 23:07:13,662 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,666 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,670 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,673 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,679 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,684 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,689 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,693 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,700 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:07:13,708 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,261 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,264 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,269 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,272 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,276 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,279 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,285 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,289 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,291 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,294 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:10:59,480 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,486 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,490 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,493 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,497 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,501 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,504 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,506 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,509 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:10:59,513 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:15:13,281 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,286 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,288 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,291 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,294 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,299 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,302 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,305 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,310 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:15:13,313 - app - ERROR - API Exception: 'h{i}'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h{i}'
+
+2025-03-24 23:17:18,886 - app - ERROR - API Exception: 'h0'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h0'
+
+2025-03-24 23:17:19,824 - app - ERROR - API Exception: 'h4'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h4'
+
+2025-03-24 23:17:19,827 - app - ERROR - API Exception: 'h5'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h5'
+
+2025-03-24 23:17:19,830 - app - ERROR - API Exception: 'h6'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h6'
+
+2025-03-24 23:17:19,836 - app - ERROR - API Exception: 'h7'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h7'
+
+2025-03-24 23:17:19,839 - app - ERROR - API Exception: 'h8'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h8'
+
+2025-03-24 23:17:19,842 - app - ERROR - API Exception: 'h9'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h9'
+
+2025-03-24 23:20:15,238 - app - ERROR - API Exception: 'h0'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h0'
+
+2025-03-24 23:20:16,023 - app - ERROR - API Exception: 'h4'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h4'
+
+2025-03-24 23:20:16,026 - app - ERROR - API Exception: 'h5'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h5'
+
+2025-03-24 23:20:16,029 - app - ERROR - API Exception: 'h6'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h6'
+
+2025-03-24 23:20:16,032 - app - ERROR - API Exception: 'h7'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h7'
+
+2025-03-24 23:20:16,035 - app - ERROR - API Exception: 'h8'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h8'
+
+2025-03-24 23:20:16,041 - app - ERROR - API Exception: 'h9'
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 417, in add_link
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 386, in addLink
+    node1 = node1 if not isinstance( node1, BaseString ) else self[ node1 ]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 337, in __getitem__
+    return self.nameToNode[ key ]
+KeyError: 'h9'
+
+2025-03-24 23:41:57,897 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,899 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,902 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,905 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,907 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,910 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,913 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,915 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,922 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:41:57,925 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,553 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,556 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,558 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,560 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,563 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,565 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,573 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,578 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,581 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:42:08,584 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 423, in del_link
+    self.net.delLinkBetween(node1, node2, index, allLinks)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 439, in get_link
+    for lk in links:
+IndexError: list index out of range
+
+2025-03-24 23:45:48,411 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 223, in get_topology
+    for link in self.net.links:
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 223, in <genexpr>
+    for link in self.net.links:
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-24 23:45:49,368 - app - ERROR - API Exception: 
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 223, in get_topology
+    for link in self.net.links:
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 223, in <genexpr>
+    for link in self.net.links:
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 145, in isUp
+    return "UP" in self.ifconfig()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 69, in ifconfig
+    return self.cmd( 'ifconfig', self.name, *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 65, in cmd
+    return self.node.cmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 376, in cmd
+    self.sendCmd( *args, **kwargs )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/node.py", line 293, in sendCmd
+    assert self.shell and not self.waiting
+AssertionError
+
+2025-03-25 00:00:39,805 - app - ERROR - API Exception: 'h-1'
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 248, in ping
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'h-1'
+
+2025-03-25 00:00:39,807 - app - ERROR - API Exception: 'h-1'
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 248, in ping
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'h-1'
+
+2025-03-25 00:07:00,610 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:00,893 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:01,177 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:01,438 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:01,685 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:01,958 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:02,199 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:02,475 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:02,764 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:07:03,037 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:44,498 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:44,766 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:45,031 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:45,309 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:45,568 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:45,838 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:46,090 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:46,392 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:46,665 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:11:46,925 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 388, in add_host
+    self.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 154, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-25 00:14:46,663 - app - ERROR - API Exception: 'h-1'
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 244, in ping
+    hosts = [self.net.get(fromNode), self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'h-1'
+
+2025-03-25 00:14:46,665 - app - ERROR - API Exception: 'h-1'
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 244, in ping
+    hosts = [self.net.get(fromNode), self.net.get(toNode)]
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 332, in get
+    return self.getNodeByName( *args )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 327, in getNodeByName
+    return self.nameToNode[ args[ 0 ] ]
+KeyError: 'h-1'
+
+2025-03-25 00:21:05,552 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,555 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,559 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,562 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,565 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,568 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,571 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,576 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,581 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:21:05,584 - app - ERROR - API Exception: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Request: PUT /api/config
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 341, in apply_config
+    config = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 557, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 601, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 131, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 644, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+
+2025-03-25 00:39:15,028 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,031 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,033 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,036 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,041 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,045 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,048 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,051 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,057 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:39:15,060 - app - ERROR - API Exception: list index out of range
+Request: POST /api/links/del
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 331, in remove_link
+    success, message = controller.del_link(data['fromNode'], data['toNode'], data.get('intf', None))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 424, in del_link
+    link, node1, node2, index = self.get_link(fromNode, toNode, intf=intf)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 440, in get_link
+    link = links[0]
+IndexError: list index out of range
+
+2025-03-25 00:46:02,077 - app - ERROR - API Exception: isinstance() arg 2 must be a type or tuple of types
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 246, in ping
+    if isinstance(int,ploss):
+TypeError: isinstance() arg 2 must be a type or tuple of types
+
+2025-03-25 00:46:02,093 - app - ERROR - API Exception: isinstance() arg 2 must be a type or tuple of types
+Request: POST /api/nodes/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 189, in ping_between_hosts
+    result = controller.ping(data['host1'], data['host2'], timeout=timeout)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 246, in ping
+    if isinstance(int,ploss):
+TypeError: isinstance() arg 2 must be a type or tuple of types
+

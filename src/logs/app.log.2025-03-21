@@ -1,0 +1,422 @@
+2025-03-21 00:04:01,819 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:04:01,820 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:04:25,336 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:04:25,383 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 46.67ms
+2025-03-21 00:04:25,383 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:04:25] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:04:35,659 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:04:35,734 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 74.31ms
+2025-03-21 00:04:35,734 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:04:35] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:04:49,932 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:04:51,607 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1675.6ms
+2025-03-21 00:04:51,608 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:04:51] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:04:54,254 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 00:04:54,282 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 27.56ms
+2025-03-21 00:04:54,283 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:04:54] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 00:05:01,196 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:05:01,245 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 49.12ms
+2025-03-21 00:05:01,246 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:05:01] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:05:04,341 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:05:04,417 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 75.91ms
+2025-03-21 00:05:04,418 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:05:04] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:05:27,900 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:05:27,970 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 70.7ms
+2025-03-21 00:05:27,970 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:05:27] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 00:06:30,253 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:06:30,301 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 48.89ms
+2025-03-21 00:06:30,302 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:06:30] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-21 00:08:37,845 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:08:37,845 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:09:49,349 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:09:49,349 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:10:01,896 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:10:03,048 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1151.41ms
+2025-03-21 00:10:03,049 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:10:03] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:10:11,743 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:10:11,761 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.73ms
+2025-03-21 00:10:11,761 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:10:11] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:12:54,034 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:12:54,035 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:13:02,702 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:13:03,863 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1160.77ms
+2025-03-21 00:13:03,864 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:13:03] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:13:06,392 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:13:06,413 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 20.84ms
+2025-03-21 00:13:06,413 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:13:06] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:20:05,107 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:20:05,107 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:20:11,251 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:20:12,540 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1288.62ms
+2025-03-21 00:20:12,544 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:20:12] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:20:27,571 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:20:27,589 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 18.52ms
+2025-03-21 00:20:27,591 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:20:27] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:25:01,518 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:25:01,519 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:26:36,618 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:26:36,618 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:26:44,231 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:26:45,451 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1219.88ms
+2025-03-21 00:26:45,453 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:26:45] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:26:54,427 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:26:54,445 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 18.23ms
+2025-03-21 00:26:54,446 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:26:54] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:32:25,528 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:32:25,528 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:32:30,016 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:32:31,158 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1141.56ms
+2025-03-21 00:32:31,162 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:32:31] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:32:34,696 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:32:34,741 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 45.16ms
+2025-03-21 00:32:34,742 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:32:34] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:37:17,677 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:37:17,677 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:37:24,412 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:37:25,610 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1197.84ms
+2025-03-21 00:37:25,615 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:37:25] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:37:28,339 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:37:28,383 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 43.88ms
+2025-03-21 00:37:28,383 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:37:28] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:38:04,762 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:38:04,827 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 65.25ms
+2025-03-21 00:38:04,828 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:38:04] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:38:24,355 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:38:24,410 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 55.2ms
+2025-03-21 00:38:24,411 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:38:24] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 00:40:36,044 - app - INFO - Request Started | POST /api/network/start | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 00:40:36,111 - app - ERROR - API Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+Request: POST /api/network/start
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 156, in start_network
+    controller.start_network()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 143, in start_network
+    self.net.build()
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 502, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 489, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (s1-eth1,h1-eth0): RTNETLINK answers: File exists
+ 
+
+2025-03-21 00:40:36,112 - app - INFO - Request Completed | POST /api/network/start | Status: 500 | Duration: 67.26ms
+2025-03-21 00:40:36,112 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:40:36] "[35m[1mPOST /api/network/start HTTP/1.1[0m" 500 -
+2025-03-21 00:41:53,401 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-21 00:41:53,405 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 3.97ms
+2025-03-21 00:41:53,405 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:41:53] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-21 00:43:05,099 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:43:05,099 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:43:14,680 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:43:14,730 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 50.16ms
+2025-03-21 00:43:14,731 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:43:14] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:43:27,022 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:43:27,098 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 76.72ms
+2025-03-21 00:43:27,099 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:43:27] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:43:41,473 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:43:41,532 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 58.91ms
+2025-03-21 00:43:41,532 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:43:41] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 00:43:54,035 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:43:55,342 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1306.54ms
+2025-03-21 00:43:55,346 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:43:55] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:44:08,853 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:44:08,901 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 47.48ms
+2025-03-21 00:44:08,901 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:44:08] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:44:12,838 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:44:12,908 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 70.63ms
+2025-03-21 00:44:12,909 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:44:12] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:44:21,283 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:44:21,348 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 65.51ms
+2025-03-21 00:44:21,348 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:44:21] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 00:44:47,736 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-21 00:44:47,741 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 5.1ms
+2025-03-21 00:44:47,742 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:44:47] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-21 00:49:29,057 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:49:29,057 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:49:38,478 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:49:39,741 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1263.15ms
+2025-03-21 00:49:39,742 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:49:39] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:49:44,981 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:49:44,998 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 17.99ms
+2025-03-21 00:49:45,000 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:49:45] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:50:07,201 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:50:07,277 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 75.93ms
+2025-03-21 00:50:07,277 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:50:07] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:50:14,676 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:50:14,734 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 57.58ms
+2025-03-21 00:50:14,734 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:50:14] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 00:51:51,209 - app - INFO - Request Started | POST /api/nodes/stop/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01', 'keep_config': True}
+2025-03-21 00:51:51,214 - app - INFO - Request Completed | POST /api/nodes/stop/switch | Status: 200 | Duration: 5.15ms
+2025-03-21 00:51:51,214 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:51:51] "POST /api/nodes/stop/switch HTTP/1.1" 200 -
+2025-03-21 00:52:24,231 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:52:24,314 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 82.09ms
+2025-03-21 00:52:24,314 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:52:24] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-21 00:53:01,870 - app - INFO - Request Started | POST /api/nodes/start/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9'}
+2025-03-21 00:53:01,873 - app - INFO - Request Completed | POST /api/nodes/start/host | Status: 200 | Duration: 3.71ms
+2025-03-21 00:53:01,874 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:53:01] "POST /api/nodes/start/host HTTP/1.1" 200 -
+2025-03-21 00:53:57,686 - app - INFO - Request Started | POST /api/nodes/stop/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 's1', 'keep_config': True}
+2025-03-21 00:53:57,715 - app - INFO - Request Completed | POST /api/nodes/stop/switch | Status: 200 | Duration: 28.68ms
+2025-03-21 00:53:57,715 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:53:57] "POST /api/nodes/stop/switch HTTP/1.1" 200 -
+2025-03-21 00:54:54,322 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': 's1'}
+2025-03-21 00:54:54,376 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 53.74ms
+2025-03-21 00:54:54,376 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:54:54] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-21 00:57:16,641 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 00:57:16,641 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 00:57:26,735 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 00:57:27,973 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1238.23ms
+2025-03-21 00:57:27,974 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:57:27] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 00:57:36,019 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 00:57:36,087 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 67.93ms
+2025-03-21 00:57:36,087 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:57:36] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 00:57:55,075 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 00:57:55,138 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 63.36ms
+2025-03-21 00:57:55,139 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:57:55] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 00:58:01,728 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 00:58:01,782 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 54.38ms
+2025-03-21 00:58:01,783 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 00:58:01] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 01:00:14,146 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:00:14,146 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:00:18,480 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 01:00:20,131 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1651.48ms
+2025-03-21 01:00:20,133 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:00:20] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 01:00:24,755 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:02:39,250 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:02:39,250 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:02:48,367 - app - INFO - Request Started | POST /api/network/init | Client: 127.0.0.1 | Params: {} | JSON: {'cli': True, 'data': {'links': [{'from': 's1', 'to': 'h1'}, {'from': 's2', 'to': 'h2'}, {'from': 's2', 'to': 's1'}], 'hosts': [{'name': 'h1', 'ip': '192.168.1.2/16'}, {'name': 'h2', 'ip': '192.168.1.3'}], 'switches': [{'name': 's1'}, {'name': 's2'}]}}
+2025-03-21 01:02:49,574 - app - INFO - Request Completed | POST /api/network/init | Status: 200 | Duration: 1207.1ms
+2025-03-21 01:02:49,576 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:02:49] "POST /api/network/init HTTP/1.1" 200 -
+2025-03-21 01:02:56,593 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:03:38,974 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:03:39,001 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 27.27ms
+2025-03-21 01:03:39,002 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:03:39] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:03:39,825 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:03:39,853 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 28.62ms
+2025-03-21 01:03:39,855 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:03:39] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:03:40,422 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:03:40,448 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 25.74ms
+2025-03-21 01:03:40,449 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:03:40] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:03:40,926 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:03:40,952 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 26.03ms
+2025-03-21 01:03:40,955 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:03:40] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:04:07,503 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:04:07,529 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 25.44ms
+2025-03-21 01:04:07,530 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:07] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:04:08,156 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:04:08,182 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 26.02ms
+2025-03-21 01:04:08,182 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:08] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:04:21,166 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 01:04:21,239 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 72.89ms
+2025-03-21 01:04:21,239 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:21] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 01:04:27,114 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 01:04:27,175 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 60.85ms
+2025-03-21 01:04:27,175 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:27] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 01:04:33,341 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:04:33,384 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 43.53ms
+2025-03-21 01:04:33,385 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:33] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:04:59,393 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-21 01:04:59,422 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 28.85ms
+2025-03-21 01:04:59,422 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:04:59] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-21 01:05:50,656 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:05:50,656 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:05:57,675 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:05:58,191 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 516.6ms
+2025-03-21 01:05:58,192 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:05:58] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 01:06:11,594 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 01:06:11,614 - app - ERROR - API Exception: Error creating interface pair (h9-eth0,祖国01-eth1): RTNETLINK answers: No such process
+ 
+Request: POST /api/nodes/add/host
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 284, in add_node
+    success, data = controller.add_host(data['name'], data['ip'], link_to = link_to)
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 364, in add_host
+    self.net.addLink(new_host, switch, cls=TCLink, bw=10, delay=5)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 557, in __init__
+    Link.__init__( self, *args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 450, in __init__
+    self.makeIntfPair( intfName1, intfName2, addr1, addr2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 495, in makeIntfPair
+    return makeIntfPair( intfname1, intfname2, addr1, addr2, node1, node2,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/util.py", line 266, in makeIntfPair
+    raise Exception( "Error creating interface pair (%s,%s): %s " %
+Exception: Error creating interface pair (h9-eth0,祖国01-eth1): RTNETLINK answers: No such process
+ 
+
+2025-03-21 01:06:11,615 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 500 | Duration: 21.05ms
+2025-03-21 01:06:11,615 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:06:11] "[35m[1mPOST /api/nodes/add/host HTTP/1.1[0m" 500 -
+2025-03-21 01:06:17,733 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 01:06:17,734 - app - ERROR - API Exception: argument of type 'NoneType' is not iterable
+Request: POST /api/links/add
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 315, in create_link
+    new_link = controller.add_link(data['fromNode'], data['toNode'], **data.get('params'))
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 402, in add_link
+    new_link = self.net.addLink(fromNode, toNode, cls=TCLink, fromPort=fromPort, toPort=toPort, **params)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/net.py", line 400, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 557, in __init__
+    Link.__init__( self, *args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 460, in __init__
+    intf1 = cls1( name=intfName1, node=node1,
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 61, in __init__
+    self.config( **params )
+  File "/usr/local/lib/python3.8/dist-packages/mininet/link.py", line 358, in config
+    if "priomap" not in tcoutput and "noqueue" not in tcoutput:
+TypeError: argument of type 'NoneType' is not iterable
+
+2025-03-21 01:06:17,734 - app - INFO - Request Completed | POST /api/links/add | Status: 500 | Duration: 1.04ms
+2025-03-21 01:06:17,734 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:06:17] "[35m[1mPOST /api/links/add HTTP/1.1[0m" 500 -
+2025-03-21 01:06:26,777 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:06:26,778 - app - ERROR - API Exception: 'NoneType' object has no attribute 'node'
+Request: GET /api/network/topology
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 170, in get_topology
+    topology = controller.get_topology()
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 211, in get_topology
+    'from': link.intf1.node.name,
+AttributeError: 'NoneType' object has no attribute 'node'
+
+2025-03-21 01:06:26,779 - app - INFO - Request Completed | GET /api/network/topology | Status: 500 | Duration: 1.39ms
+2025-03-21 01:06:26,779 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:06:26] "[35m[1mGET /api/network/topology HTTP/1.1[0m" 500 -
+2025-03-21 01:09:28,271 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:09:28,271 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:09:33,884 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:09:34,207 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 323.89ms
+2025-03-21 01:09:34,208 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:09:34] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 01:09:43,927 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:09:44,029 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 101.53ms
+2025-03-21 01:09:44,030 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:09:44] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:10:04,787 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 01:10:04,872 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 85.77ms
+2025-03-21 01:10:04,873 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:10:04] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 01:10:08,993 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:10:09,103 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 109.93ms
+2025-03-21 01:10:09,104 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:10:09] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:10:29,440 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 01:10:29,513 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 73.46ms
+2025-03-21 01:10:29,514 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:10:29] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 01:10:33,510 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:10:33,632 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 121.95ms
+2025-03-21 01:10:33,633 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:10:33] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:11:09,437 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-21 01:12:48,036 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 98599.51ms
+2025-03-21 01:12:48,036 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:12:48] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-21 01:16:20,530 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:16:20,530 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:16:30,786 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-21 01:16:30,787 - app - ERROR - API Exception: local variable 'tmp' referenced before assignment
+Request: POST /api/network/ping
+Traceback:
+Traceback (most recent call last):
+  File "app.py", line 109, in wrapper
+    return func(*args, **kwargs)
+  File "app.py", line 231, in ping_all_hosts
+    result = controller.ping_all(params['timeout'])
+  File "/home/lee/Desktop/MininetController/src/controller.py", line 261, in ping_all
+    tmp += self.ping(node1.name, node2.name, timeout=timeout) + '\n'
+UnboundLocalError: local variable 'tmp' referenced before assignment
+
+2025-03-21 01:16:30,787 - app - INFO - Request Completed | POST /api/network/ping | Status: 500 | Duration: 1.43ms
+2025-03-21 01:16:30,787 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:16:30] "[35m[1mPOST /api/network/ping HTTP/1.1[0m" 500 -
+2025-03-21 01:17:06,262 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:17:06,262 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:17:10,192 - app - INFO - Request Started | POST /api/network/ping | Client: 127.0.0.1 | Params: {} | JSON: {'get_full': False, 'timeout': '10'}
+2025-03-21 01:17:10,520 - app - INFO - Request Completed | POST /api/network/ping | Status: 200 | Duration: 328.01ms
+2025-03-21 01:17:10,520 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:17:10] "POST /api/network/ping HTTP/1.1" 200 -
+2025-03-21 01:17:56,880 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:17:57,219 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 339.04ms
+2025-03-21 01:17:57,220 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:17:57] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 01:18:00,947 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 01:18:01,032 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 84.67ms
+2025-03-21 01:18:01,033 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:18:01] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 01:18:09,269 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 01:18:09,330 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 61.03ms
+2025-03-21 01:18:09,330 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:18:09] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 01:18:14,277 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:18:14,402 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 124.96ms
+2025-03-21 01:18:14,403 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:18:14] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:18:15,167 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:18:15,285 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 118.69ms
+2025-03-21 01:18:15,286 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:18:15] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:19:05,447 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:19:11,588 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6141.4ms
+2025-03-21 01:19:11,589 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:19:11] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-21 01:20:29,449 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:20:35,588 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6139.08ms
+2025-03-21 01:20:35,588 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:20:35] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-21 01:23:50,569 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:23:56,712 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6143.21ms
+2025-03-21 01:23:56,713 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:23:56] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-21 01:25:51,989 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:25:52,360 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 370.28ms
+2025-03-21 01:25:52,360 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:25:52] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-21 01:26:14,057 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:26:14,065 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 7.96ms
+2025-03-21 01:26:14,065 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:26:14] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-21 01:27:08,548 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:27:08,548 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:29:20,264 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2025-03-21 01:29:20,264 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 01:29:33,252 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:29:33,359 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 106.37ms
+2025-03-21 01:29:33,360 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:29:33] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:29:44,705 - app - INFO - Request Started | POST /api/nodes/add/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:29:45,020 - app - INFO - Request Completed | POST /api/nodes/add/switch | Status: 200 | Duration: 315.31ms
+2025-03-21 01:29:45,021 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:29:45] "POST /api/nodes/add/switch HTTP/1.1" 200 -
+2025-03-21 01:30:02,225 - app - INFO - Request Started | POST /api/nodes/add/host | Client: 127.0.0.1 | Params: {} | JSON: {'name': 'h9', 'ip': '10.0.0.9', 'link_to': '祖国01'}
+2025-03-21 01:30:02,299 - app - INFO - Request Completed | POST /api/nodes/add/host | Status: 200 | Duration: 74.06ms
+2025-03-21 01:30:02,299 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:30:02] "POST /api/nodes/add/host HTTP/1.1" 200 -
+2025-03-21 01:30:07,398 - app - INFO - Request Started | POST /api/links/add | Client: 127.0.0.1 | Params: {} | JSON: {'fromNode': '祖国01', 'toNode': 's2', 'params': {'delay': 5, 'bw': 10}}
+2025-03-21 01:30:07,461 - app - INFO - Request Completed | POST /api/links/add | Status: 200 | Duration: 62.47ms
+2025-03-21 01:30:07,461 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:30:07] "POST /api/links/add HTTP/1.1" 200 -
+2025-03-21 01:30:18,223 - app - INFO - Request Started | GET /api/network/topology | Client: 127.0.0.1 | Params: {} | JSON: None
+2025-03-21 01:30:18,344 - app - INFO - Request Completed | GET /api/network/topology | Status: 200 | Duration: 120.82ms
+2025-03-21 01:30:18,345 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:30:18] "GET /api/network/topology HTTP/1.1" 200 -
+2025-03-21 01:31:14,273 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:31:20,421 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 6148.91ms
+2025-03-21 01:31:20,422 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:31:20] "POST /api/nodes/ping HTTP/1.1" 200 -
+2025-03-21 01:31:35,696 - app - INFO - Request Started | POST /api/nodes/start/switch | Client: 127.0.0.1 | Params: {} | JSON: {'name': '祖国01'}
+2025-03-21 01:31:36,061 - app - INFO - Request Completed | POST /api/nodes/start/switch | Status: 200 | Duration: 365.68ms
+2025-03-21 01:31:36,062 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:31:36] "POST /api/nodes/start/switch HTTP/1.1" 200 -
+2025-03-21 01:31:45,920 - app - INFO - Request Started | POST /api/nodes/ping | Client: 127.0.0.1 | Params: {} | JSON: {'host1': 'h1', 'host2': 'h9', 'get_full': True}
+2025-03-21 01:31:45,928 - app - INFO - Request Completed | POST /api/nodes/ping | Status: 200 | Duration: 8.24ms
+2025-03-21 01:31:45,928 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 01:31:45] "POST /api/nodes/ping HTTP/1.1" 200 -

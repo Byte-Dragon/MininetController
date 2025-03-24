@@ -11,6 +11,16 @@
 	结束进程： sudo kill 3148
 	清除已有网络：sudo mn -c
 
+	查看指定switch的信息: sudo ovs-ofctl show s1
+	查看指定switch的流表：sudo ovs-ofctl dump-flows s1
+	查看控制器信息：sudo ovs-vsctl show
+	在s1上添加端口：sudo ovs-vsctl add-port s1 ens88
+	在s1上删除端口：sudo ovs-vsctl del-port s1 ens88
+	添加本地接口：sudo ip tuntap add mode tap ens8
+	删除本地接口：sudo ip tuntap del mode tap dev ens8
+	
+	
+	查看控制器进程：ps aux | grep controller
 	
 	指定拓扑类型：
 		sudo mn --topo=linear,3  # 线性拓扑，3 台交换机

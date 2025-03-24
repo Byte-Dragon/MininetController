@@ -40,12 +40,12 @@ def myNetwork(cli=False):
                    build=False,
                    ipBase='10.0.0.0/10')
     info( '*** Adding controller\n' )
-    #c0=net.addController(name='c0',
-    #                  controller=RemoteController, ip='127.0.0.1', port=6633)
-    c0 = net.addController(name='c0',
+    c0=net.addController(name='c0',
+                      controller=RemoteController, ip='127.0.0.1', port=6633)
+    '''c0 = net.addController(name='c0',
                            controller=OVSController,
                            protocol='tcp',
-                           port=6633)
+                           port=6633)'''
     info( '*** Add switches\n')
     s1 = net.addSwitch('s1', cls=OVSKernelSwitch)
     s2 = net.addSwitch('s2', cls=OVSKernelSwitch)
@@ -86,10 +86,10 @@ def myNetwork(cli=False):
     net.get('s2').start([c0])
     net.get('s3').start([c0])
     net.get('s4').start([c0])
-    net.get('s1').cmd('sudo ovs-ofctl add-flow s1 actions=NORMAL')
+    '''net.get('s1').cmd('sudo ovs-ofctl add-flow s1 actions=NORMAL')
     net.get('s2').cmd('sudo ovs-ofctl add-flow s2 actions=NORMAL')
     net.get('s3').cmd('sudo ovs-ofctl add-flow s3 actions=NORMAL')
-    net.get('s4').cmd('sudo ovs-ofctl add-flow s4 actions=NORMAL')
+    net.get('s4').cmd('sudo ovs-ofctl add-flow s4 actions=NORMAL')'''
  
     #info( '*** Post configure switches and hosts\n')
     if cli:
